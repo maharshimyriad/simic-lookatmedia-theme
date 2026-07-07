@@ -46,7 +46,7 @@ Some common css applicable to the whole website.
 
 body {
 
-    color: #000000;
+    color: var(--primary-color-2);
 
     line-height: 1.75;
 
@@ -272,7 +272,7 @@ main {
 
     user-select: none;
 
-    background-color: #000000;
+    background-color: var(--primary-color-2);
 
     border: none;
 
@@ -355,7 +355,7 @@ CSS for overriding certain common bootstrap CSS or creating new CSS in bootstrap
 .btn-white:active,
 .btn-white:focus {
 
-    color: #000000;
+    color: var(--primary-color-2);
 
     background-color: var(--background-color-1);
 
@@ -448,7 +448,7 @@ header {
 .navbar .navbar-nav .nav-link:active,
 .navbar .navbar-nav .nav-link.active {
 
-    border-color: #000000;
+    border-color: var(--primary-color-2);
 
 }
 
@@ -533,7 +533,7 @@ header {
 
     min-width: auto;
 
-    background-color: #000000;
+    background-color: var(--primary-color-2);
 
     padding: 0.5rem 1rem !important;
 
@@ -553,14 +553,14 @@ header {
 
 .nav-link {
 
-    color: #000000;
+    color: var(--primary-color-2);
 
 }
 
 .nav-link:hover,
 .nav-link:active {
 
-    color: #000000;
+    color: var(--primary-color-2);
 
 }
 
@@ -870,7 +870,7 @@ CSS for the front page.
 
     padding: .25rem 1.25rem;
 
-    border-right: 1px solid #000000;
+    border-right: 1px solid var(--primary-color-2);
 
 }
 
@@ -878,7 +878,7 @@ CSS for the front page.
 
     padding-left: 1rem;
 
-    color: #000000 !important;
+    color: var(--primary-color-2) !important;
 
     text-decoration: none;
 
@@ -896,7 +896,7 @@ CSS for the front page.
 
 .featured-news-title a {
 
-    color: #000000 !important;
+    color: var(--primary-color-2) !important;
 
     text-decoration: none;
 
@@ -952,11 +952,11 @@ CSS for the front page.
 
     background-color: #ffffff;
 
-    color: #000000;
+    color: var(--primary-color-2);
 
     border-radius: 50px;
 
-    border:1px solid #000000 !important;
+    border:1px solid var(--primary-color-2) !important;
 
     padding: 0 30px;
 
@@ -1009,13 +1009,13 @@ CSS for the front page.
 
     height: 56px;
 
-    background-color: #000000;
+    background-color: var(--primary-color-2);
 
     color: #ffffff;
 
     border-radius: 50px;
 
-    border-color: #000000;
+    border-color: var(--primary-color-2);
 
     padding: 0 30px;
 
@@ -1034,9 +1034,9 @@ CSS for the front page.
 
     font-size: 0;
 
-    border: 2px solid #000000;
+    border: 2px solid var(--primary-color-2);
 
-    background-color: #000000;
+    background-color: var(--primary-color-2);
 
     display: flex;
 
@@ -1084,7 +1084,7 @@ CSS for the front page.
 
     border-radius: 50%;
 
-    border: 2px solid #000000;
+    border: 2px solid var(--primary-color-2);
 
     font-size: 2rem;
 
@@ -1527,7 +1527,7 @@ CSS for all the mini-home pages, e.g. story ideas, news, events, etc.
 
 .minihome-banner-row-inner h3 a {
 
-    color: #000000 !important;
+    color: var(--primary-color-2) !important;
 
     text-decoration: none;
 
@@ -1645,7 +1645,7 @@ CSS for all the mini-home pages, e.g. story ideas, news, events, etc.
 
     content: '';
 
-    border-top: 1px solid #000000;
+    border-top: 1px solid var(--primary-color-2);
 
     position: absolute;
 
@@ -1721,7 +1721,7 @@ CSS for all the mini-home pages, e.g. story ideas, news, events, etc.
 
 .minihome-ptag-time li a {
 
-    color: #000000 !important;
+    color: var(--primary-color-2) !important;
 
     text-decoration: none !important;
 
@@ -1779,7 +1779,7 @@ CSS for all the mini-home pages, e.g. story ideas, news, events, etc.
 
 .minihome-row h3 a {
 
-    color: #000000 !important;
+    color: var(--primary-color-2) !important;
 
     text-decoration: none;
 
@@ -2038,7 +2038,7 @@ CSS for all the article pages mentioned above.
 
     background-color: transparent;
 
-    color: #000000;
+    color: var(--primary-color-2);
 
     text-decoration: none;
 
@@ -2230,7 +2230,7 @@ CSS for all the article pages mentioned above.
 
     font-weight: normal;
 
-    background-color: #000000;
+    background-color: var(--primary-color-2);
 
 }
 
@@ -2305,7 +2305,7 @@ CSS for all the article pages mentioned above.
 
     color: #ffffff;
 
-    background-color: #000000;
+    background-color: var(--primary-color-2);
 
 }
 
@@ -2406,7 +2406,7 @@ CSS for all the article pages mentioned above.
 
 .article-spacer {
 
-    border-top: 1px solid #000000;
+    border-top: 1px solid var(--primary-color-2);
 
     display: block;
 
@@ -2436,7 +2436,7 @@ CSS for all the article pages mentioned above.
 
 .nes-body-copy span {
 
-    color: #000000;
+    color: var(--primary-color-2);
     /*font-size: 18px;*/
 
 }
@@ -2540,7 +2540,7 @@ CSS for all the article pages mentioned above.
 
 .more-articles .more-article-title a {
 
-    color: #000000 !important;
+    color: var(--primary-color-2) !important;
 
     margin-top: 1.5rem;
 
@@ -2620,7 +2620,7 @@ CSS for all the article pages mentioned above.
 
     background: #ffffff;
 
-    color: #000000;
+    color: var(--primary-color-2);
 
     font-size: 1.25em;
 
@@ -2642,7 +2642,7 @@ CSS for all the article pages mentioned above.
 
 .blbtn {
 
-    background: #000000;
+    background: var(--primary-color-2);
 
     color: #ffffff;
 
@@ -2680,7 +2680,7 @@ CSS for all the article pages mentioned above.
 
     background: #ffffff;
 
-    color: #000000;
+    color: var(--primary-color-2);
 
     width: auto;
 
@@ -2938,7 +2938,7 @@ CSS for the resources pages.
 
     padding-top: 3em;
 
-    border-top: 1px solid #000000;
+    border-top: 1px solid var(--primary-color-2);
 
 }
 
@@ -2962,7 +2962,7 @@ CSS for the resources pages.
 
 .faq-form {
 
-    background-color: #000000;
+    background-color: var(--primary-color-2);
 
     padding: 2.25em 0;
 
@@ -2993,7 +2993,7 @@ CSS for the resources pages.
 
     line-height: normal;
 
-    color: #000000;
+    color: var(--primary-color-2);
 
     border: none;
 
@@ -3017,7 +3017,7 @@ CSS for the resources pages.
 
     padding: 0;
 
-    background-color: #000000;
+    background-color: var(--primary-color-2);
 
     border: 2px solid #999999;
 
@@ -3185,7 +3185,7 @@ CSS for the login/registration/forgot password pages.
 
     font-weight: 500;
 
-    color: #000000;
+    color: var(--primary-color-2);
 
     display: block;
 
@@ -3219,13 +3219,13 @@ CSS for the login/registration/forgot password pages.
 
     line-height: 1.5;
 
-    color: #000000;
+    color: var(--primary-color-2);
 
     background-color: #ffffff;
 
     background-clip: padding-box;
 
-    border: 1px solid #000000;
+    border: 1px solid var(--primary-color-2);
 
     border-radius: .25rem;
 
@@ -3250,7 +3250,7 @@ CSS for the login/registration/forgot password pages.
 
     font-weight: 800;
 
-    color: #000000;
+    color: var(--primary-color-2);
 
     font-size: 1.25em;
 
@@ -3268,7 +3268,7 @@ CSS for the login/registration/forgot password pages.
 
 .page-user-login button#edit-submit {
 
-    background-color: #000000;
+    background-color: var(--primary-color-2);
 
     color: #ffffff;
 
@@ -3335,7 +3335,7 @@ CSS for the global search results page.
 
     background: transparent;
 
-    color: #000000;
+    color: var(--primary-color-2);
 
     font-size: 2.6rem;
 
@@ -3425,7 +3425,7 @@ CSS for the global search results page.
 
     font-weight: 700;
 
-    color: #000000;
+    color: var(--primary-color-2);
 
     text-decoration: none;
 
@@ -3443,15 +3443,15 @@ CSS for pagination nav menu.
 
 .page-item.active .page-link {
 
-    background-color: #000000;
+    background-color: var(--primary-color-2);
 
-    border-color: #000000;
+    border-color: var(--primary-color-2);
 
 }
 
 .page-link {
 
-    color: #000000;
+    color: var(--primary-color-2);
 
     border-color: #dddddd;
 
@@ -3460,7 +3460,7 @@ CSS for pagination nav menu.
 .page-link:hover,
 .page-link:focus {
 
-    color: #000000;
+    color: var(--primary-color-2);
 
     background-color: #dddddd;
 
@@ -3492,7 +3492,7 @@ CSS for website socials widget.
 
     position: fixed;
 
-    background-color: #000000;
+    background-color: var(--primary-color-2);
 
     padding: .5em .55em;
 
@@ -3598,7 +3598,7 @@ CSS for the different popups.
 
     z-index: 1035;
 
-    background-color: #000000;
+    background-color: var(--primary-color-2);
 
     color: #ffffff;
 
@@ -3626,7 +3626,7 @@ CSS for the different popups.
 
     background-color: #ffffff;
 
-    color: #000000;
+    color: var(--primary-color-2);
 
 }
 
@@ -3674,7 +3674,7 @@ button.close-popup {
 
     background-color: transparent;
 
-    border: 1px solid #000000;
+    border: 1px solid var(--primary-color-2);
 
     border-radius: 50%;
 
@@ -3717,7 +3717,7 @@ button.close-popup.text-white {
 
     z-index: 1035;
 
-    background-color: #000000;
+    background-color: var(--primary-color-2);
 
     color: #ffffff;
 
@@ -3792,7 +3792,7 @@ button.attribution-download-image {
 
     background-color: #ffffff;
 
-    color: #000000;
+    color: var(--primary-color-2);
 
 }
 
@@ -3910,7 +3910,7 @@ button.attribution-download-image {
 
     padding: .7rem 1.25rem;
 
-    color: #000000;
+    color: var(--primary-color-2);
 
 }
 
@@ -3948,7 +3948,7 @@ button.attribution-download-image {
 
     font-size: 24px;
 
-    color: #000000;
+    color: var(--primary-color-2);
 
     margin-top: 20px;
 
@@ -4029,13 +4029,13 @@ button.attribution-download-image {
 
     line-height: 1.5;
 
-    color: #000000;
+    color: var(--primary-color-2);
 
     background-color: #ffffff;
 
     background-clip: padding-box;
 
-    border: 1px solid #000000;
+    border: 1px solid var(--primary-color-2);
 
     border-radius: .25rem;
 
@@ -4083,13 +4083,13 @@ button.attribution-download-image {
 
     line-height: 1.5;
 
-    color: #000000;
+    color: var(--primary-color-2);
 
     background-color: #ffffff;
 
     background-clip: padding-box;
 
-    border: 1px solid #000000;
+    border: 1px solid var(--primary-color-2);
 
     border-radius: .25rem;
 
@@ -4129,13 +4129,13 @@ button.attribution-download-image {
 
     line-height: 1.5;
 
-    color: #000000;
+    color: var(--primary-color-2);
 
     background-color: #ffffff;
 
     background-clip: padding-box;
 
-    border: 1px solid #000000;
+    border: 1px solid var(--primary-color-2);
 
     border-radius: .25rem;
 
@@ -4152,7 +4152,7 @@ button.attribution-download-image {
 
 .path-lam button#edit-submit {
 
-    background-color: #000000;
+    background-color: var(--primary-color-2);
 
     color: #ffffff;
 
@@ -4356,7 +4356,7 @@ button.attribution-download-image {
 }
 
 #edit-field-enquiry-type {
-    border: 1px solid #000000;
+    border: 1px solid var(--primary-color-2);
     height: 56px;
     border-radius: 30px;
     color: #fff;
@@ -4387,7 +4387,7 @@ button.attribution-download-image {
     margin: 0;
     padding: 0;
     z-index: 1035;
-    background-color: #000000;
+    background-color: var(--primary-color-2);
     color: #ffffff;
 }
 
@@ -4421,10 +4421,10 @@ button.attribution-download-image {
     font-size: 18px;
     font-weight: 400;
     line-height: 1.5;
-    color: #000000;
+    color: var(--primary-color-2);
     background-color: #ffffff;
     background-clip: padding-box;
-    border: 1px solid #000000;
+    border: 1px solid var(--primary-color-2);
     border-radius: .25rem;
     border-top-left-radius: 30px;
     border-top-right-radius: 30px;
@@ -4461,9 +4461,9 @@ button.attribution-download-image {
     font-weight: 400;
     line-height: 1.5;
     color: #ffffff;
-    background-color: #000000;
+    background-color: var(--primary-color-2);
     background-clip: padding-box;
-    border: 1px solid #000000;
+    border: 1px solid var(--primary-color-2);
     border-radius: .25rem;
     transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
     height: 56px;
@@ -4476,7 +4476,7 @@ button.attribution-download-image {
 }
 
 #edit-actions-submit {
-    background-color: #000000;
+    background-color: var(--primary-color-2);
     color: #ffffff;
     padding: 0.8rem 1.5rem;
     font-size: 1.125em;
@@ -4658,7 +4658,7 @@ button.attribution-download-image {
 
 .blbtn-info {
 
-    background: #000000;
+    background: var(--primary-color-2);
 
     right: 0.5em;
 
@@ -4708,7 +4708,7 @@ button.attribution-download-image {
     -webkit-user-select: none;
     -moz-user-select: none;
     user-select: none;
-    background-color: #000000;
+    background-color: var(--primary-color-2);
     border: none;
     font-size: 1rem;
     border-radius: 100px;
@@ -4806,7 +4806,7 @@ button.attribution-download-image {
     padding: .75rem 1.5rem;
     font-size: 1.5em;
     line-height: normal;
-    color: #000000;
+    color: var(--primary-color-2);
     border: none;
     border-radius: 100px;
 }
