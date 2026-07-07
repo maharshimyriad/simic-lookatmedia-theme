@@ -1188,6 +1188,10 @@ CSS for the front page.
 
 }
 
+.search-icon i{
+    color: #ffffff;
+}
+
 .circle {
 
     border-radius: 50%;
@@ -1285,19 +1289,19 @@ CSS for the front page.
     }
 
     20% {
-        border-color: #000000;
+        border-color: var(--primary-color-2);
     }
 
     40% {
-        border-color: #000000;
+        border-color: var(--primary-color-2);
     }
 
     60% {
-        border-color: #000000;
+        border-color: var(--primary-color-2);
     }
 
     90% {
-        border-color: #000000;
+        border-color: var(--primary-color-2);
     }
 
 }
