@@ -1,3 +1,13 @@
+/* Font Imports */
+@import url('https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&display=swap');
+
+/* Font Variables */
+:root {
+    --font-family-1: 'Geist', sans-serif;
+    --font-family-2: 'Instrument Sans', sans-serif;
+}
+
 /****************************************************************************************************
 
 COMMON CSS
@@ -8,7 +18,7 @@ Some common css applicable to the whole website.
 
 * {
 
-    font-family: 'Inter';
+    font-family: var(--font-family);
 
 }
 
