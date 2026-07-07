@@ -19,7 +19,7 @@ fonts:
       fontawesome/css/solid.min.css: {}
 
 styling:
-  version: 18.1
+  version: 18.2
   css:
     component:
       css/lookatmedia.css: {}
