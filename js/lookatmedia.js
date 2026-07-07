@@ -574,6 +574,7 @@ document.addEventListener('DOMContentLoaded', function () {
 function updateHeaderHeight() {
     const header = document.querySelector('header');
 
+    
     document.documentElement.style.setProperty(
         '--header-height',
         `${header.offsetHeight}px`
