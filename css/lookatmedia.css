@@ -1172,7 +1172,7 @@ CSS for the front page.
 
     border-radius: 50%;
 
-    background-color: #000000;
+    background-color: var(--primary-color-2);
 
     color: #ffffff;
 
@@ -1261,15 +1261,15 @@ CSS for the front page.
     }
 
     40% {
-        border-color: #000000;
+        border-color: var(--primary-color-2);
     }
 
     60% {
-        border-color: #000000;
+        border-color: var(--primary-color-2);
     }
 
     90% {
-        border-color: #000000;
+        border-color: var(--primary-color-2);
     }
 
 }
