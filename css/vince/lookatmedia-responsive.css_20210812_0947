@@ -1,0 +1,1012 @@
+@media only screen and (min-width: 1200px) {
+
+    /****************************************************************************************************
+    RESOURCES PAGE
+    CSS for the resources pages.
+    ****************************************************************************************************/
+    .rp-main-inner, .faq-form-inner {
+        max-width: 75% !important;
+        margin: 0 auto;
+    }
+
+}
+
+@media only screen and (min-width: 992px) and (max-width: 1199px) {
+
+	.minihome-row h3 a {
+		font-size: 1.25rem;
+	}
+	.minihome-ptag-time li {
+		font-size: 12px;
+	}
+	.minihome-row p {
+		font-size: 1rem;
+	}
+	.minihome-tags ul li {
+		font-size: 10px;
+	}
+
+}
+
+@media only screen and (min-width: 992px) {
+	
+	/****************************************************************************************************
+    MAIN NAVIGATION
+    CSS for main navigation navbar
+    ****************************************************************************************************/
+    .navbar .container-fluid {
+        padding-right: var(--bs-gutter-x, 2rem);
+        padding-left: var(--bs-gutter-x, 3rem);
+    }
+	
+	.dropdown-menu li .dropdown-item {
+		margin-bottom: 8px;
+	}
+	.dropdown-menu li:last-child .dropdown-item {
+		margin-bottom: 0;
+	}
+
+}
+
+@media only screen and (min-width: 769px) {
+
+    /****************************************************************************************************
+    RESOURCES PAGE
+    CSS for the resources pages.
+    ****************************************************************************************************/
+    .rp-main-inner, .faq-form-inner {
+        max-width: 95%;
+        margin: 0 auto;
+    }
+	
+    .mobile-only{
+    	display: none;
+    }
+
+    /* .nes-info-hover:hover ~ form.lam-hover-login, form.lam-hover-login:hover {
+		z-index: 2;
+		opacity: 1;
+	}
+	.nes-info-hover:hover ~ .unclickform, form.lam-hover-login:hover ~ .unclickform {
+		z-index: -1;
+		display: none;
+	} */
+
+	.carousel-indicators [data-bs-target]:last-child {
+		margin-right: 0;
+	}
+
+	.lam-popup-login {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		margin: 0 auto;
+		width: 50%;
+		max-width: 600px;
+		height: 100vh;
+	}
+	.lam-popup-login .close-login-popup {
+		position: absolute;
+		top: 1rem;
+		right: 1.25rem;
+	}
+	.lam-popup-login .close-register-popup {
+		position: absolute;
+		top: 1rem;
+		right: 1.25rem;
+	}
+	.lam-popup-login .return-register-popup {
+		position: absolute;
+		top: 1rem;
+		left: 1.25rem;
+		border: none;
+		    width: 179px;
+}
+	}
+	.fa-chevron-left:before {
+    content: "\f053";
+    padding-right: 10px;
+}
+
+}
+
+@media only screen and (max-width: 991px) {
+
+    /****************************************************************************************************
+    MAIN NAVIGATION
+    CSS for main navigation navbar
+    ****************************************************************************************************/
+
+	.navbar-brand, .navbar .navbar-toggler {
+	    position: relative;
+	    z-index: 99;
+	}
+	#navbarSupportedContent {
+	    position: absolute;
+	    top: 0;
+	    left: 0;
+	    width: 100%;
+	    background: #ffffff;
+	    height: 100vh;
+	}
+	#navbarSupportedContent .navbar-nav{
+		height: 100vh;
+	    justify-content: center;
+	}
+	#navbarSupportedContent .navbar-nav .nav-link{
+		font-size: 1.25em;
+	    font-weight: 400;
+	    letter-spacing: 0.2rem;
+	    line-height: 2.5rem;
+	    display: inline-block;
+		margin: 0 1.5rem .25rem;
+    	padding-bottom: 0;
+	}
+	#navbarSupportedContent .navbar-nav .nav-link:hover {
+	    border-color: #999999;
+	}
+	#navbarSupportedContent .navbar-nav .nav-link:active, #navbarSupportedContent .navbar-nav .nav-link.active {
+		border-color: #000000;
+	}
+	#navbarSupportedContent .nav-link-search{
+		display: none
+	}
+	.toggle-dropdown + ul.dropdown-menu {
+	    margin: 0;
+	    padding: 0;
+	    border: none;
+	    font-size: inherit;
+	}
+	.toggle-dropdown + ul.dropdown-menu li a {
+	    padding: 0;
+	    font-size: 1em;
+	    color: #ffffff;
+	    line-height: 1.25em;
+	    font-weight: 400;
+	    width: auto;
+    	display: inline-block;
+    	margin-top: 0.7rem;
+		margin-left: .75rem;
+	}
+	.toggle-dropdown + ul.dropdown-menu li a.dropdown-item.active {
+	    color: #ffffff !important;
+	    border-radius: 0;
+	}
+	.nav-item-search{
+		display: none;
+	}
+
+	/****************************************************************************************************
+	MINI-HOME PAGES
+	CSS for all the mini-home pages, e.g. story ideas, news, events, etc.
+	****************************************************************************************************/
+	.minihome-page-description{
+		display: none
+	}
+	.toggle-dropdown::after {
+	    content: "\f067";
+	    margin-left: 0.5em;
+	    color: #999999;
+	    transition: all;
+	}
+	.toggle-dropdown.dd-open::after{
+		content: "\f068";
+		border-color: transparent !important;
+		transition: all;
+	} 
+	#navbarSupportedContent .navbar-nav .nav-link.active.dd-open{
+		border-color: transparent !important;
+	}
+}
+
+@media only screen and (min-width: 576px) and (max-width: 991px) {
+	
+	.container {
+		max-width: 95% !important;
+	}
+
+}
+
+@media only screen and (min-width: 769px) and (max-width: 991px) {
+
+	.nes-banner-top {
+		padding: 0 1rem;
+	}
+	.nes-top-right button, .nes-top-right a {
+		margin: 0 1rem;
+	}
+	.nes-top-right > button i, .nes-top-right > a i, .nes-top-right > form button i, .nes-top-right > form a i, .nes-top-right > .share-menu-wrapper > button i {
+		margin-right: .5rem;
+		font-size: 1rem;
+	}
+	.nes-top-right > button span, .nes-top-right > a span, .nes-top-right > form button span, .nes-top-right > form a span, .nes-top-right > .share-menu-wrapper > button span, .nes-banner-top .priority-tag a, .nes-top-left .published {
+		font-size: .8rem;
+	}
+	.share-menu {
+		top: 3.7rem;
+    	right: -1rem;
+	}
+	.share-menu a {
+		padding: .5rem 2rem;
+		margin: 0;
+	}
+	.share-menu .fa-2x {
+		font-size: 1.5rem;
+	}
+	.nes-top-right button.share:hover + .share-menu {
+		height: 128px;
+	}
+
+	.lam-popup-login {
+		width: 60%;
+	}
+
+	.frontpage-slider .slider-intro {
+		display: none;
+	}
+	.frontpage-slider .slider-readmore {
+		margin-top: 2rem !important;
+	}
+
+}
+
+@media only screen and (max-width: 1024px) {
+
+	/****************************************************************************************************
+	MINI-HOME PAGES
+	CSS for all the mini-home pages, e.g. story ideas, news, events, etc.
+	****************************************************************************************************/
+    .minihome-banner-row-inner {
+	    width: 60%;
+	    padding: 1.5rem;
+	}
+	.path-frontpage .rellax.minihome-banner-row-inner {
+	    margin-top: 7em;
+	}
+	.minihome-banner-row-inner h3 {
+	    margin-bottom: 1rem;
+	    line-height: normal;
+	}
+	.minihome-banner-row-inner h3 a {
+    	font-size: 1.5rem;
+    }
+    .minihome-ptag-time {
+	    font-size: 0.9rem;
+	    margin-bottom: 1rem;
+	}
+	.minihome-banner-row-inner p {
+    	margin-bottom: 1rem;
+    	font-size: 1rem;
+    }
+    .minihome-banner-image {
+	    width: 70%;
+	}
+	.contact-section h2 {
+    	font-size: 2.25rem;
+    }
+    .minihome-date {
+	    padding: 0.5rem 1rem;
+	    font-size: .9em;
+	}
+	.minihome-date i {
+    	font-size: 1.125em;
+    }
+    .minihome-banner-row-date-inner {
+    	padding: 1rem;
+    }
+    .minihome-date{
+    	align-items: baseline;
+    }
+    .frontpage-slider .slider-content {
+    	width: 37.5%;
+	}
+
+
+}
+
+@media only screen and (min-width: 768px) and (max-width: 768px) {
+
+	.col-md-1, .col-md-2, .col-md-3, .col-md-4, .col-md-5, .col-md-6, .col-md-7, .col-md-8, .col-md-9, .col-md-10, .col-md-11, .col-md-12 {
+		width: 100%;
+	}
+	.d-md-block {
+		display: none!important;
+	}
+	.split-header .col-md-6:first-child {
+		width: 66.6666666667%;
+	}
+	.split-header .col-md-6:last-child {
+		width: 33.3333333333%;
+	}
+
+}
+
+@media only screen and (max-width: 768px) {
+
+	#pageerror{
+        background-image: linear-gradient( 0deg, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url(/themes/lookatmedia/404.jpg);
+                width: 100%;
+                height: 100%;
+                display: flex;
+                flex-direction: column;
+                padding: 3rem 0 !important;
+                justify-content: center;
+                align-items: center;
+                background-position: center;
+                background-repeat: no-repeat;
+                background-size: cover;
+		}
+		.error-page{
+   			 color: #ffffff;
+		    text-align: center;
+		    font-size: 3rem;
+		}
+
+
+	.navbar-brand{
+    	width: 120px !important;
+	}
+	main {
+	    margin-top: 74.8px;
+	}
+	.path-frontpage .rellax.minihome-banner-row-inner {
+	    margin-top: 0;
+	}
+    /****************************************************************************************************
+    SITE SOCIALS
+    CSS for website socials widget.
+    ****************************************************************************************************/
+    .site-socials, .home-search-description, .minihome-main-title + a, .minihome-banner-row-inner p, .minihome-banner .minihome-main-title, .minihome-content .minihome-main-title {
+	    display: none;
+	}
+    .mobile-only{
+    	display: block;
+    }
+    .carousel-inner .carousel-item > .slider-title {
+	    display: none;
+	}
+	.slider-inner.d-flex {
+	    flex-direction: column;
+	}
+	.frontpage-slider .slider-image {
+	    width: 100%;
+	}
+	.frontpage-slider .slider-title {
+	    position: inherit;
+	    text-align: center;
+	    font-size: 9vw;
+	    line-height: normal;
+	    margin-top: 16px;
+	    max-width: 94%;
+	    margin-left: auto;
+	    margin-right: auto;
+	}
+	.frontpage-slider .slider-intro {
+	    font-size: 18px;
+	    margin-bottom: 16px;
+	    font-weight: 300;
+	}
+	.frontpage-slider .slider-title span {
+	    background-color: #ffffff;
+	    padding: 0;
+	}
+	.frontpage-slider .slider-content {
+	    width: 100%;
+	    padding: 10px 0 0;
+	    text-align: center;
+	    max-width: 92%;
+	    margin: 0 auto;
+	}
+	.frontpage-slider .carousel-indicators{
+		display: none;
+	}
+	.home-search-title {
+	    margin-bottom: 30px;
+	    font-size: 9vw;
+	    text-align: center;
+	}
+	.home-search {
+	    padding: 50px 0;
+	}
+	.rellax{
+		transform: inherit !important;
+	}
+	.minihome-banner-row-inner {
+    	width: 100%;
+    	margin-right: 0;
+    	background-color: transparent;
+    	padding: 1.5rem 10px 0;
+    }
+    .banner-mirror .minihome-banner-row-inner {
+	    margin-left: 0;
+	}
+    .minihome-banner-image {
+    	width: 100%;
+	}
+    .minihome-banner-row {
+	    flex-direction: column-reverse;
+	    margin-bottom: 30px;
+	    padding-bottom: 30px;
+	    border-bottom: 1px solid #cccccc;
+	}
+	.minihome-content .show-more-pager a {
+		margin-top: 24px;
+	}
+	.minihome-search-results .minihome-content {
+		background-color: #f0f0f0;
+	}
+	.minihome-search-results .minihome-row {
+		background-color: transparent;
+	}
+	.minihome-search-results .minihome-row-content {
+		background-color: transparent;
+	}
+	.featured-story-ideas {
+    	padding: 30px 0;
+    }
+	.featured-story-ideas {
+    	padding-bottom: 10px;
+    }
+    .featured-news-title a {
+	    font-size: 1.25em;
+	}
+    .path-frontpage .minihome-banner-row:last-child {
+	    border-bottom: none;
+	}
+	.section-buttons a:first-child {
+	    margin-bottom: 30px;
+	}
+	.contact-section h2 {
+	    font-size: 1.5rem;
+	    line-height: 1.3;
+	}
+	.section-buttons.mt-5{
+		margin-top: 1rem !important;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+	}
+	.path-frontpage .minihome-banner-row:first-child {
+    	margin-top: 30px;
+	}
+
+	#block-views-block-frontpage-block-2:before{
+		content: '';
+	    border-top: 1px solid #cccccc;
+	    display: block;
+	    position: relative;
+	    width: 92.5%;
+	    margin: 30px auto 8px;
+	    margin-top: 30px;
+	}
+
+	.split-header {
+		padding: 1em 0;
+	}
+
+	/*footer*/
+	.footer-nav ul {
+	    text-align: center;
+	    margin: 0 auto;
+	    font-size: 18px;
+	    justify-content: center;
+	}
+    
+	.footer-nav ul li {
+	    display: inline-block;
+	    padding: 5px;
+	}
+	.copyright-text{
+		text-align: center;
+	}
+	.footer-logo {
+	    width: 120px;
+	    margin: 0 auto;
+	}
+	.copyright-text {
+	    text-align: center;
+	}
+	.copyright-text p {
+    	margin: 20px 0 30px;
+    	font-weight: 300;
+    	font-size: 12px;
+    }
+    /*footer*/
+
+    /* mini-event */
+    .minihome-page-title {
+	    margin-bottom: 0;
+	    font-size: 9vw;
+	    line-height: normal;
+	}
+	.minihome-banner .minihome-banner-row-inner p{
+		display: block;
+	}
+	.split-header .search-animate {
+	    align-items: flex-end;
+	}
+	.search-animate h2 {
+		font-size: 1.125rem;
+	}
+	.circle {
+    	border-width: 10px;
+    }
+	.one {
+	    width: 100px;
+	    height: 100px;
+	}
+	.two {
+	    width: 65px;
+	    height: 65px;
+	}
+	.search-icon {
+	    width: 30px;
+	    height: 30px;
+	    font-size: 1rem;
+	}
+	.minihome-banner .carousel-indicators {
+	    top: inherit;
+	    bottom: 10px;
+	    left: 0;
+	}
+	.minihome-banner {
+	    margin-bottom: 0;
+	    padding: 20px 0;
+	}
+	.minihome-banner .minihome-banner-row-date {
+	    padding: 0;
+	}
+	.minihome-banner .minihome-banner-row {
+    	margin-bottom: 30px;
+    }
+    .minihome-banner .minihome-banner-row-date-inner {
+	    padding: 1rem 1rem 0;
+	}
+	.minihome-banner .minihome-banner-row{
+		border: none;
+	}
+	.minihome-content{
+		background-color: #ffffff
+	}
+	.minihome-content .minihome-row {
+	    display: flex;
+	    flex-wrap: wrap;
+	    padding-bottom: 24px;
+    	padding-top: 30px;
+	}
+	.minihome-content .ar-3-by-2 {
+	    width: 50%;
+	    order: 2;
+	    padding-top: 33.33%;
+	}
+	.minihome-content .minihome-date {
+	    order: 1;
+	    width: 100%;
+	    background-color: transparent;
+	    color: #ff5211;
+	    padding-left: 0 !important;
+	    padding-top: 0 !important;
+	    font-size: 16px;
+	    margin-bottom: 0 !important;
+	}
+	.minihome-content .minihome-row-content {
+	    width: 50%;
+	    order: 3;
+	    padding:0;
+	    padding-left: 12.5px;
+	}
+	.minihome-content .minihome-ptag-time {
+	    display: none;
+	}
+	.minihome-content .minihome-row-content p, .minihome-content .minihome-tags{
+		display: none;
+	}
+	.minihome-content .minihome-ptag-time.mobile-only {
+	    display: block;
+	    order: 4;
+	    margin-bottom: 0;
+	    margin-top: 12px;
+	    font-size: 16px;
+	}
+	.minihome-content .minihome-row h3 a {
+    	-webkit-line-clamp: 4;
+    	font-size: 20px;
+    	line-height: 1.65rem;
+    	margin-top: -5px;
+    }
+	.minihome-content .minihome-rows > div {
+    	margin-bottom: 0;
+    }
+    .minihome-rows > div:after {
+	    content: '';
+	    background-color: #cccccc;
+	    height: 1px;
+	    display: block;
+	    border: none;
+	    position: relative;
+	    z-index: 9;
+	}
+	.minihome-date {
+	    font-size: 16px;
+	    margin-bottom: 10px;
+	}
+	.minihome-row h3 {
+    	margin-bottom: 0;
+    	line-height: 1.85rem
+    }
+    .minihome-content.taxonomy-term-results {
+	    padding-top: 0;
+	}
+	.minihome-content.taxonomy-term-results .minihome-rows > div:first-child .minihome-row {
+		padding-top: 0;
+	}
+	.minihome-ptag-time li {
+		font-size: 12px;
+	}
+	/* mini-event */
+	.rp-banner {
+	    height: inherit;
+	    flex-direction: column;
+	}
+	.rp-banner img {
+	    position: inherit;
+	}
+	.rp-banner-inner {
+	    padding: 0;
+	    width: 100%;
+	    margin-top: 30px;
+	}
+	.rp-banner-title span,.rp-banner-title {
+	    width: 100%;
+	    text-align: center;
+	}
+	.rp-banner-title {
+		font-size: 9vw;
+	    line-height: normal;
+	}
+	.faq-form {
+    	background-color: transparent;
+    	padding-bottom: 0;
+	}
+	.faq-form form .form-item-combine {
+	    width: calc(100% - 15%);
+	}
+	.faq-form form .form-actions {
+	    width: 15%;
+	}
+	.faq-form form {
+	    display: flex;
+	    justify-content: space-between;
+	    border: 3px solid #cccccc;
+	    border-radius: 50px;
+	}
+	.faq-form form button#edit-submit-resources-page-blocks {
+    	border: 0;
+    }
+    .rp-main-inner .rp-row {
+    	padding-top: 3em;
+    }
+    .rp-main {
+	    padding-top: 2.125em;
+	}
+
+	.nes-main {
+		padding: 2.75em 0;
+	}
+
+	.login-form > form, .nes-banner-image-info, .nes-image-info {
+		display: none;
+	}
+
+	.image-popup .nes-image-info {
+		display: block;
+		margin-top: 1.25rem;
+	}
+
+	.nes-banner {
+		height: auto;
+		flex-direction: column;
+	}
+	.nes-banner .nes-image {
+		position: relative;
+		order: 2;
+	}
+	.nes-banner img {
+		position: inherit;
+		top: 0;
+	}
+	.nes-banner-top {
+		position: inherit;
+		justify-content: center;
+		padding: 0;
+		background-color: #f0f0f0;
+		color: #000000;
+		order: 1;
+	}
+	.nes-banner-top .nes-top-right {
+		display: none;
+	}
+	.nes-banner-top .priority-tag a, .nes-banner-top .published {
+		padding: .75rem 0;
+		font-size: 12px;
+	}
+	.nes-banner-top .priority-tag a {
+		color: #000000;
+	}
+	.nes-events .nes-top-left .priority-tag {
+		margin-right: 0;
+	}
+	.nes-news .nes-banner-top {
+		background-color: #000000;
+		color: #ffffff;
+	}
+	.nes-news .nes-banner-top .priority-tag a {
+		color: #ffffff;
+	}
+	.nes-news .nes-banner-inner {
+		background-color: #000000;
+		color: #ffffff;
+	}
+	.nes-news .nes-author {
+		color: #ffffff;
+	}
+	.nes-news .nes-mobile-actions button, .nes-news .nes-mobile-actions a {
+		color: #ffffff;
+	}
+	.nes-news .nes-latestnews {
+		font-size: 6vw;
+		width: 100%;
+		text-align: center;
+		padding: 1.125rem 1rem 0 1.25rem;
+	}
+	.nes-news .nes-latestnews:after {
+		content: '';
+		display: block;
+		width: 30vw;
+		height: 1px;
+		background-color: #ff5211;
+		margin: 0 auto;
+	}
+	.nes-news .nes-latestnews span {
+		display: block;
+		margin-bottom: 1rem;
+	}
+
+	.nes-banner-inner {
+		order: 3;
+		padding-bottom: 0;
+		padding-right: 0;
+	}
+
+	.nes-banner-title {
+		text-align: center;
+		font-size: 9vw;
+		line-height: 11vw;
+		margin: 0 auto;
+		padding-top: .75rem;
+		width: 95%;
+	}
+	.nes-banner-title span {
+		background-color: transparent;
+		padding: 0;
+	}
+
+	.nes-hashtags {
+		padding: .5rem .75rem;
+		display: block;
+		text-align: center;
+		font-size: 3.35vw;
+		font-weight: normal;
+		background-color: transparent;
+	}
+	.nes-hashtags span {
+		margin: 0 .5rem;
+	}
+
+	.nes-author {
+		color: #000000;
+		font-size: 5vw;
+		font-weight: 700;
+		margin-top: .125rem;
+		width: 100%;
+		text-align: center;
+	}
+
+	.nes-mobile-actions {
+		display: flex;
+	}
+
+	.share-menu-wrapper-mobile .share-menu {
+		align-items: center;
+		flex-direction: row;
+		top: 3.5rem;
+		right: -0.25rem;
+		background-color: #000000;
+		border-radius: .25rem;
+	}
+	.share-menu-wrapper-mobile .share-menu a {
+		padding: .75rem 1rem;
+	}
+	.share-menu-wrapper-mobile .share-menu a i {
+		font-size: 2rem;
+		margin-bottom: 0;
+	}
+	.share-menu-wrapper-mobile button.share:hover + .share-menu {
+		height: 56px;
+	}
+	.share-menu:hover {
+		height: 56px;
+	}
+	.nes-eventdates{
+	    width: 100%;
+	    text-align: center;
+	    justify-content: center;
+	    align-items: baseline;
+	    font-size: 22px;
+	}
+	.nes-eventdates i {
+	    font-size: 22px;
+	    margin-right: .35em;
+	}
+	.nes-events .nes-banner-inner {
+	    padding-bottom: 0;
+	}
+	.more-articles {
+    	padding: 2.75em 0 5em;
+    }
+    .more-articles .carousel-indicators {
+	    top: inherit;
+	    bottom: 0;
+	    left: 0;
+	    margin-right: 0;
+	    margin-bottom: 0;
+	    margin-left: 0;
+	    margin-top: 0px;
+	    margin-bottom: -50px;
+	}
+	.more-article-item {
+	    padding-bottom: 24px;
+	    padding-top: 30px;
+	}
+	.more-article-rows > div:after {
+	    content: '';
+	    background-color: #cccccc;
+	    height: 1px;
+	    display: block;
+	    border: none;
+	    position: relative;
+	    z-index: 9;
+	}
+	.more-articles .more-article-title a {
+    	margin-top: 24px;
+    }
+    .more-article-rows > div:first-child .more-article-item{
+    	padding-top: 0
+    }
+
+	.lam-popup-login {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		padding: 2rem 1rem;
+		position: fixed;
+		bottom: 0;
+		left: 0;
+		right: 0;
+	}
+
+	.rp-date i {
+		font-size: 1.125em;
+	}
+	.rp-date span {
+		font-size: 16px;
+	}
+	.rp-title h2 {
+		font-size: 1.5em;
+	}
+
+}
+
+@media only screen and (max-width: 475px) {
+
+	.image-popup .nes-image-info {
+		margin-top: 5vw;
+	}
+	.image-popup-buttons, .attribution-popup-content {
+		padding: 8vw 0;
+	}
+	button.open-login-popup, button.attribution-download-image {
+		margin-bottom: 10vw;
+		font-size: 4vw;
+		padding: 3.5vw 7vw;
+	}
+	.image-popup button.close-popup, .attribution-popup button.close-popup {
+		width: 14vw;
+		height: 14vw;
+		line-height: 4.5vw;
+		font-size: 4.5vw;
+	}
+	.attribution-popup-content .attribution-text {
+		font-size: 5vw;
+		padding: 0 4vw;
+		text-align: center;
+		line-height: 9vw;
+		margin-bottom: 8vw;
+	}
+
+	.lam-popup-login {
+		padding: 2rem 1rem;
+	}
+	.lam-popup-login .form-group {
+		margin-bottom: 5vw;
+	}
+	.lam-popup-login .form-check {
+		font-size: 3.85vw;
+	}
+	.lam-popup-login > h3 {
+		font-size: 7.75vw;
+    	margin-bottom: 5vw;
+	}
+	.lam-popup-login-button {
+		padding: 1rem 2rem;
+	}
+	.lam-popup-login .form-control {
+		font-size: 4.5vw;
+    	padding: 2.5vw 4.25vw;
+	}
+	.lam-popup-login .new-user-register {
+		font-size: 3.85vw;
+		margin-bottom: 10vw;
+	}
+	.lam-popup-login .form-check .form-check-label {
+		margin-left: 1rem;
+	}
+
+}
+
+@media only screen and (min-width: 769px) and (max-width: 1024px) {
+	
+	.login-form input {
+	    font-size: 1em;
+	    height: 42px;
+	}
+	.login-form-banner .img-d-none{
+		margin-top: 20px;
+		width: 60% !important;
+	}
+	.img-d-none {
+	    display: block;
+	    margin-top: 20px;
+	}
+	.login-form h3 {
+    	font-size: 1.5em;
+    }
+    .login-form .blbtn {
+	    min-width: 100px;
+	    font-size: 1em;
+	    padding: 7px 4px;
+	}
+
+	.navbar .container-fluid {
+        padding-right: var(--bs-gutter-x, 1rem);
+        padding-left: var(--bs-gutter-x, 2rem);
+    }
+
+}
+@media only screen and (min-width: 769px) and (max-width: 991px) {
+	.img-d-none {
+	    width: 95%;
+	}
+}
+@media only screen and (min-width: 992px) and (max-width: 1024px) {
+	.img-d-none {
+	    width: 70%;
+	}
+}
+
+@media only screen and (min-width: 992px) {
+		.toggle-dropdown:hover + .dropdown-menu, .dropdown-menu:hover {
+		    display: block;
+		}
+	}

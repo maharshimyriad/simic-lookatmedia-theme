@@ -1,0 +1,66 @@
+{%
+    set body_classes = [
+        logged_in ? 'user-logged-in',
+        not root_path ? 'path-frontpage' : 'path-' ~ root_path|clean_class,
+        node_type ? 'node-type-' ~ node_type|clean_class,
+        db_offline ? 'db-offline',
+        user.hasPermission('administer')  ? 'admin'
+    ]
+%}
+<!DOCTYPE html>
+<html{{ html_attributes }}>
+    <head>
+        <head-placeholder token="{{ placeholder_token|raw }}">
+        <title>{{ head_title|safe_join(' | ') }}</title>
+        <css-placeholder token="{{ placeholder_token|raw }}">
+        <js-placeholder token="{{ placeholder_token|raw }}">
+    </head>
+    <body{{ attributes.addClass(body_classes) }}>
+        {{ page_top }}
+        {{ page }}
+        {{ page_bottom }}
+        <div class="overlay"></div>
+        <div class="login-popup">
+            <form class="lam-popup-login">
+                <h3>Login</h3>
+                <div class="form-group">
+                    <input type="email" placeholder="Email" class="form-control" name="email" required="required">
+                </div>
+                <div class="form-group">
+                    <input type="password" placeholder="Password" class="form-control" name="password" required="required">
+                </div>
+                <div class="form-group">
+                    <div class="form-check">
+                        <input id="rememberCheckPopup" class="form-check-input m-0" type="checkbox" name="rememberme" value="1">
+                        <label class="form-check-label" for="rememberCheckPopup">Keep me logged in for 60 days</label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <button class="lam-popup-login-button">LOGIN</button>
+                </div>
+                <p class="new-user-register">New user?&nbsp;&nbsp;<a href="#" class="open-registration-popup" target="_blank">Register now</a></p>
+                <input type="hidden" name="form_id" value="lookatmedam_login">
+                <button type="button" class="close-login-popup close-popup text-white"><i class="fas fa-times fa-2x"></i></button>
+            </form>
+        </div>
+        <div class="attribution-popup">
+            <div class="container">
+                <div class="attribution-popup-content">
+                    <p class="attribution-text">When using any content from this media centre, you must include an attribution for the content creator. Select "I Understand" to proceed to download this image.</p>
+                    <button type="button" class="btn btn-orange attribution-download-image">I Understand</button>
+                    <button type="button" class="close-attribution-popup close-popup text-white"><i class="fas fa-times fa-2x"></i></button>
+                </div>
+            </div>
+        </div>
+        <div class="search-popup">
+            <div class="container">
+                <div class="search-popup-content">
+                    <h2><strong>Targeted Search</strong></h2>
+                    {{ drupal_entity('block', 'popup_search_form') }}
+                    <button type="button" class="close-search-popup close-popup"><i class="fas fa-times fa-2x"></i></button>
+                </div>
+            </div>
+        </div>
+        <js-bottom-placeholder token="{{ placeholder_token|raw }}">
+    </body>
+</html>

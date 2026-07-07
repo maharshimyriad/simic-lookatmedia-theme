@@ -1,0 +1,83 @@
+{% block paragraph %}
+    {% block content %}
+        {% set img_or_body = paragraph.field_body_copy_or_image.value %}
+        {% if img_or_body == 'body_copy' %}
+        <div class="col-lg-1 d-none d-lg-block"></div>
+        <div class="col-lg-8 col-md-8">
+            <div class="nes-body-copy">
+                {{ paragraph.field_body.value|raw }}
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-4 d-none d-md-block"></div>
+        {% else %}
+        <div class="col-lg-1 d-none d-lg-block"></div>
+        <div class="col-lg-8 col-md-8">
+            <div class="nes-body-image">
+                <div class="ar-3-by-2 login-form">
+                    <div class="nes-info-hover d-none d-md-block"><div class="nes-info-hover-inner"></div><i class="fas fa-arrow-down fa-lg"></i></div>
+                    <div class="unclickform" oncontextmenu="return false"></div>
+                    <div class="nes-info mobile-only" data-popup="#imagePopup{{ paragraph.index }}"><div class="nes-info-inner"></div><span>info</span></div>
+                    <img src="{{ file_url(paragraph.field_image.entity.fileuri) }}" class="w-100" />
+                    <form class="lam-hover-login lam-logged-out">
+                        <div class="img-d-none">
+                            <h3>Login to download</h3>
+                            <div class="form-group">
+                            <input type="email" placeholder="Email" class="form-control" name="email" required="required">
+                            </div>
+                            <div class="form-group">
+                            <input type="password" placeholder="Password" class="form-control" name="password" required="required">
+                            </div>
+                            <div class="row d-flex align-items-center">
+                                <div class="col-4">
+                                <button class="blbtn lam-hover-login-button">LOGIN</button>
+                                </div>
+                                <div class="col text-right">
+                                <div class="form-check">
+                                        <input id="rememberCheck{{ paragraph.index }}" class="form-check-input m-0" type="checkbox" name="rememberme" value="1">
+                                        <label class="form-check-label" for="rememberCheck{{ paragraph.index }}">Keep me logged in for 60 days</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <p class="new-user-register">New user?&nbsp;&nbsp;<a href="#" class="open-registration-popup" target="_blank">Register now</a></p>
+                        </div>
+                        <input type="hidden" name="form_id" value="lookatmedam_login">
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-4 nes-image-info">
+            <p class="image-title">MOUNT FUJI AT LAKE KAWAGUCHIKO</p>
+            <p class="image-attribution">IMAGE BY JOHN SMITH</p>
+            <p class="image-description">Lorem Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod</p>
+            <p class="image-hashtags">
+                <span>#worldsightseeing</span>
+                <span>#mountfuji</span>
+                <span>#beautifulplaces</span>
+                <span>#lakekawaguchiko</span>
+            </p>
+        </div>
+        <div class="image-popup" id="imagePopup{{ paragraph.index }}">
+            <div class="ar-3-by-2">
+                <img src="{{ file_url(paragraph.field_image.entity.fileuri) }}" class="w-100" />
+            </div>
+            <div class="container">
+                <div class="nes-image-info">
+                    <p class="image-title">MOUNT FUJI AT LAKE KAWAGUCHIKO</p>
+                    <p class="image-attribution">IMAGE BY JOHN SMITH</p>
+                    <p class="image-description">Lorem Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod</p>
+                    <p class="image-hashtags">
+                        <span>#worldsightseeing</span>
+                        <span>#mountfuji</span>
+                        <span>#beautifulplaces</span>
+                        <span>#lakekawaguchiko</span>
+                    </p>
+                </div>
+                <div class="image-popup-buttons">
+                    <button type="button" class="btn btn-orange open-login-popup" data-popup="#imagePopup{{ paragraph.index }}">Login to Download</button>
+                    <button type="button" class="close-image-popup close-popup" data-popup="#imagePopup{{ paragraph.index }}"><i class="fas fa-times fa-2x"></i></button>
+                </div>
+            </div>
+        </div>
+        {% endif %}
+    {% endblock %}
+{% endblock paragraph %}

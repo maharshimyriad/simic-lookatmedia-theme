@@ -1,0 +1,49 @@
+bootstrap:
+  version: VERSION
+  css:
+    component:
+      //cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css: {}
+  js:
+    //cdn.jsdelivr.net/npm/@popperjs/core@2.6.0/dist/umd/popper.min.js: {}
+    //cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.min.js: {}
+
+
+
+fonts:
+  version: VERSION
+  css:
+    component:
+      //fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap: {}
+      fontawesome/css/fontawesome.min.css: {}
+      fontawesome/css/brands.min.css: {}
+      fontawesome/css/solid.min.css: {}
+
+styling:
+  version: 17.7
+  css:
+    component:
+      css/lookatmedia.css: {}
+      css/lookatmedia-responsive.css: {}
+  js:
+    //cdnjs.cloudflare.com/ajax/libs/rellax/1.0.0/rellax.min.js: {}
+    js/lookatmedia.js: {}
+    js/hover_login.js: {}
+    js/hcaptcha.js: {}
+    js/popup_login.js: {}
+
+
+    
+  dependencies:
+    - core/jquery
+
+jquery-custom:
+  remote: https://github.com/jquery/jquery
+  version: "3.6.0"
+  license:
+    name: MIT
+    url: https://github.com/jquery/jquery/blob/3.6.0/LICENSE.txt
+    gpl-compatible: true
+  js:
+    //code.jquery.com/jquery-3.6.0.min.js: { minified: true, weight: -20 }
+
+

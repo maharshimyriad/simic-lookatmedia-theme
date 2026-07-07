@@ -1,0 +1,15 @@
+<div class="container">
+  <div class="global-search-results">
+    {% if items or empty %}
+      {%- if items -%}
+        <{{ list_type }}{{ attributes.addClass('results-list') }}>
+          {%- for item in items -%}
+            <li{{ item.attributes.addClass('result-row') }}>{{ item.value }}</li>
+          {%- endfor -%}
+        </{{ list_type }}>
+      {%- else -%}
+        {{- empty -}}
+      {%- endif -%}
+    {%- endif %}
+  </div>
+</div>

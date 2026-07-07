@@ -1,0 +1,166 @@
+<?php
+/**
+ * @file
+ * Functions to support theming.
+ */
+
+use Drupal\views\Views;
+use Drupal\Component\Utility\Html;
+use Drupal\paragraphs\Entity\Paragraph;
+use Drupal\lam_user_integration\SessionManager;
+use Drupal\lam_connector\APIClient;
+
+/**
+ * Implements template_preprocess_html().
+ */
+function lookatmedia_preprocess_html(&$variables) {
+  $variables['path_info']['args'] = FALSE;
+  $path = \Drupal::service('path.current')->getPath();
+  $path = ltrim($path, '/');
+  $path_args = explode('/', $path);
+  if(isset($path_args[0]) && isset($path_args[1]) && ($path_args[0] == 'node') && (is_numeric($path_args[1])))
+    $variables['attributes']['class'][] = 'page-node-' . $path_args[1];
+  if(isset($path_args[0]) && isset($path_args[1]) && ($path_args[0] == 'user'))
+    $variables['attributes']['class'][] = 'page-user-' . $path_args[1];
+  if(isset($path_args[0]) && isset($path_args[1]) && isset($path_args[2]) && $path_args[0] == 'taxonomy' && $path_args[1] == 'term') {
+    $variables['attributes']['class'][] = 'page-taxonomy-term-' . $path_args[2];
+    $term = \Drupal::entityTypeManager()->getStorage('taxonomy_term')->load($path_args[2]);
+    if(!empty($term)) {
+      $vocabulary_id = $term->bundle();
+      $variables['attributes']['class'][] = 'page-vocabulary-' . Html::cleanCssIdentifier($vocabulary_id);
+    }
+  }
+  $view_id = \Drupal::routeMatch()->getParameter('view_id');
+  if($view_id)
+    $variables['attributes']['class'][] = 'page-view-' . Html::cleanCssIdentifier($view_id);
+}
+
+
+function lookatmedia_preprocess(&$variables) {
+  //Cache::invalidateTags(array('lam_user_integration.authenticated'));
+  if(SessionManager::isAuthenticated()) {
+    $variables['lam_logged_in'] = 'yes';
+  } else {
+    $variables['lam_logged_in'] = 'no';
+  }
+  $apiClient = APIClient::getConfigured();
+  $variables['lam_login_url'] = 'https://' . $apiClient->getDomain() . '/user/login.me';
+  $variables['lam_album_url'] = 'https://' . $apiClient->getDomain() . '?mc_search=';
+}
+
+/**
+ * Implements template_preprocess_node().
+ */
+function lookatmedia_preprocess_node(&$variables) {
+  $type = $variables['node']->getType();
+  if($type == 'resources_page' || $type == 'events' || $type == 'news' || $type == 'story_ideas') {
+    $title = $variables['node']->getTitle();
+    $variables['node_title'] = lookatmedia_headline_splitter($title);
+    $date = $variables['node']->getCreatedTime();
+    $replace_request_time = \Drupal::time()->getRequestTime();
+    $variables['created'] = \Drupal::service('date.formatter')->formatInterval($replace_request_time - $date, 1) . ' ago';
+    if($type == 'events' || $type == 'news' || $type == 'story_ideas') {
+      $full_body = $variables['node']->field_body_copy_1->getValue();
+      $full_body .= $variables['node']->field_body_copy_2->getValue();
+      $full_body .= $variables['node']->field_body_copy_3->getValue();
+      $full_body .= $variables['node']->field_body_copy_4->getValue();
+      $full_body .= $variables['node']->field_body_copy_5->getValue();
+      $full_body .= $variables['node']->field_body_copy_6->getValue();
+      $full_body .= $variables['node']->field_body_copy_7->getValue();
+      $full_body .= $variables['node']->field_body_copy_8->getValue();
+      $full_body .= $variables['node']->field_body_copy_9->getValue();
+      $full_body .= $variables['node']->field_body_copy_10->getValue();
+      $variables['full_body'] = $full_body;
+    }
+  }
+}
+
+/**
+ * Implements template_preprocess_field().
+ */
+function lookatmedia_preprocess_field(&$variables) {
+  if($variables['field_type'] == 'entity_reference_revisions' && $variables['element']['#items']->getItemDefinition()->getSetting('target_type') == 'paragraph') {
+    foreach($variables['items'] as $idx => $item) {
+      $variables['items'][$idx]['content']['#paragraph']->index = $idx;
+    }
+  }
+}
+
+/**
+ * Implements template_preprocess_form().
+ */
+function lookatmedia_preprocess_form(&$variables) {
+  global $pager_total_items;
+  $variables['total_results'] = isset($pager_total_items[0]) ? $pager_total_items[0] : 0;
+}
+
+/**
+ * Implements hook_theme_suggestions_form_alter().
+ */
+function lookatmedia_theme_suggestions_form_alter(array &$suggestions, array $variables) {
+  $suggestions[] = 'form__' . $variables['element']['#form_id'];
+}
+
+/**
+ * Implements hook_theme().
+ */
+function lookatmedia_theme() {
+  return array(
+    'form__search_form' => array(
+      'render element' => 'form',
+      'template' => 'form/form--search-form',
+      'base hook' => 'form'
+    ),
+  );
+}
+
+/**
+ * Implements hook_views_pre_render().
+ */
+function lookatmedia_views_pre_render(\Drupal\views\ViewExecutable $view) {
+  if($view->id() == 'frontpage' && $view->current_display == 'block_3') {
+    foreach($view->result as $value){
+      $title = $value->_entity->get('title')->value;
+      $altered_title = lookatmedia_headline_splitter(str_replace('’', "'", trim($title)));
+      $value->_entity->set('field_dummy', $altered_title);
+    }
+  }
+}
+
+/**
+ * Function for splitting headlines.
+ */
+function lookatmedia_headline_splitter($title, $split = '') {   
+  $words = explode(' ', $title);
+  $altered_title = $title;
+  if(sizeof($words) > 1) {
+    $diff = strlen($title);
+    for($i = 0; $i < sizeof($words); $i++) {
+      if($i > 0) {
+        $line1 = implode(' ', array_slice($words, 0, $i));
+        $line2 = implode(' ', array_slice($words, $i));
+        $temp_diff = abs(strlen($line1) - strlen($line2));
+        if($diff > $temp_diff) {
+          $altered_title = "<span>".$line1."</span><br><span>".$line2."</span>";
+          $diff = $temp_diff;
+        }
+      }
+    }
+  }
+  return $altered_title;
+}
+
+
+function lookatmedia_preprocess_page(array &$variables) {
+  $config = \Drupal::config('lam_connector.settings');
+
+  $dbgallery_url = rtrim((string) $config->get('lam_connector.dbgallery_url'), '/');
+
+  // For Twig
+  $variables['dbgallery_url'] = $dbgallery_url;
+
+  // For JS (drupalSettings)
+  $variables['#attached']['drupalSettings']['lookatmedia'] = [
+    'dbgalleryUrl' => $dbgallery_url,
+  ];
+}

@@ -1,0 +1,61 @@
+<header role="top" class="fixed-top">
+    {% if page.top %}
+        {{ page.top }}
+    {% endif %}
+</header>
+
+<main role="main">
+    {% if page.notifications %}
+        <section role="notifications">
+        <div class="contact-class">
+            <h1>Contact our team</h1>
+            <p>Please submit your enquiry and a Lookatmedia team member will be in touch shortly.</p>
+                {{ page.notifications }}
+        </div>
+        </section>
+    {% endif %}
+
+    {% if page.header_left or page.header_right %}
+    <section role="header">
+        <div class="container">
+            <div class="row split-header">
+                <div class="col-8 col-md-6 header-left">
+                    {% if page.header_left %}
+                        {{ page.header_left }}
+                    {% endif %}
+                </div>
+                <div class="col-4 col-md-6 header-right">
+                    {% if page.header_right %}
+                        {{ page.header_right }}
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </section>
+    {% endif %}
+
+    {% if page.banner %}
+    <section role="banner">
+        {{ page.banner }}
+    </section>
+    {% endif %}
+
+    {% if page.search %}
+    <section role="search">
+        {{ page.search }}
+    </section>
+    {% endif %}
+    
+    <div class="layout-content">
+        {% if page.content %}
+            {{ page.content }}
+        {% endif %}
+    </div>
+</main>
+
+
+{% if page.footer %}
+<footer role="footer">
+    {{ page.footer }}
+</footer>
+{% endif %}

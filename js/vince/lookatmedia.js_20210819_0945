@@ -1,0 +1,209 @@
+jQuery(document).ready(function($) {
+
+    $('.nav-link-images--video').attr('target', '_blank');
+
+    if($('#pageerror').length){  // returns true if element is present
+      // show or hide another div
+      $('.contact-section').hide();
+    }
+
+    if($('#success').length){  // returns true if element is present
+      // show or hide another div
+      $('.contact-section').hide();
+    }
+
+    var rellax = new Rellax('.rellax');
+
+    $('.toggle-dropdown').click(function() {
+        var windowSize = $(window).width();
+        if(windowSize <= 991) {
+            if($(this).hasClass('dd-open')) {
+                $(this).removeClass('dd-open');
+                $(this).siblings('.dropdown-menu').slideUp(200);
+            } else {
+                $(this).addClass('dd-open');
+                $(this).siblings('.dropdown-menu').slideDown(200);
+            }
+        }
+    });
+
+    $(window).resize(function() {
+        var windowSize = $(window).width();
+        if(windowSize >= 992) {
+            $('.toggle-dropdown').removeClass('dd-open');
+            $('.dropdown-menu').removeAttr('style');
+        }
+    });
+
+    $('.nav-link-search').click(function(e) {
+        e.preventDefault();
+        $('body > .overlay').fadeToggle();
+        $('#block-lookatmedia-search').slideToggle();
+        if($(this).hasClass('search-active')) {
+            $(this).removeClass('search-active');
+            $(this).find('i').removeClass('fa-times-circle').addClass('fa-search');
+        } else {
+            $(this).addClass('search-active');
+            $(this).find('i').removeClass('fa-search').addClass('fa-times-circle');
+        }
+    });
+
+    var clone = $('.featured-news').find('.featured-news-row').clone();
+    $('.featured-news').find('.featured-news-row').remove();
+    $('.featured-news').append(clone);
+    $('.featured-news').find('.featured-news-row:last-child').after($('.featured-news').find('.featured-news-row').clone());
+
+    console.log($('#toolbar-administration').length);
+
+    if(!$('#toolbar-administration').length)
+        infiniteMarquee(2500);
+
+    function infiniteMarquee(offset = 0) {
+        var width = $('.featured-news').find('.featured-news-row:first-child').outerWidth();
+        var speed = Math.round(width * 10) + offset;
+        $('.featured-news').animate({ 'margin-left': - width }, speed, 'linear', function() {
+            items = $(this).find('.featured-news-row');
+            first = items.filter(':first');
+            last = items.filter(':last');
+            last.after(first.clone(true));
+            first.remove();
+            $(this).css({ 'margin-left': 0 });
+            infiniteMarquee(2500);
+        });
+    }
+
+    $('.show-home-search-form').click(function() {
+        var windowWidth = $(window).width();
+        if(windowWidth > 768) {
+            $('.home-search-animation,.home-search-form').fadeOut();
+            $('.home-search-form').delay(500).fadeIn();
+        }
+    });
+    $('.hide-home-search-form').click(function() {
+        $('.home-search-form,.home-search-animation').fadeOut();
+        $('.home-search-animation').delay(500).fadeIn();
+    });
+
+    $('select').each(function() {
+        var name = capitalize($(this).attr('name'));
+        $(this).children('option[value="All"]').text(name + ' - All');
+    });
+
+    $('.nes-info').click(function() {
+        var popup = $(this).data('popup');
+        $(popup).fadeIn(500);
+    });
+    $('.close-image-popup').click(function() {
+        var popup = $(this).data('popup');
+        $(popup).fadeOut(500);
+    });
+    $('.open-login-popup,.nes-info-hover,.nav-link--lam-user-login').click(function() {
+        $('.login-popup').fadeIn(500);
+        var popup = $(this).data('popup');
+        var image = $(this).data('image');
+        $(popup).delay(250).fadeOut(500);
+        $('.open-attribution-popup').attr('data-damid', image);
+    });
+    
+    $('.close-login-popup').click(function() {
+        $('.login-popup').fadeOut(500);
+    });
+    $('.close-register-popup').click(function() {
+        $('.register-popup').fadeOut(500);
+    });
+    $('.close-attribution-popup').click(function() {
+        $('.attribution-popup').fadeOut(500);
+    });
+
+    $('.search-toggler').click(function() {
+        $('.search-popup').fadeIn(500);
+    });
+    $('.search-animate > .circle').click(function() {
+        var windowWidth = $(window).width();
+        if(windowWidth <= 768) {
+            $('.search-popup').fadeIn(500);
+        }
+    });
+    $('.close-search-popup').click(function() {
+        $('.search-popup').fadeOut(500);
+    });
+
+    $(document).scroll(function () {
+        var $nav = $(".navbar-brand");
+        $nav.toggleClass('scrolled', $(this).scrollTop() > $nav.height());
+    });
+
+});
+
+const capitalize = (s) => {
+    if (typeof s !== 'string') return ''
+    return s.charAt(0).toUpperCase() + s.slice(1)
+}
+
+jQuery('.open-attribution-popup').click(function(e) {
+		e.preventDefault();
+		var damid = jQuery(this).data('damid');
+		jQuery('.attribution-popup #attr-i-understand').removeAttr('onclick').attr('onclick', 'download("'+damid+'")');
+		jQuery('.attribution-popup').addClass('showmobilepopup');
+		jQuery('.showmobilepopup').fadeIn(500);
+});
+
+
+setTimeout(function() {
+	if(jQuery('.nav-link-log-out').length) {
+		jQuery('.lam-logged-in').removeClass('d-none');
+		jQuery('#login-popup').remove();
+	} else
+		jQuery('.lam-logged-out').removeClass('d-none');
+
+	// jQuery('.open-registration-popup').click(function(){
+	//     alert("dsdas");
+	// });
+	jQuery('.return-register-popup ').click(function() {
+	 	 // alert("dsdas");
+        jQuery('.login-popup').removeClass('d-none');
+        jQuery('.register-popup').addClass('d-none');
+        
+    });
+
+	 jQuery('.open-registration-popup').click(function() {
+	 	 // alert("dsdas");
+        jQuery('.register-popup').fadeIn(500);
+        jQuery('.login-popup').addClass('d-none');
+        
+    });
+
+     if(jQuery('.path-news').length){
+        jQuery('#block-minihomesearchanimation').addClass('desktop-search');
+     }
+
+}, 500);
+
+jQuery('.node--type-dnsw .pager-show-more a').click(function() {
+	setTimeout(function() {
+		if(jQuery('.nav-link-log-out').length)
+			jQuery('.lam-logged-in').removeClass('d-none');
+		else
+			jQuery('.lam-logged-out').removeClass('d-none');
+	}, 5000);
+});
+
+
+function download(asset_id) {
+	jQuery.get('/lam/user/order', {asset_id: asset_id}, function(response) {
+		if (response.status == 'ok' && response.url != '') {
+			var is_safari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+			
+			if(is_safari)
+				location.href = response.url;
+			else
+				window.open(response.url);
+		} else if (response.status == 'login') {
+			location.href = '/lam/user/login';
+			 
+		} else {
+			alert(response.error_message);
+			
+		}
+	});	
+}

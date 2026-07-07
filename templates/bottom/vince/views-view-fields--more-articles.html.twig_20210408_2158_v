@@ -1,0 +1,98 @@
+{% set ctr = fields.counter.content|striptags|trim %}
+{% set image = fields.field_banner_image.content|striptags|trim %}
+{% set title = fields.title.content %}
+{% set url = fields.view_node.content|striptags|trim %}
+{% set length = view.result|length %}
+{% if ctr == 1 %}
+    <div class="carousel-item active">
+        <div class="row more-article-rows">
+            <div class="col-md-4">
+                <div class="more-article-item">
+                    <a href="{{ url }}">
+                        <div class="ar-3-by-2">
+                            <img src="{{ image }}" />
+                        </div>
+                    </a>
+                    <h3 class="more-article-title">{{ title }}</h3>
+                </div>
+            </div>
+    {% if ctr == length %}
+        </div>
+    </div>
+    {% endif %}
+{% elseif ctr == 2 %}
+            <div class="col-md-4">
+                <div class="more-article-item">
+                    <a href="{{ url }}">
+                        <div class="ar-3-by-2">
+                            <img src="{{ image }}" />
+                        </div>
+                    </a>
+                    <h3 class="more-article-title">{{ title }}</h3>
+                </div>
+            </div>
+    {% if ctr == length %}
+        </div>
+    </div>
+    {% endif %}
+{% elseif ctr == 3 %}
+            <div class="col-md-4">
+                <div class="more-article-item">
+                    <a href="{{ url }}">
+                        <div class="ar-3-by-2">
+                            <img src="{{ image }}" />
+                        </div>
+                    </a>
+                    <h3 class="more-article-title">{{ title }}</h3>
+                </div>
+            </div>
+        </div>
+    </div>
+{% else %}
+    {% if ctr % 3 == 1 %}
+        <div class="carousel-item">
+            <div class="row more-article-rows">
+                <div class="col-md-4">
+                    <div class="more-article-item">
+                        <a href="{{ url }}">
+                            <div class="ar-3-by-2">
+                                <img src="{{ image }}" />
+                            </div>
+                        </a>
+                        <h3 class="more-article-title">{{ title }}</h3>
+                    </div>
+                </div>
+        {% if ctr == length %}
+            </div>
+        </div>
+        {% endif %}
+    {% elseif ctr % 3 == 2 %}
+                <div class="col-md-4">
+                    <div class="more-article-item">
+                        <a href="{{ url }}">
+                            <div class="ar-3-by-2">
+                                <img src="{{ image }}" />
+                            </div>
+                        </a>
+                        <h3 class="more-article-title">{{ title }}</h3>
+                    </div>
+                </div>
+        {% if ctr == length %}
+            </div>
+        </div>
+        {% endif %}
+    {% elseif ctr % 3 == 0 %}
+                <div class="col-md-4">
+                    <div class="more-article-item">
+                        <a href="{{ url }}">
+                            <div class="ar-3-by-2">
+                                <img src="{{ image }}" />
+                            </div>
+                        </a>
+                        <h3 class="more-article-title">{{ title }}</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endif %}
+{% endif %}

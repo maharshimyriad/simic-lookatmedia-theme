@@ -1,0 +1,4 @@
+{%- if output -%}
+  {{ output|replace({'&lt;': '<', '&gt;': '>', '&quot;': '"', '&amp;': '&'})|trim|raw }}
+{%- endif %}
+

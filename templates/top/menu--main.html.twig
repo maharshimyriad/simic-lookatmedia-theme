@@ -1,0 +1,45 @@
+{% import _self as menus %}
+{{ menus.menu_links(items, attributes, 0) }}
+
+{% macro menu_links(items, attributes, menu_level) %}
+    {% import _self as menus %}
+    {% if items %}
+        {% if menu_level == 0 %}
+        <ul{{ attributes.addClass(['navbar-nav', 'ms-auto']) }}>
+        {% else %}
+        <ul class="dropdown-menu">
+        {% endif %}
+        {% for item in items %}
+            {%
+                set classes = [
+                    menu_level ? '' : 'nav-item',
+                    item.is_expanded ? 'menu-item--expanded',
+                    item.is_collapsed ? 'menu-item--collapsed',
+                    item.in_active_trail ? 'active',
+                    item.below ? 'dropdown',
+                ]
+            %}
+            <li{{ item.attributes.addClass(classes) }}>
+                {%
+                    set link_classes = [
+                        menu_level ? 'dropdown-item' : 'nav-link',
+                        item.in_active_trail ? 'active',
+                        item.below ? 'toggle-dropdown',
+                        item.url.getOption('attributes').class ? item.url.getOption('attributes').class | join(' '),
+                        'nav-link-' ~ item.title | clean_class,
+                    ]
+                %}
+                {% if item.below %}
+                    {{ link(item.title, item.url, {'class': link_classes}) }}
+                    {{ menus.menu_links(item.below, attributes, menu_level + 1) }}
+                {% else %}
+                    {{ link(item.title, item.url, {'class': link_classes}) }}
+                {% endif %}
+            </li>
+        {% endfor %}
+            {% if menu_level == 0 %}
+            <li class="nav-item nav-item-search"><a href="#search" class="nav-link nav-link-search"><i class="fas fa-search fa-lg"></i></a></li>
+            {% endif %}
+        </ul>
+    {% endif %}
+{% endmacro %}

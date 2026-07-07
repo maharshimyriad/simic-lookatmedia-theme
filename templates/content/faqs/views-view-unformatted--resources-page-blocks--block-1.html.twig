@@ -1,0 +1,19 @@
+{% if title %}
+  <h3>{{ title }}</h3>
+{% endif %}
+<div class="rp-main rp-main-faq">
+    <div class="container">
+        <div class="rp-main-inner">
+            {% for row in rows %}
+            {%
+                set row_classes = [
+                default_row_class ? 'views-row',
+                ]
+            %}
+            <div{{ row.attributes.addClass(row_classes) }}>
+                {{- row.content -}}
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>

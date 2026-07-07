@@ -1,0 +1,2076 @@
+<article{{ attributes.addClass('nes').addClass('nes-news') }}>
+    <div class="login-form login-form-banner">
+        <div class="nes-info-hover d-none d-md-block" data-image="{{ node.field_banner_image.id }}"><div class="nes-info-hover-inner"></div><i class="fas fa-arrow-down fa-lg"></i></div>
+        <div class="unclickform" oncontextmenu="return false"></div>
+        <form class="lam-hover-login lam-logged-out">
+            <div class="img-d-none">
+                <h3>Login to download</h3>
+                <div class="form-group">
+                <input type="email" placeholder="Email" class="form-control" name="email" required="required">
+                </div>
+                <div class="form-group">
+                <input type="password" placeholder="Password" class="form-control" name="password" required="required">
+                </div>
+                <div class="row d-flex align-items-center">
+                    <div class="col-4">
+                    <button class="blbtn lam-hover-login-button">LOGIN</button>
+                    </div>
+                    <div class="col text-right">
+                        <div class="form-check">
+                            <input id="rememberBannerCheck" class="form-check-input m-0" type="checkbox" name="rememberme" value="1">
+                            <label class="form-check-label" for="rememberBannerCheck">Keep me logged in for 60 days</label>
+                        </div>
+                    </div>
+                </div>
+                <p class="new-user-register">New user?&nbsp;&nbsp;<a href="#" class="open-registration-popup" target="_blank">Register now</a></p>
+            </div>
+            <input type="hidden" name="form_id" value="lookatmedam_login">
+        </form>
+    </div>
+    <div class="image-popup" id="imagePopupBanner">
+        <div class="ar-3-by-2">
+            <img src="{{ node.field_banner_image.uri }}" class="w-100" />
+        </div>
+        <div class="container">
+            <div class="nes-image-info">
+                <p class="image-title">{{ node.field_banner_image.title|truncate(70) }}</p>
+                <p class="image-attribution">{{ node.field_banner_image.attribution }}</p>
+                <p class="image-description">{{ node.field_banner_image.description|truncate(250) }}</p>
+                <p class="image-hashtags">
+                    {% for ht in node.field_banner_image.hashtags|split(',') %}
+                    <span>{{ ht }}</span>
+                    {% endfor %}
+                </p>
+            </div>
+            <div class="image-popup-buttons">
+                <button type="button" class="btn btn-orange open-login-popup" data-popup="#imagePopupBanner">Login to Download</button>
+                <button type="button" class="close-image-popup close-popup" data-popup="#imagePopupBanner"><i class="fas fa-times fa-2x"></i></button>
+            </div>
+        </div>
+    </div>
+    <div class="nes-banner">
+        <div class="nes-image">
+            <div class="nes-info mobile-only" data-popup="#imagePopupBanner"><div class="nes-info-inner"></div><span>info</span></div>
+            <img src="{{ node.field_banner_image.uri }}" class="w-100 rellax" data-rellax-speed="-8" />
+        </div>
+        <div class="nes-banner-top">
+            <div class="nes-top-left">
+                <div class="priority-tag">
+                    <a href="{{ path('entity.taxonomy_term.canonical', {'taxonomy_term': node.field_priority_tag.entity.tid.value}) }}">{{ node.field_priority_tag.entity.name.value }}</a>
+                </div>
+                <div class="published">
+                    <span>{{ created }}</span>
+                </div>
+            </div>
+            <div class="nes-top-right">
+                <form action="{{ url('<front>') }}generatePdf.php" method="post">
+                    <input type="hidden" name="date" value="{{ node.getCreatedTime|date('j M Y') }}" />
+                    <input type="hidden" name="title" value="{{ node.title.0.value|trim }}" />
+                    <input type="hidden" name="body" value="{{ node.field_body_copy_1.value|convert_encoding('UTF-8', 'HTML-ENTITIES|ENT_QUOTES') }} {{ node.field_body_copy_2.value|convert_encoding('UTF-8', 'HTML-ENTITIES|ENT_QUOTES') }} {{ node.field_body_copy_3.value|convert_encoding('UTF-8', 'HTML-ENTITIES|ENT_QUOTES') }} {{ node.field_body_copy_4.value|convert_encoding('UTF-8', 'HTML-ENTITIES|ENT_QUOTES') }} {{ node.field_body_copy_5.value|convert_encoding('UTF-8', 'HTML-ENTITIES|ENT_QUOTES') }} {{ node.field_body_copy_6.value|convert_encoding('UTF-8', 'HTML-ENTITIES|ENT_QUOTES') }} {{ node.field_body_copy_7.value|convert_encoding('UTF-8', 'HTML-ENTITIES|ENT_QUOTES') }} {{ node.field_body_copy_8.value|convert_encoding('UTF-8', 'HTML-ENTITIES|ENT_QUOTES') }} {{ node.field_body_copy_9.value|convert_encoding('UTF-8', 'HTML-ENTITIES|ENT_QUOTES') }} {{ node.field_body_copy_10.value|convert_encoding('UTF-8', 'HTML-ENTITIES|ENT_QUOTES') }}" />
+                    <button class="pdf">
+                        <i class="fas fa-file-pdf"></i>
+                        <span>PDF Only</span>
+                    </button>
+                </form>
+                <form action="{{ url('<front>') }}generateTxt.php" method="post">
+                    <input type="hidden" name="date" value="{{ node.getCreatedTime|date('j M Y') }}" />
+                    <input type="hidden" name="title" value="{{ node.title.0.value|trim }}" />
+                    <input type="hidden" name="body" value="{{ node.field_body_copy_1.value|striptags|trim }} {{ node.field_body_copy_2.value|striptags|trim }} {{ node.field_body_copy_3.value|striptags|trim }} {{ node.field_body_copy_4.value|striptags|trim }} {{ node.field_body_copy_5.value|striptags|trim }} {{ node.field_body_copy_6.value|striptags|trim }} {{ node.field_body_copy_7.value|striptags|trim }} {{ node.field_body_copy_8.value|striptags|trim }} {{ node.field_body_copy_9.value|striptags|trim }} {{ node.field_body_copy_10.value|striptags|trim }}" />
+                    <button class="text">
+                        <i class="fas fa-file"></i>
+                        <span>Text Only</span>
+                    </button>
+                </form>
+                <a href="#" class="content-pkg">
+                    <i class="fas fa-folder-open"></i>
+                    <span>Content PKG</span>
+                </a>
+                {#<div class="share-menu-wrapper position-relative">
+                    <button class="share">
+                        <i class="fas fa-share-alt"></i>
+                        <span>Share</span>
+                    </button>
+                    <div class="share-menu">
+                        <a href="https://www.facebook.com/sharer/sharer.php?u={{ url('<current>') }}" target="_blank" class="share-fb"><i class="fab fa-facebook fa-2x"></i></a>
+                        <a href="https://twitter.com/intent/tweet?url={{ url('<current>') }}&text={{ node.title.0.value }}" target="_blank" class="share-tw"><i class="fab fa-twitter fa-2x"></i></a>
+                        <a href="https://www.linkedin.com/sharing/share-offsite/?url={{ url('<current>') }}" target="_blank" class="share-in"><i class="fab fa-linkedin fa-2x"></i></a>
+                    </div>
+                </div>#}
+            </div>
+        </div>
+        <div class="nes-banner-inner rellax" data-rellax-speed="10">
+            <h3 class="nes-latestnews mb-0"><span>Latest News</span></h3>
+            <h1 class="nes-banner-title"><strong>{{ node_title|raw }}</strong></h1>
+            {% if node.field_hashtags.0.value is not empty %} 
+                <div class="nes-hashtags">
+                    {% set hashtags = node.field_hashtags.0.value|split(',') %}
+                    {% for ht in hashtags %}
+                    <span>{{ ht }}</span>
+                    {% endfor %}
+                </div>
+            {% endif %}
+            <h3 class="nes-author mb-0">By {{ node.field_author.0.value }}</h3>
+            <div class="container">
+                <div class="nes-mobile-actions mobile-only">
+                    <form action="{{ url('<front>') }}generatePdf.php" method="post">
+                        <input type="hidden" name="date" value="{{ node.getCreatedTime|date('j M Y') }}" />
+                        <input type="hidden" name="title" value="{{ node.title.0.value|trim }}" />
+                        <input type="hidden" name="body" value="{{ node.field_body_copy_1.value|convert_encoding('UTF-8', 'HTML-ENTITIES|ENT_QUOTES') }} {{ node.field_body_copy_2.value|convert_encoding('UTF-8', 'HTML-ENTITIES|ENT_QUOTES') }} {{ node.field_body_copy_3.value|convert_encoding('UTF-8', 'HTML-ENTITIES|ENT_QUOTES') }} {{ node.field_body_copy_4.value|convert_encoding('UTF-8', 'HTML-ENTITIES|ENT_QUOTES') }} {{ node.field_body_copy_5.value|convert_encoding('UTF-8', 'HTML-ENTITIES|ENT_QUOTES') }} {{ node.field_body_copy_6.value|convert_encoding('UTF-8', 'HTML-ENTITIES|ENT_QUOTES') }} {{ node.field_body_copy_7.value|convert_encoding('UTF-8', 'HTML-ENTITIES|ENT_QUOTES') }} {{ node.field_body_copy_8.value|convert_encoding('UTF-8', 'HTML-ENTITIES|ENT_QUOTES') }} {{ node.field_body_copy_9.value|convert_encoding('UTF-8', 'HTML-ENTITIES|ENT_QUOTES') }} {{ node.field_body_copy_10.value|convert_encoding('UTF-8', 'HTML-ENTITIES|ENT_QUOTES') }}" />
+                        <button class="pdf">
+                            <i class="fas fa-file-pdf"></i>
+                            <span>PDF Only</span>
+                        </button>
+                    </form>
+                    <form action="{{ url('<front>') }}generateTxt.php" method="post">
+                        <input type="hidden" name="date" value="{{ node.getCreatedTime|date('j M Y') }}" />
+                        <input type="hidden" name="title" value="{{ node.title.0.value|trim }}" />
+                        <input type="hidden" name="body" value="{{ node.field_body_copy_1.value|striptags|trim }} {{ node.field_body_copy_2.value|striptags|trim }} {{ node.field_body_copy_3.value|striptags|trim }} {{ node.field_body_copy_4.value|striptags|trim }} {{ node.field_body_copy_5.value|striptags|trim }} {{ node.field_body_copy_6.value|striptags|trim }} {{ node.field_body_copy_7.value|striptags|trim }} {{ node.field_body_copy_8.value|striptags|trim }} {{ node.field_body_copy_9.value|striptags|trim }} {{ node.field_body_copy_10.value|striptags|trim }}" />
+                        <button class="text">
+                            <i class="fas fa-file"></i>
+                            <span>Text Only</span>
+                        </button>
+                    </form>
+                    <a href="#" class="content-pkg">
+                        <i class="fas fa-folder-open"></i>
+                        <span>Content PKG</span>
+                    </a>
+                    <div class="share-menu-wrapper-mobile position-relative">
+                        <button class="share">
+                            <i class="fas fa-share-alt"></i>
+                            <span>Share</span>
+                        </button>
+                        <div class="share-menu">
+                            <a href="https://www.facebook.com/sharer/sharer.php?u={{ url('<current>') }}" target="_blank" class="share-fb"><i class="fab fa-facebook fa-2x"></i></a>
+                            <a href="https://twitter.com/intent/tweet?url={{ url('<current>') }}&text={{ node.title.0.value }}" target="_blank" class="share-tw"><i class="fab fa-twitter fa-2x"></i></a>
+                            <a href="https://www.linkedin.com/sharing/share-offsite/?url={{ url('<current>') }}" target="_blank" class="share-in"><i class="fab fa-linkedin fa-2x"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="nes-banner-image-info">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-1 d-none d-lg-block"></div>
+                <div class="col-md-8">
+                    <div class="nes-image-info">
+                        <p class="image-title">{{ node.field_banner_image.title|truncate(70) }}</p>
+                        <p class="image-attribution">{{ node.field_banner_image.attribution }}</p>
+                        <p class="image-description">{{ node.field_banner_image.description|truncate(250) }}</p>
+                        <p class="image-hashtags">
+                            {% for ht in node.field_banner_image.hashtags|split(',') %}
+                            <span>{{ ht }}</span>
+                            {% endfor %}
+                        </p>
+                    </div>
+                    <span class="article-spacer"></span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="nes-main">
+        <div class="container">
+            <div class="row">
+                
+                {#  SECTION 1  #}
+                {% if node.field_body_copy_1.value %}
+                <div class="col-lg-1 d-none d-lg-block"></div>
+                <div class="col-lg-8 col-md-8">
+                    <div class="nes-body-intro">
+                            <p>{{ node.field_intro.value|raw }}</p>
+                    </div>
+                    <div class="nes-body-copy">
+                        {{ node.field_body_copy_1.value|raw }}
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-4 d-none d-md-block"></div>
+                {% endif %}
+
+                {% if node.field_video_1_embed_id.value %}
+                <div class="col-lg-1 d-none d-lg-block"></div>
+                    <div class="col-lg-8 col-md-8">
+                        <div class="nes-body-image">
+                            <video-js data-account="6057949457001" data-player="Cv8c1CdXe" data-embed="default" controls="" data-video-id="{{ node.field_video_1_embed_id.value }}" data-playlist-id="" data-application-id="" class="vjs-fluid"></video-js>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-4 nes-image-info">
+                        <p class="image-title">{{ node.field_video_1_title.value|truncate(70) }}</p>
+                        <p class="image-attribution">{{ node.field_video_1_attribution.value }}</p>
+                        <p class="image-description">{{ node.field_video_1_description.value|truncate(250) }}</p>
+                        <p class="image-hashtags">
+                            {% for ht in node.field_video_1_hashtags.value|split(',') %}
+                            <span>{{ ht }}</span>
+                            {% endfor %}
+                        </p>
+                    </div>
+                    <div class="image-popup" id="videoPopup1">
+                        <video-js data-account="6057949457001" data-player="Cv8c1CdXe" data-embed="default" controls="" data-video-id="{{ node.field_video_1_embed_id.value }}" data-playlist-id="" data-application-id="" class="vjs-fluid"></video-js>
+                        <div class="container">
+                            <div class="nes-image-info">
+                                <p class="image-title">{{ node.field_video_1_title.value|truncate(70) }}</p>
+                                <p class="image-attribution">{{ node.field_video_1_attribution.value }}</p>
+                                <p class="image-description">{{ node.field_video_1_description.value|truncate(250) }}</p>
+                                <p class="image-hashtags">
+                                    {% for ht in node.field_video_1_hashtags.value|split(',') %}
+                                    <span>{{ ht }}</span>
+                                    {% endfor %}
+                                </p>
+                            </div>
+                            <div class="image-popup-buttons">
+                                <button type="button" class="btn btn-orange open-login-popup" data-popup="#videoPopup1">Login to Download</button>
+                                <button type="button" class="close-image-popup close-popup" data-popup="#videoPopup1"><i class="fas fa-times fa-2x"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                {% endif %}
+
+                {% if node.field_image_1.uri %}
+                <div class="col-lg-1 d-none d-lg-block"></div>
+                    <div class="col-lg-8 col-md-8">
+                        <div class="nes-body-image">
+                            <div class="ar-3-by-2 login-form">
+                                <div class="nes-info-hover d-none d-md-block" data-image="{{ node.field_image_1.id }}"><div class="nes-info-hover-inner"></div><i class="fas fa-arrow-down fa-lg"></i></div>
+                                <div class="unclickform" oncontextmenu="return false"></div>
+                                <div class="nes-info mobile-only" data-popup="#imagePopup1"><div class="nes-info-inner"></div><span>info</span></div>
+                                <img src="{{ node.field_image_1.uri }}" class="w-100" />
+                                <form class="lam-hover-login lam-logged-out">
+                                    <div class="img-d-none">
+                                        <h3>Login to download</h3>
+                                        <div class="form-group">
+                                        <input type="email" placeholder="Email" class="form-control" name="email" required="required">
+                                        </div>
+                                        <div class="form-group">
+                                        <input type="password" placeholder="Password" class="form-control" name="password" required="required">
+                                        </div>
+                                        <div class="row d-flex align-items-center">
+                                            <div class="col-4">
+                                            <button class="blbtn lam-hover-login-button">LOGIN</button>
+                                            </div>
+                                            <div class="col text-right">
+                                            <div class="form-check">
+                                                    <input id="rememberCheck1" class="form-check-input m-0" type="checkbox" name="rememberme" value="1">
+                                                    <label class="form-check-label" for="rememberCheck1">Keep me logged in for 60 days</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <p class="new-user-register">New user?&nbsp;&nbsp;<a href="#" class="open-registration-popup" target="_blank">Register now</a></p>
+                                    </div>
+                                    <input type="hidden" name="form_id" value="lookatmedam_login">
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-4 nes-image-info">
+                        <p class="image-title">{{ node.field_image_1.title|truncate(70) }}</p>
+                        <p class="image-attribution">{{ node.field_image_1.attribution }}</p>
+                        <p class="image-description">{{ node.field_image_1.description|truncate(250) }}</p>
+                        <p class="image-hashtags">
+                            {% for ht in node.field_image_1.hashtags|split(',') %}
+                            <span>{{ ht }}</span>
+                            {% endfor %}
+                        </p>
+                    </div>
+                    <div class="image-popup" id="imagePopup1">
+                        <div class="ar-3-by-2">
+                            <img src="{{ node.field_image_1.uri }}" class="w-100" />
+                        </div>
+                        <div class="container">
+                            <div class="nes-image-info">
+                                <p class="image-title">{{ node.field_image_1.title|truncate(70) }}</p>
+                                <p class="image-attribution">{{ node.field_image_1.attribution }}</p>
+                                <p class="image-description">{{ node.field_image_1.description|truncate(250) }}</p>
+                                <p class="image-hashtags">
+                                    {% for ht in node.field_image_1.hashtags|split(',') %}
+                                    <span>{{ ht }}</span>
+                                    {% endfor %}
+                                </p>
+                            </div>
+                            <div class="image-popup-buttons">
+                                <button type="button" class="btn btn-orange open-login-popup" data-popup="#imagePopup1">Login to Download</button>
+                                <button type="button" class="close-image-popup close-popup" data-popup="#imagePopup1"><i class="fas fa-times fa-2x"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                {% endif %}
+
+                {% if node.field_image_2.uri %}
+                <div class="col-lg-1 d-none d-lg-block"></div>
+                    <div class="col-lg-8 col-md-8">
+                        <div class="nes-body-image">
+                            <div class="ar-3-by-2 login-form">
+                                <div class="nes-info-hover d-none d-md-block" data-image="{{ node.field_image_2.id }}"><div class="nes-info-hover-inner"></div><i class="fas fa-arrow-down fa-lg"></i></div>
+                                <div class="unclickform" oncontextmenu="return false"></div>
+                                <div class="nes-info mobile-only" data-popup="#imagePopup2"><div class="nes-info-inner"></div><span>info</span></div>
+                                <img src="{{ node.field_image_2.uri }}" class="w-100" />
+                                <form class="lam-hover-login lam-logged-out">
+                                    <div class="img-d-none">
+                                        <h3>Login to download</h3>
+                                        <div class="form-group">
+                                        <input type="email" placeholder="Email" class="form-control" name="email" required="required">
+                                        </div>
+                                        <div class="form-group">
+                                        <input type="password" placeholder="Password" class="form-control" name="password" required="required">
+                                        </div>
+                                        <div class="row d-flex align-items-center">
+                                            <div class="col-4">
+                                            <button class="blbtn lam-hover-login-button">LOGIN</button>
+                                            </div>
+                                            <div class="col text-right">
+                                            <div class="form-check">
+                                                    <input id="rememberCheck2" class="form-check-input m-0" type="checkbox" name="rememberme" value="1">
+                                                    <label class="form-check-label" for="rememberCheck2">Keep me logged in for 60 days</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <p class="new-user-register">New user?&nbsp;&nbsp;<a href="#" class="open-registration-popup" target="_blank">Register now</a></p>
+                                    </div>
+                                    <input type="hidden" name="form_id" value="lookatmedam_login">
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-4 nes-image-info">
+                        <p class="image-title">{{ node.field_image_2.title|truncate(70) }}</p>
+                        <p class="image-attribution">{{ node.field_image_2.attribution }}</p>
+                        <p class="image-description">{{ node.field_image_2.description|truncate(250) }}</p>
+                        <p class="image-hashtags">
+                            {% for ht in node.field_image_2.hashtags|split(',') %}
+                            <span>{{ ht }}</span>
+                            {% endfor %}
+                        </p>
+                    </div>
+                    <div class="image-popup" id="imagePopup2">
+                        <div class="ar-3-by-2">
+                            <img src="{{ node.field_image_2.uri }}" class="w-100" />
+                        </div>
+                        <div class="container">
+                            <div class="nes-image-info">
+                                <p class="image-title">{{ node.field_image_2.title|truncate(70) }}</p>
+                                <p class="image-attribution">{{ node.field_image_2.attribution }}</p>
+                                <p class="image-description">{{ node.field_image_2.description|truncate(250) }}</p>
+                                <p class="image-hashtags">
+                                    {% for ht in node.field_image_2.hashtags|split(',') %}
+                                    <span>{{ ht }}</span>
+                                    {% endfor %}
+                                </p>
+                            </div>
+                            <div class="image-popup-buttons">
+                                <button type="button" class="btn btn-orange open-login-popup" data-popup="#imagePopup2">Login to Download</button>
+                                <button type="button" class="close-image-popup close-popup" data-popup="#imagePopup2"><i class="fas fa-times fa-2x"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                {% endif %}
+
+                {#  SECTION 2  #}
+                {% if node.field_body_copy_2.value %}
+                <div class="col-lg-1 d-none d-lg-block"></div>
+                <div class="col-lg-8 col-md-8">
+                    <div class="nes-body-copy">
+                        {{ node.field_body_copy_2.value|raw }}
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-4 d-none d-md-block"></div>
+                {% endif %}
+
+                {% if node.field_video_2_embed_id.value %}
+                <div class="col-lg-1 d-none d-lg-block"></div>
+                    <div class="col-lg-8 col-md-8">
+                        <div class="nes-body-image">
+                            <video-js data-account="6057949457001" data-player="Cv8c1CdXe" data-embed="default" controls="" data-video-id="{{ node.field_video_2_embed_id.value }}" data-playlist-id="" data-application-id="" class="vjs-fluid"></video-js>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-4 nes-image-info">
+                        <p class="image-title">{{ node.field_video_2_title.value|truncate(70) }}</p>
+                        <p class="image-attribution">{{ node.field_video_2_attribution.value }}</p>
+                        <p class="image-description">{{ node.field_video_2_description.value|truncate(250) }}</p>
+                        <p class="image-hashtags">
+                            {% for ht in node.field_video_2_hashtags.value|split(',') %}
+                            <span>{{ ht }}</span>
+                            {% endfor %}
+                        </p>
+                    </div>
+                    <div class="image-popup" id="videoPopup2">
+                        <video-js data-account="6057949457001" data-player="Cv8c1CdXe" data-embed="default" controls="" data-video-id="{{ node.field_video_2_embed_id.value }}" data-playlist-id="" data-application-id="" class="vjs-fluid"></video-js>
+                        <div class="container">
+                            <div class="nes-image-info">
+                                <p class="image-title">{{ node.field_video_2_title.value|truncate(70) }}</p>
+                                <p class="image-attribution">{{ node.field_video_2_attribution.value }}</p>
+                                <p class="image-description">{{ node.field_video_2_description.value|truncate(250) }}</p>
+                                <p class="image-hashtags">
+                                    {% for ht in node.field_video_2_hashtags.value|split(',') %}
+                                    <span>{{ ht }}</span>
+                                    {% endfor %}
+                                </p>
+                            </div>
+                            <div class="image-popup-buttons">
+                                <button type="button" class="btn btn-orange open-login-popup" data-popup="#videoPopup2">Login to Download</button>
+                                <button type="button" class="close-image-popup close-popup" data-popup="#videoPopup2"><i class="fas fa-times fa-2x"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endif %}
+
+                {% if node.field_image_3.uri %}
+                <div class="col-lg-1 d-none d-lg-block"></div>
+                    <div class="col-lg-8 col-md-8">
+                        <div class="nes-body-image">
+                            <div class="ar-3-by-2 login-form">
+                                <div class="nes-info-hover d-none d-md-block" data-image="{{ node.field_image_3.id }}"><div class="nes-info-hover-inner"></div><i class="fas fa-arrow-down fa-lg"></i></div>
+                                <div class="unclickform" oncontextmenu="return false"></div>
+                                <div class="nes-info mobile-only" data-popup="#imagePopup3"><div class="nes-info-inner"></div><span>info</span></div>
+                                <img src="{{ node.field_image_3.uri }}" class="w-100" />
+                                <form class="lam-hover-login lam-logged-out">
+                                    <div class="img-d-none">
+                                        <h3>Login to download</h3>
+                                        <div class="form-group">
+                                        <input type="email" placeholder="Email" class="form-control" name="email" required="required">
+                                        </div>
+                                        <div class="form-group">
+                                        <input type="password" placeholder="Password" class="form-control" name="password" required="required">
+                                        </div>
+                                        <div class="row d-flex align-items-center">
+                                            <div class="col-4">
+                                            <button class="blbtn lam-hover-login-button">LOGIN</button>
+                                            </div>
+                                            <div class="col text-right">
+                                            <div class="form-check">
+                                                    <input id="rememberCheck3" class="form-check-input m-0" type="checkbox" name="rememberme" value="1">
+                                                    <label class="form-check-label" for="rememberCheck3">Keep me logged in for 60 days</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <p class="new-user-register">New user?&nbsp;&nbsp;<a href="#" class="open-registration-popup" target="_blank">Register now</a></p>
+                                    </div>
+                                    <input type="hidden" name="form_id" value="lookatmedam_login">
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-4 nes-image-info">
+                        <p class="image-title">{{ node.field_image_3.title|truncate(70) }}</p>
+                        <p class="image-attribution">{{ node.field_image_3.attribution }}</p>
+                        <p class="image-description">{{ node.field_image_3.description|truncate(250) }}</p>
+                        <p class="image-hashtags">
+                            {% for ht in node.field_image_3.hashtags|split(',') %}
+                            <span>{{ ht }}</span>
+                            {% endfor %}
+                        </p>
+                    </div>
+                    <div class="image-popup" id="imagePopup3">
+                        <div class="ar-3-by-2">
+                            <img src="{{ node.field_image_3.uri }}" class="w-100" />
+                        </div>
+                        <div class="container">
+                            <div class="nes-image-info">
+                                <p class="image-title">{{ node.field_image_3.title|truncate(70) }}</p>
+                                <p class="image-attribution">{{ node.field_image_3.attribution }}</p>
+                                <p class="image-description">{{ node.field_image_3.description|truncate(250) }}</p>
+                                <p class="image-hashtags">
+                                    {% for ht in node.field_image_3.hashtags|split(',') %}
+                                    <span>{{ ht }}</span>
+                                    {% endfor %}
+                                </p>
+                            </div>
+                            <div class="image-popup-buttons">
+                                <button type="button" class="btn btn-orange open-login-popup" data-popup="#imagePopup3">Login to Download</button>
+                                <button type="button" class="close-image-popup close-popup" data-popup="#imagePopup3"><i class="fas fa-times fa-2x"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                {% endif %}
+
+                {% if node.field_image_4.uri %}
+                <div class="col-lg-1 d-none d-lg-block"></div>
+                    <div class="col-lg-8 col-md-8">
+                        <div class="nes-body-image">
+                            <div class="ar-3-by-2 login-form">
+                                <div class="nes-info-hover d-none d-md-block" data-image="{{ node.field_image_4.id }}"><div class="nes-info-hover-inner"></div><i class="fas fa-arrow-down fa-lg"></i></div>
+                                <div class="unclickform" oncontextmenu="return false"></div>
+                                <div class="nes-info mobile-only" data-popup="#imagePopup4"><div class="nes-info-inner"></div><span>info</span></div>
+                                <img src="{{ node.field_image_4.uri }}" class="w-100" />
+                                <form class="lam-hover-login lam-logged-out">
+                                    <div class="img-d-none">
+                                        <h3>Login to download</h3>
+                                        <div class="form-group">
+                                        <input type="email" placeholder="Email" class="form-control" name="email" required="required">
+                                        </div>
+                                        <div class="form-group">
+                                        <input type="password" placeholder="Password" class="form-control" name="password" required="required">
+                                        </div>
+                                        <div class="row d-flex align-items-center">
+                                            <div class="col-4">
+                                            <button class="blbtn lam-hover-login-button">LOGIN</button>
+                                            </div>
+                                            <div class="col text-right">
+                                            <div class="form-check">
+                                                    <input id="rememberCheck4" class="form-check-input m-0" type="checkbox" name="rememberme" value="1">
+                                                    <label class="form-check-label" for="rememberCheck4">Keep me logged in for 60 days</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <p class="new-user-register">New user?&nbsp;&nbsp;<a href="#" class="open-registration-popup" target="_blank">Register now</a></p>
+                                    </div>
+                                    <input type="hidden" name="form_id" value="lookatmedam_login">
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-4 nes-image-info">
+                        <p class="image-title">{{ node.field_image_4.title|truncate(70) }}</p>
+                        <p class="image-attribution">{{ node.field_image_4.attribution }}</p>
+                        <p class="image-description">{{ node.field_image_4.description|truncate(250) }}</p>
+                        <p class="image-hashtags">
+                            {% for ht in node.field_image_4.hashtags|split(',') %}
+                            <span>{{ ht }}</span>
+                            {% endfor %}
+                        </p>
+                    </div>
+                    <div class="image-popup" id="imagePopup4">
+                        <div class="ar-3-by-2">
+                            <img src="{{ node.field_image_4.uri }}" class="w-100" />
+                        </div>
+                        <div class="container">
+                            <div class="nes-image-info">
+                                <p class="image-title">{{ node.field_image_4.title|truncate(70) }}</p>
+                                <p class="image-attribution">{{ node.field_image_4.attribution }}</p>
+                                <p class="image-description">{{ node.field_image_4.description|truncate(250) }}</p>
+                                <p class="image-hashtags">
+                                    {% for ht in node.field_image_4.hashtags|split(',') %}
+                                    <span>{{ ht }}</span>
+                                    {% endfor %}
+                                </p>
+                            </div>
+                            <div class="image-popup-buttons">
+                                <button type="button" class="btn btn-orange open-login-popup" data-popup="#imagePopup4">Login to Download</button>
+                                <button type="button" class="close-image-popup close-popup" data-popup="#imagePopup4"><i class="fas fa-times fa-2x"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                {% endif %}
+
+                {#  SECTION 3  #}
+                {% if node.field_body_copy_3.value %}
+                <div class="col-lg-1 d-none d-lg-block"></div>
+                <div class="col-lg-8 col-md-8">
+                    <div class="nes-body-copy">
+                        {{ node.field_body_copy_3.value|raw }}
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-4 d-none d-md-block"></div>
+                {% endif %}
+
+                {% if node.field_video_3_embed_id.value %}
+                <div class="col-lg-1 d-none d-lg-block"></div>
+                    <div class="col-lg-8 col-md-8">
+                        <div class="nes-body-image">
+                            <video-js data-account="6057949457001" data-player="Cv8c1CdXe" data-embed="default" controls="" data-video-id="{{ node.field_video_3_embed_id.value }}" data-playlist-id="" data-application-id="" class="vjs-fluid"></video-js>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-4 nes-image-info">
+                        <p class="image-title">{{ node.field_video_3_title.value|truncate(70) }}</p>
+                        <p class="image-attribution">{{ node.field_video_3_attribution.value }}</p>
+                        <p class="image-description">{{ node.field_video_3_description.value|truncate(250) }}</p>
+                        <p class="image-hashtags">
+                            {% for ht in node.field_video_3_hashtags.value|split(',') %}
+                            <span>{{ ht }}</span>
+                            {% endfor %}
+                        </p>
+                    </div>
+                    <div class="image-popup" id="videoPopup3">
+                        <video-js data-account="6057949457001" data-player="Cv8c1CdXe" data-embed="default" controls="" data-video-id="{{ node.field_video_3_embed_id.value }}" data-playlist-id="" data-application-id="" class="vjs-fluid"></video-js>
+                        <div class="container">
+                            <div class="nes-image-info">
+                                <p class="image-title">{{ node.field_video_3_title.value|truncate(70) }}</p>
+                                <p class="image-attribution">{{ node.field_video_3_attribution.value }}</p>
+                                <p class="image-description">{{ node.field_video_3_description.value|truncate(250) }}</p>
+                                <p class="image-hashtags">
+                                    {% for ht in node.field_video_3_hashtags.value|split(',') %}
+                                    <span>{{ ht }}</span>
+                                    {% endfor %}
+                                </p>
+                            </div>
+                            <div class="image-popup-buttons">
+                                <button type="button" class="btn btn-orange open-login-popup" data-popup="#videoPopup3">Login to Download</button>
+                                <button type="button" class="close-image-popup close-popup" data-popup="#videoPopup3"><i class="fas fa-times fa-2x"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endif %}
+
+                {% if node.field_image_5.uri %}
+                <div class="col-lg-1 d-none d-lg-block"></div>
+                    <div class="col-lg-8 col-md-8">
+                        <div class="nes-body-image">
+                            <div class="ar-3-by-2 login-form">
+                                <div class="nes-info-hover d-none d-md-block" data-image="{{ node.field_image_5.id }}"><div class="nes-info-hover-inner"></div><i class="fas fa-arrow-down fa-lg"></i></div>
+                                <div class="unclickform" oncontextmenu="return false"></div>
+                                <div class="nes-info mobile-only" data-popup="#imagePopup5"><div class="nes-info-inner"></div><span>info</span></div>
+                                <img src="{{ node.field_image_5.uri }}" class="w-100" />
+                                <form class="lam-hover-login lam-logged-out">
+                                    <div class="img-d-none">
+                                        <h3>Login to download</h3>
+                                        <div class="form-group">
+                                        <input type="email" placeholder="Email" class="form-control" name="email" required="required">
+                                        </div>
+                                        <div class="form-group">
+                                        <input type="password" placeholder="Password" class="form-control" name="password" required="required">
+                                        </div>
+                                        <div class="row d-flex align-items-center">
+                                            <div class="col-4">
+                                            <button class="blbtn lam-hover-login-button">LOGIN</button>
+                                            </div>
+                                            <div class="col text-right">
+                                            <div class="form-check">
+                                                    <input id="rememberCheck5" class="form-check-input m-0" type="checkbox" name="rememberme" value="1">
+                                                    <label class="form-check-label" for="rememberCheck5">Keep me logged in for 60 days</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <p class="new-user-register">New user?&nbsp;&nbsp;<a href="#" class="open-registration-popup" target="_blank">Register now</a></p>
+                                    </div>
+                                    <input type="hidden" name="form_id" value="lookatmedam_login">
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-4 nes-image-info">
+                        <p class="image-title">{{ node.field_image_5.title|truncate(70) }}</p>
+                        <p class="image-attribution">{{ node.field_image_5.attribution }}</p>
+                        <p class="image-description">{{ node.field_image_5.description|truncate(250) }}</p>
+                        <p class="image-hashtags">
+                            {% for ht in node.field_image_5.hashtags|split(',') %}
+                            <span>{{ ht }}</span>
+                            {% endfor %}
+                        </p>
+                    </div>
+                    <div class="image-popup" id="imagePopup5">
+                        <div class="ar-3-by-2">
+                            <img src="{{ node.field_image_5.uri }}" class="w-100" />
+                        </div>
+                        <div class="container">
+                            <div class="nes-image-info">
+                                <p class="image-title">{{ node.field_image_5.title|truncate(70) }}</p>
+                                <p class="image-attribution">{{ node.field_image_5.attribution }}</p>
+                                <p class="image-description">{{ node.field_image_5.description|truncate(250) }}</p>
+                                <p class="image-hashtags">
+                                    {% for ht in node.field_image_5.hashtags|split(',') %}
+                                    <span>{{ ht }}</span>
+                                    {% endfor %}
+                                </p>
+                            </div>
+                            <div class="image-popup-buttons">
+                                <button type="button" class="btn btn-orange open-login-popup" data-popup="#imagePopup5">Login to Download</button>
+                                <button type="button" class="close-image-popup close-popup" data-popup="#imagePopup5"><i class="fas fa-times fa-2x"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                {% endif %}
+
+                {% if node.field_image_6.uri %}
+                <div class="col-lg-1 d-none d-lg-block"></div>
+                    <div class="col-lg-8 col-md-8">
+                        <div class="nes-body-image">
+                            <div class="ar-3-by-2 login-form">
+                                <div class="nes-info-hover d-none d-md-block" data-image="{{ node.field_image_6.id }}"><div class="nes-info-hover-inner"></div><i class="fas fa-arrow-down fa-lg"></i></div>
+                                <div class="unclickform" oncontextmenu="return false"></div>
+                                <div class="nes-info mobile-only" data-popup="#imagePopup6"><div class="nes-info-inner"></div><span>info</span></div>
+                                <img src="{{ node.field_image_6.uri }}" class="w-100" />
+                                <form class="lam-hover-login lam-logged-out">
+                                    <div class="img-d-none">
+                                        <h3>Login to download</h3>
+                                        <div class="form-group">
+                                        <input type="email" placeholder="Email" class="form-control" name="email" required="required">
+                                        </div>
+                                        <div class="form-group">
+                                        <input type="password" placeholder="Password" class="form-control" name="password" required="required">
+                                        </div>
+                                        <div class="row d-flex align-items-center">
+                                            <div class="col-4">
+                                            <button class="blbtn lam-hover-login-button">LOGIN</button>
+                                            </div>
+                                            <div class="col text-right">
+                                            <div class="form-check">
+                                                    <input id="rememberCheck6" class="form-check-input m-0" type="checkbox" name="rememberme" value="1">
+                                                    <label class="form-check-label" for="rememberCheck6">Keep me logged in for 60 days</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <p class="new-user-register">New user?&nbsp;&nbsp;<a href="#" class="open-registration-popup" target="_blank">Register now</a></p>
+                                    </div>
+                                    <input type="hidden" name="form_id" value="lookatmedam_login">
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-4 nes-image-info">
+                        <p class="image-title">{{ node.field_image_6.title|truncate(70) }}</p>
+                        <p class="image-attribution">{{ node.field_image_6.attribution }}</p>
+                        <p class="image-description">{{ node.field_image_6.description|truncate(250) }}</p>
+                        <p class="image-hashtags">
+                            {% for ht in node.field_image_6.hashtags|split(',') %}
+                            <span>{{ ht }}</span>
+                            {% endfor %}
+                        </p>
+                    </div>
+                    <div class="image-popup" id="imagePopup6">
+                        <div class="ar-3-by-2">
+                            <img src="{{ node.field_image_6.uri }}" class="w-100" />
+                        </div>
+                        <div class="container">
+                            <div class="nes-image-info">
+                                <p class="image-title">{{ node.field_image_6.title|truncate(70) }}</p>
+                                <p class="image-attribution">{{ node.field_image_6.attribution }}</p>
+                                <p class="image-description">{{ node.field_image_6.description|truncate(250) }}</p>
+                                <p class="image-hashtags">
+                                    {% for ht in node.field_image_6.hashtags|split(',') %}
+                                    <span>{{ ht }}</span>
+                                    {% endfor %}
+                                </p>
+                            </div>
+                            <div class="image-popup-buttons">
+                                <button type="button" class="btn btn-orange open-login-popup" data-popup="#imagePopup6">Login to Download</button>
+                                <button type="button" class="close-image-popup close-popup" data-popup="#imagePopup6"><i class="fas fa-times fa-2x"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                {% endif %}
+
+                {#  SECTION 4  #}
+                {% if node.field_body_copy_4.value %}
+                <div class="col-lg-1 d-none d-lg-block"></div>
+                <div class="col-lg-8 col-md-8">
+                    <div class="nes-body-copy">
+                        {{ node.field_body_copy_4.value|raw }}
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-4 d-none d-md-block"></div>
+                {% endif %}
+
+                {% if node.field_video_4_embed_id.value %}
+                <div class="col-lg-1 d-none d-lg-block"></div>
+                    <div class="col-lg-8 col-md-8">
+                        <div class="nes-body-image">
+                            <video-js data-account="6057949457001" data-player="Cv8c1CdXe" data-embed="default" controls="" data-video-id="{{ node.field_video_4_embed_id.value }}" data-playlist-id="" data-application-id="" class="vjs-fluid"></video-js>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-4 nes-image-info">
+                        <p class="image-title">{{ node.field_video_4_title.value|truncate(70) }}</p>
+                        <p class="image-attribution">{{ node.field_video_4_attribution.value }}</p>
+                        <p class="image-description">{{ node.field_video_4_description.value|truncate(250) }}</p>
+                        <p class="image-hashtags">
+                            {% for ht in node.field_video_4_hashtags.value|split(',') %}
+                            <span>{{ ht }}</span>
+                            {% endfor %}
+                        </p>
+                    </div>
+                    <div class="image-popup" id="videoPopup4">
+                        <video-js data-account="6057949457001" data-player="Cv8c1CdXe" data-embed="default" controls="" data-video-id="{{ node.field_video_4_embed_id.value }}" data-playlist-id="" data-application-id="" class="vjs-fluid"></video-js>
+                        <div class="container">
+                            <div class="nes-image-info">
+                                <p class="image-title">{{ node.field_video_4_title.value|truncate(70) }}</p>
+                                <p class="image-attribution">{{ node.field_video_4_attribution.value }}</p>
+                                <p class="image-description">{{ node.field_video_4_description.value|truncate(250) }}</p>
+                                <p class="image-hashtags">
+                                    {% for ht in node.field_video_4_hashtags.value|split(',') %}
+                                    <span>{{ ht }}</span>
+                                    {% endfor %}
+                                </p>
+                            </div>
+                            <div class="image-popup-buttons">
+                                <button type="button" class="btn btn-orange open-login-popup" data-popup="#videoPopup4">Login to Download</button>
+                                <button type="button" class="close-image-popup close-popup" data-popup="#videoPopup4"><i class="fas fa-times fa-2x"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endif %}
+
+                {% if node.field_image_7.uri %}
+                <div class="col-lg-1 d-none d-lg-block"></div>
+                    <div class="col-lg-8 col-md-8">
+                        <div class="nes-body-image">
+                            <div class="ar-3-by-2 login-form">
+                                <div class="nes-info-hover d-none d-md-block" data-image="{{ node.field_image_7.id }}"><div class="nes-info-hover-inner"></div><i class="fas fa-arrow-down fa-lg"></i></div>
+                                <div class="unclickform" oncontextmenu="return false"></div>
+                                <div class="nes-info mobile-only" data-popup="#imagePopup7"><div class="nes-info-inner"></div><span>info</span></div>
+                                <img src="{{ node.field_image_7.uri }}" class="w-100" />
+                                <form class="lam-hover-login lam-logged-out">
+                                    <div class="img-d-none">
+                                        <h3>Login to download</h3>
+                                        <div class="form-group">
+                                        <input type="email" placeholder="Email" class="form-control" name="email" required="required">
+                                        </div>
+                                        <div class="form-group">
+                                        <input type="password" placeholder="Password" class="form-control" name="password" required="required">
+                                        </div>
+                                        <div class="row d-flex align-items-center">
+                                            <div class="col-4">
+                                            <button class="blbtn lam-hover-login-button">LOGIN</button>
+                                            </div>
+                                            <div class="col text-right">
+                                            <div class="form-check">
+                                                    <input id="rememberCheck7" class="form-check-input m-0" type="checkbox" name="rememberme" value="1">
+                                                    <label class="form-check-label" for="rememberCheck7">Keep me logged in for 60 days</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <p class="new-user-register">New user?&nbsp;&nbsp;<a href="#" class="open-registration-popup" target="_blank">Register now</a></p>
+                                    </div>
+                                    <input type="hidden" name="form_id" value="lookatmedam_login">
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-4 nes-image-info">
+                        <p class="image-title">{{ node.field_image_7.title|truncate(70) }}</p>
+                        <p class="image-attribution">{{ node.field_image_7.attribution }}</p>
+                        <p class="image-description">{{ node.field_image_7.description|truncate(250) }}</p>
+                        <p class="image-hashtags">
+                            {% for ht in node.field_image_7.hashtags|split(',') %}
+                            <span>{{ ht }}</span>
+                            {% endfor %}
+                        </p>
+                    </div>
+                    <div class="image-popup" id="imagePopup7">
+                        <div class="ar-3-by-2">
+                            <img src="{{ node.field_image_7.uri }}" class="w-100" />
+                        </div>
+                        <div class="container">
+                            <div class="nes-image-info">
+                                <p class="image-title">{{ node.field_image_7.title|truncate(70) }}</p>
+                                <p class="image-attribution">{{ node.field_image_7.attribution }}</p>
+                                <p class="image-description">{{ node.field_image_7.description|truncate(250) }}</p>
+                                <p class="image-hashtags">
+                                    {% for ht in node.field_image_7.hashtags|split(',') %}
+                                    <span>{{ ht }}</span>
+                                    {% endfor %}
+                                </p>
+                            </div>
+                            <div class="image-popup-buttons">
+                                <button type="button" class="btn btn-orange open-login-popup" data-popup="#imagePopup7">Login to Download</button>
+                                <button type="button" class="close-image-popup close-popup" data-popup="#imagePopup7"><i class="fas fa-times fa-2x"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                {% endif %}
+
+                {% if node.field_image_8.uri %}
+                <div class="col-lg-1 d-none d-lg-block"></div>
+                    <div class="col-lg-8 col-md-8">
+                        <div class="nes-body-image">
+                            <div class="ar-3-by-2 login-form">
+                                <div class="nes-info-hover d-none d-md-block" data-image="{{ node.field_image_8.id }}"><div class="nes-info-hover-inner"></div><i class="fas fa-arrow-down fa-lg"></i></div>
+                                <div class="unclickform" oncontextmenu="return false"></div>
+                                <div class="nes-info mobile-only" data-popup="#imagePopup8"><div class="nes-info-inner"></div><span>info</span></div>
+                                <img src="{{ node.field_image_8.uri }}" class="w-100" />
+                                <form class="lam-hover-login lam-logged-out">
+                                    <div class="img-d-none">
+                                        <h3>Login to download</h3>
+                                        <div class="form-group">
+                                        <input type="email" placeholder="Email" class="form-control" name="email" required="required">
+                                        </div>
+                                        <div class="form-group">
+                                        <input type="password" placeholder="Password" class="form-control" name="password" required="required">
+                                        </div>
+                                        <div class="row d-flex align-items-center">
+                                            <div class="col-4">
+                                            <button class="blbtn lam-hover-login-button">LOGIN</button>
+                                            </div>
+                                            <div class="col text-right">
+                                            <div class="form-check">
+                                                    <input id="rememberCheck8" class="form-check-input m-0" type="checkbox" name="rememberme" value="1">
+                                                    <label class="form-check-label" for="rememberCheck8">Keep me logged in for 60 days</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <p class="new-user-register">New user?&nbsp;&nbsp;<a href="#" class="open-registration-popup" target="_blank">Register now</a></p>
+                                    </div>
+                                    <input type="hidden" name="form_id" value="lookatmedam_login">
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-4 nes-image-info">
+                        <p class="image-title">{{ node.field_image_8.title|truncate(70) }}</p>
+                        <p class="image-attribution">{{ node.field_image_8.attribution }}</p>
+                        <p class="image-description">{{ node.field_image_8.description|truncate(250) }}</p>
+                        <p class="image-hashtags">
+                            {% for ht in node.field_image_8.hashtags|split(',') %}
+                            <span>{{ ht }}</span>
+                            {% endfor %}
+                        </p>
+                    </div>
+                    <div class="image-popup" id="imagePopup8">
+                        <div class="ar-3-by-2">
+                            <img src="{{ node.field_image_8.uri }}" class="w-100" />
+                        </div>
+                        <div class="container">
+                            <div class="nes-image-info">
+                                <p class="image-title">{{ node.field_image_8.title|truncate(70) }}</p>
+                                <p class="image-attribution">{{ node.field_image_8.attribution }}</p>
+                                <p class="image-description">{{ node.field_image_8.description|truncate(250) }}</p>
+                                <p class="image-hashtags">
+                                    {% for ht in node.field_image_8.hashtags|split(',') %}
+                                    <span>{{ ht }}</span>
+                                    {% endfor %}
+                                </p>
+                            </div>
+                            <div class="image-popup-buttons">
+                                <button type="button" class="btn btn-orange open-login-popup" data-popup="#imagePopup8">Login to Download</button>
+                                <button type="button" class="close-image-popup close-popup" data-popup="#imagePopup8"><i class="fas fa-times fa-2x"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                {% endif %}
+
+                {#  SECTION 5  #}
+                {% if node.field_body_copy_5.value %}
+                <div class="col-lg-1 d-none d-lg-block"></div>
+                <div class="col-lg-8 col-md-8">
+                    <div class="nes-body-copy">
+                        {{ node.field_body_copy_5.value|raw }}
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-4 d-none d-md-block"></div>
+                {% endif %}
+
+                {% if node.field_video_5_embed_id.value %}
+                <div class="col-lg-1 d-none d-lg-block"></div>
+                    <div class="col-lg-8 col-md-8">
+                        <div class="nes-body-image">
+                            <video-js data-account="6057949457001" data-player="Cv8c1CdXe" data-embed="default" controls="" data-video-id="{{ node.field_video_5_embed_id.value }}" data-playlist-id="" data-application-id="" class="vjs-fluid"></video-js>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-4 nes-image-info">
+                        <p class="image-title">{{ node.field_video_5_title.value|truncate(70) }}</p>
+                        <p class="image-attribution">{{ node.field_video_5_attribution.value }}</p>
+                        <p class="image-description">{{ node.field_video_5_description.value|truncate(250) }}</p>
+                        <p class="image-hashtags">
+                            {% for ht in node.field_video_5_hashtags.value|split(',') %}
+                            <span>{{ ht }}</span>
+                            {% endfor %}
+                        </p>
+                    </div>
+                    <div class="image-popup" id="videoPopup5">
+                        <video-js data-account="6057949457001" data-player="Cv8c1CdXe" data-embed="default" controls="" data-video-id="{{ node.field_video_5_embed_id.value }}" data-playlist-id="" data-application-id="" class="vjs-fluid"></video-js>
+                        <div class="container">
+                            <div class="nes-image-info">
+                                <p class="image-title">{{ node.field_video_5_title.value|truncate(70) }}</p>
+                                <p class="image-attribution">{{ node.field_video_5_attribution.value }}</p>
+                                <p class="image-description">{{ node.field_video_5_description.value|truncate(250) }}</p>
+                                <p class="image-hashtags">
+                                    {% for ht in node.field_video_5_hashtags.value|split(',') %}
+                                    <span>{{ ht }}</span>
+                                    {% endfor %}
+                                </p>
+                            </div>
+                            <div class="image-popup-buttons">
+                                <button type="button" class="btn btn-orange open-login-popup" data-popup="#videoPopup5">Login to Download</button>
+                                <button type="button" class="close-image-popup close-popup" data-popup="#videoPopup5"><i class="fas fa-times fa-2x"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endif %}
+
+                {% if node.field_image_9.uri %}
+                <div class="col-lg-1 d-none d-lg-block"></div>
+                    <div class="col-lg-8 col-md-8">
+                        <div class="nes-body-image">
+                            <div class="ar-3-by-2 login-form">
+                                <div class="nes-info-hover d-none d-md-block" data-image="{{ node.field_image_9.id }}"><div class="nes-info-hover-inner"></div><i class="fas fa-arrow-down fa-lg"></i></div>
+                                <div class="unclickform" oncontextmenu="return false"></div>
+                                <div class="nes-info mobile-only" data-popup="#imagePopup9"><div class="nes-info-inner"></div><span>info</span></div>
+                                <img src="{{ node.field_image_9.uri }}" class="w-100" />
+                                <form class="lam-hover-login lam-logged-out">
+                                    <div class="img-d-none">
+                                        <h3>Login to download</h3>
+                                        <div class="form-group">
+                                        <input type="email" placeholder="Email" class="form-control" name="email" required="required">
+                                        </div>
+                                        <div class="form-group">
+                                        <input type="password" placeholder="Password" class="form-control" name="password" required="required">
+                                        </div>
+                                        <div class="row d-flex align-items-center">
+                                            <div class="col-4">
+                                            <button class="blbtn lam-hover-login-button">LOGIN</button>
+                                            </div>
+                                            <div class="col text-right">
+                                            <div class="form-check">
+                                                    <input id="rememberCheck9" class="form-check-input m-0" type="checkbox" name="rememberme" value="1">
+                                                    <label class="form-check-label" for="rememberCheck9">Keep me logged in for 60 days</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <p class="new-user-register">New user?&nbsp;&nbsp;<a href="#" class="open-registration-popup" target="_blank">Register now</a></p>
+                                    </div>
+                                    <input type="hidden" name="form_id" value="lookatmedam_login">
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-4 nes-image-info">
+                        <p class="image-title">{{ node.field_image_9.title|truncate(70) }}</p>
+                        <p class="image-attribution">{{ node.field_image_9.attribution }}</p>
+                        <p class="image-description">{{ node.field_image_9.description|truncate(250) }}</p>
+                        <p class="image-hashtags">
+                            {% for ht in node.field_image_9.hashtags|split(',') %}
+                            <span>{{ ht }}</span>
+                            {% endfor %}
+                        </p>
+                    </div>
+                    <div class="image-popup" id="imagePopup9">
+                        <div class="ar-3-by-2">
+                            <img src="{{ node.field_image_9.uri }}" class="w-100" />
+                        </div>
+                        <div class="container">
+                            <div class="nes-image-info">
+                                <p class="image-title">{{ node.field_image_9.title|truncate(70) }}</p>
+                                <p class="image-attribution">{{ node.field_image_9.attribution }}</p>
+                                <p class="image-description">{{ node.field_image_9.description|truncate(250) }}</p>
+                                <p class="image-hashtags">
+                                    {% for ht in node.field_image_9.hashtags|split(',') %}
+                                    <span>{{ ht }}</span>
+                                    {% endfor %}
+                                </p>
+                            </div>
+                            <div class="image-popup-buttons">
+                                <button type="button" class="btn btn-orange open-login-popup" data-popup="#imagePopup9">Login to Download</button>
+                                <button type="button" class="close-image-popup close-popup" data-popup="#imagePopup9"><i class="fas fa-times fa-2x"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                {% endif %}
+
+                {% if node.field_image_10.uri %}
+                <div class="col-lg-1 d-none d-lg-block"></div>
+                    <div class="col-lg-8 col-md-8">
+                        <div class="nes-body-image">
+                            <div class="ar-3-by-2 login-form">
+                                <div class="nes-info-hover d-none d-md-block" data-image="{{ node.field_image_10.id }}"><div class="nes-info-hover-inner"></div><i class="fas fa-arrow-down fa-lg"></i></div>
+                                <div class="unclickform" oncontextmenu="return false"></div>
+                                <div class="nes-info mobile-only" data-popup="#imagePopup10"><div class="nes-info-inner"></div><span>info</span></div>
+                                <img src="{{ node.field_image_10.uri }}" class="w-100" />
+                                <form class="lam-hover-login lam-logged-out">
+                                    <div class="img-d-none">
+                                        <h3>Login to download</h3>
+                                        <div class="form-group">
+                                        <input type="email" placeholder="Email" class="form-control" name="email" required="required">
+                                        </div>
+                                        <div class="form-group">
+                                        <input type="password" placeholder="Password" class="form-control" name="password" required="required">
+                                        </div>
+                                        <div class="row d-flex align-items-center">
+                                            <div class="col-4">
+                                            <button class="blbtn lam-hover-login-button">LOGIN</button>
+                                            </div>
+                                            <div class="col text-right">
+                                            <div class="form-check">
+                                                    <input id="rememberCheck10" class="form-check-input m-0" type="checkbox" name="rememberme" value="1">
+                                                    <label class="form-check-label" for="rememberCheck10">Keep me logged in for 60 days</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <p class="new-user-register">New user?&nbsp;&nbsp;<a href="#" class="open-registration-popup" target="_blank">Register now</a></p>
+                                    </div>
+                                    <input type="hidden" name="form_id" value="lookatmedam_login">
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-4 nes-image-info">
+                        <p class="image-title">{{ node.field_image_10.title|truncate(70) }}</p>
+                        <p class="image-attribution">{{ node.field_image_10.attribution }}</p>
+                        <p class="image-description">{{ node.field_image_10.description|truncate(250) }}</p>
+                        <p class="image-hashtags">
+                            {% for ht in node.field_image_10.hashtags|split(',') %}
+                            <span>{{ ht }}</span>
+                            {% endfor %}
+                        </p>
+                    </div>
+                    <div class="image-popup" id="imagePopup10">
+                        <div class="ar-3-by-2">
+                            <img src="{{ node.field_image_10.uri }}" class="w-100" />
+                        </div>
+                        <div class="container">
+                            <div class="nes-image-info">
+                                <p class="image-title">{{ node.field_image_10.title|truncate(70) }}</p>
+                                <p class="image-attribution">{{ node.field_image_10.attribution }}</p>
+                                <p class="image-description">{{ node.field_image_10.description|truncate(250) }}</p>
+                                <p class="image-hashtags">
+                                    {% for ht in node.field_image_10.hashtags|split(',') %}
+                                    <span>{{ ht }}</span>
+                                    {% endfor %}
+                                </p>
+                            </div>
+                            <div class="image-popup-buttons">
+                                <button type="button" class="btn btn-orange open-login-popup" data-popup="#imagePopup10">Login to Download</button>
+                                <button type="button" class="close-image-popup close-popup" data-popup="#imagePopup10"><i class="fas fa-times fa-2x"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                {% endif %}
+
+                {#  SECTION 6  #}
+                {% if node.field_body_copy_6.value %}
+                <div class="col-lg-1 d-none d-lg-block"></div>
+                <div class="col-lg-8 col-md-8">
+                    <div class="nes-body-copy">
+                        {{ node.field_body_copy_6.value|raw }}
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-4 d-none d-md-block"></div>
+                {% endif %}
+
+                {% if node.field_video_6_embed_id.value %}
+                <div class="col-lg-1 d-none d-lg-block"></div>
+                    <div class="col-lg-8 col-md-8">
+                        <div class="nes-body-image">
+                            <video-js data-account="6057949457001" data-player="Cv8c1CdXe" data-embed="default" controls="" data-video-id="{{ node.field_video_6_embed_id.value }}" data-playlist-id="" data-application-id="" class="vjs-fluid"></video-js>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-4 nes-image-info">
+                        <p class="image-title">{{ node.field_video_6_title.value|truncate(70) }}</p>
+                        <p class="image-attribution">{{ node.field_video_6_attribution.value }}</p>
+                        <p class="image-description">{{ node.field_video_6_description.value|truncate(250) }}</p>
+                        <p class="image-hashtags">
+                            {% for ht in node.field_video_6_hashtags.value|split(',') %}
+                            <span>{{ ht }}</span>
+                            {% endfor %}
+                        </p>
+                    </div>
+                    <div class="image-popup" id="videoPopup6">
+                        <video-js data-account="6057949457001" data-player="Cv8c1CdXe" data-embed="default" controls="" data-video-id="{{ node.field_video_6_embed_id.value }}" data-playlist-id="" data-application-id="" class="vjs-fluid"></video-js>
+                        <div class="container">
+                            <div class="nes-image-info">
+                                <p class="image-title">{{ node.field_video_6_title.value|truncate(70) }}</p>
+                                <p class="image-attribution">{{ node.field_video_6_attribution.value }}</p>
+                                <p class="image-description">{{ node.field_video_6_description.value|truncate(250) }}</p>
+                                <p class="image-hashtags">
+                                    {% for ht in node.field_video_6_hashtags.value|split(',') %}
+                                    <span>{{ ht }}</span>
+                                    {% endfor %}
+                                </p>
+                            </div>
+                            <div class="image-popup-buttons">
+                                <button type="button" class="btn btn-orange open-login-popup" data-popup="#videoPopup6">Login to Download</button>
+                                <button type="button" class="close-image-popup close-popup" data-popup="#videoPopup6"><i class="fas fa-times fa-2x"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endif %}
+
+                {% if node.field_image_11.uri %}
+                <div class="col-lg-1 d-none d-lg-block"></div>
+                    <div class="col-lg-8 col-md-8">
+                        <div class="nes-body-image">
+                            <div class="ar-3-by-2 login-form">
+                                <div class="nes-info-hover d-none d-md-block" data-image="{{ node.field_image_11.id }}"><div class="nes-info-hover-inner"></div><i class="fas fa-arrow-down fa-lg"></i></div>
+                                <div class="unclickform" oncontextmenu="return false"></div>
+                                <div class="nes-info mobile-only" data-popup="#imagePopup11"><div class="nes-info-inner"></div><span>info</span></div>
+                                <img src="{{ node.field_image_11.uri }}" class="w-100" />
+                                <form class="lam-hover-login lam-logged-out">
+                                    <div class="img-d-none">
+                                        <h3>Login to download</h3>
+                                        <div class="form-group">
+                                        <input type="email" placeholder="Email" class="form-control" name="email" required="required">
+                                        </div>
+                                        <div class="form-group">
+                                        <input type="password" placeholder="Password" class="form-control" name="password" required="required">
+                                        </div>
+                                        <div class="row d-flex align-items-center">
+                                            <div class="col-4">
+                                            <button class="blbtn lam-hover-login-button">LOGIN</button>
+                                            </div>
+                                            <div class="col text-right">
+                                            <div class="form-check">
+                                                    <input id="rememberCheck11" class="form-check-input m-0" type="checkbox" name="rememberme" value="1">
+                                                    <label class="form-check-label" for="rememberCheck11">Keep me logged in for 60 days</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <p class="new-user-register">New user?&nbsp;&nbsp;<a href="#" class="open-registration-popup" target="_blank">Register now</a></p>
+                                    </div>
+                                    <input type="hidden" name="form_id" value="lookatmedam_login">
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-4 nes-image-info">
+                        <p class="image-title">{{ node.field_image_11.title|truncate(70) }}</p>
+                        <p class="image-attribution">{{ node.field_image_11.attribution }}</p>
+                        <p class="image-description">{{ node.field_image_11.description|truncate(250) }}</p>
+                        <p class="image-hashtags">
+                            {% for ht in node.field_image_11.hashtags|split(',') %}
+                            <span>{{ ht }}</span>
+                            {% endfor %}
+                        </p>
+                    </div>
+                    <div class="image-popup" id="imagePopup11">
+                        <div class="ar-3-by-2">
+                            <img src="{{ node.field_image_11.uri }}" class="w-100" />
+                        </div>
+                        <div class="container">
+                            <div class="nes-image-info">
+                                <p class="image-title">{{ node.field_image_11.title|truncate(70) }}</p>
+                                <p class="image-attribution">{{ node.field_image_11.attribution }}</p>
+                                <p class="image-description">{{ node.field_image_11.description|truncate(250) }}</p>
+                                <p class="image-hashtags">
+                                    {% for ht in node.field_image_11.hashtags|split(',') %}
+                                    <span>{{ ht }}</span>
+                                    {% endfor %}
+                                </p>
+                            </div>
+                            <div class="image-popup-buttons">
+                                <button type="button" class="btn btn-orange open-login-popup" data-popup="#imagePopup11">Login to Download</button>
+                                <button type="button" class="close-image-popup close-popup" data-popup="#imagePopup11"><i class="fas fa-times fa-2x"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                {% endif %}
+
+                {% if node.field_image_12.uri %}
+                <div class="col-lg-1 d-none d-lg-block"></div>
+                    <div class="col-lg-8 col-md-8">
+                        <div class="nes-body-image">
+                            <div class="ar-3-by-2 login-form">
+                                <div class="nes-info-hover d-none d-md-block" data-image="{{ node.field_image_12.id }}"><div class="nes-info-hover-inner"></div><i class="fas fa-arrow-down fa-lg"></i></div>
+                                <div class="unclickform" oncontextmenu="return false"></div>
+                                <div class="nes-info mobile-only" data-popup="#imagePopup12"><div class="nes-info-inner"></div><span>info</span></div>
+                                <img src="{{ node.field_image_12.uri }}" class="w-100" />
+                                <form class="lam-hover-login lam-logged-out">
+                                    <div class="img-d-none">
+                                        <h3>Login to download</h3>
+                                        <div class="form-group">
+                                        <input type="email" placeholder="Email" class="form-control" name="email" required="required">
+                                        </div>
+                                        <div class="form-group">
+                                        <input type="password" placeholder="Password" class="form-control" name="password" required="required">
+                                        </div>
+                                        <div class="row d-flex align-items-center">
+                                            <div class="col-4">
+                                            <button class="blbtn lam-hover-login-button">LOGIN</button>
+                                            </div>
+                                            <div class="col text-right">
+                                            <div class="form-check">
+                                                    <input id="rememberCheck12" class="form-check-input m-0" type="checkbox" name="rememberme" value="1">
+                                                    <label class="form-check-label" for="rememberCheck12">Keep me logged in for 60 days</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <p class="new-user-register">New user?&nbsp;&nbsp;<a href="#" class="open-registration-popup" target="_blank">Register now</a></p>
+                                    </div>
+                                    <input type="hidden" name="form_id" value="lookatmedam_login">
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-4 nes-image-info">
+                        <p class="image-title">{{ node.field_image_12.title|truncate(70) }}</p>
+                        <p class="image-attribution">{{ node.field_image_12.attribution }}</p>
+                        <p class="image-description">{{ node.field_image_12.description|truncate(250) }}</p>
+                        <p class="image-hashtags">
+                            {% for ht in node.field_image_12.hashtags|split(',') %}
+                            <span>{{ ht }}</span>
+                            {% endfor %}
+                        </p>
+                    </div>
+                    <div class="image-popup" id="imagePopup12">
+                        <div class="ar-3-by-2">
+                            <img src="{{ node.field_image_12.uri }}" class="w-100" />
+                        </div>
+                        <div class="container">
+                            <div class="nes-image-info">
+                                <p class="image-title">{{ node.field_image_12.title|truncate(70) }}</p>
+                                <p class="image-attribution">{{ node.field_image_12.attribution }}</p>
+                                <p class="image-description">{{ node.field_image_12.description|truncate(250) }}</p>
+                                <p class="image-hashtags">
+                                    {% for ht in node.field_image_12.hashtags|split(',') %}
+                                    <span>{{ ht }}</span>
+                                    {% endfor %}
+                                </p>
+                            </div>
+                            <div class="image-popup-buttons">
+                                <button type="button" class="btn btn-orange open-login-popup" data-popup="#imagePopup12">Login to Download</button>
+                                <button type="button" class="close-image-popup close-popup" data-popup="#imagePopup12"><i class="fas fa-times fa-2x"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                {% endif %}
+
+                {#  SECTION 7  #}
+                {% if node.field_body_copy_7.value %}
+                <div class="col-lg-1 d-none d-lg-block"></div>
+                <div class="col-lg-8 col-md-8">
+                    <div class="nes-body-copy">
+                        {{ node.field_body_copy_7.value|raw }}
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-4 d-none d-md-block"></div>
+                {% endif %}
+
+                {% if node.field_video_7_embed_id.value %}
+                <div class="col-lg-1 d-none d-lg-block"></div>
+                    <div class="col-lg-8 col-md-8">
+                        <div class="nes-body-image">
+                            <video-js data-account="6057949457001" data-player="Cv8c1CdXe" data-embed="default" controls="" data-video-id="{{ node.field_video_7_embed_id.value }}" data-playlist-id="" data-application-id="" class="vjs-fluid"></video-js>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-4 nes-image-info">
+                        <p class="image-title">{{ node.field_video_7_title.value|truncate(70) }}</p>
+                        <p class="image-attribution">{{ node.field_video_7_attribution.value }}</p>
+                        <p class="image-description">{{ node.field_video_7_description.value|truncate(250) }}</p>
+                        <p class="image-hashtags">
+                            {% for ht in node.field_video_7_hashtags.value|split(',') %}
+                            <span>{{ ht }}</span>
+                            {% endfor %}
+                        </p>
+                    </div>
+                    <div class="image-popup" id="videoPopup7">
+                        <video-js data-account="6057949457001" data-player="Cv8c1CdXe" data-embed="default" controls="" data-video-id="{{ node.field_video_7_embed_id.value }}" data-playlist-id="" data-application-id="" class="vjs-fluid"></video-js>
+                        <div class="container">
+                            <div class="nes-image-info">
+                                <p class="image-title">{{ node.field_video_7_title.value|truncate(70) }}</p>
+                                <p class="image-attribution">{{ node.field_video_7_attribution.value }}</p>
+                                <p class="image-description">{{ node.field_video_7_description.value|truncate(250) }}</p>
+                                <p class="image-hashtags">
+                                    {% for ht in node.field_video_7_hashtags.value|split(',') %}
+                                    <span>{{ ht }}</span>
+                                    {% endfor %}
+                                </p>
+                            </div>
+                            <div class="image-popup-buttons">
+                                <button type="button" class="btn btn-orange open-login-popup" data-popup="#videoPopup7">Login to Download</button>
+                                <button type="button" class="close-image-popup close-popup" data-popup="#videoPopup7"><i class="fas fa-times fa-2x"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endif %}
+
+                {% if node.field_image_13.uri %}
+                <div class="col-lg-1 d-none d-lg-block"></div>
+                    <div class="col-lg-8 col-md-8">
+                        <div class="nes-body-image">
+                            <div class="ar-3-by-2 login-form">
+                                <div class="nes-info-hover d-none d-md-block" data-image="{{ node.field_image_13.id }}"><div class="nes-info-hover-inner"></div><i class="fas fa-arrow-down fa-lg"></i></div>
+                                <div class="unclickform" oncontextmenu="return false"></div>
+                                <div class="nes-info mobile-only" data-popup="#imagePopup13"><div class="nes-info-inner"></div><span>info</span></div>
+                                <img src="{{ node.field_image_13.uri }}" class="w-100" />
+                                <form class="lam-hover-login lam-logged-out">
+                                    <div class="img-d-none">
+                                        <h3>Login to download</h3>
+                                        <div class="form-group">
+                                        <input type="email" placeholder="Email" class="form-control" name="email" required="required">
+                                        </div>
+                                        <div class="form-group">
+                                        <input type="password" placeholder="Password" class="form-control" name="password" required="required">
+                                        </div>
+                                        <div class="row d-flex align-items-center">
+                                            <div class="col-4">
+                                            <button class="blbtn lam-hover-login-button">LOGIN</button>
+                                            </div>
+                                            <div class="col text-right">
+                                            <div class="form-check">
+                                                    <input id="rememberCheck13" class="form-check-input m-0" type="checkbox" name="rememberme" value="1">
+                                                    <label class="form-check-label" for="rememberCheck13">Keep me logged in for 60 days</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <p class="new-user-register">New user?&nbsp;&nbsp;<a href="#" class="open-registration-popup" target="_blank">Register now</a></p>
+                                    </div>
+                                    <input type="hidden" name="form_id" value="lookatmedam_login">
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-4 nes-image-info">
+                        <p class="image-title">{{ node.field_image_13.title|truncate(70) }}</p>
+                        <p class="image-attribution">{{ node.field_image_13.attribution }}</p>
+                        <p class="image-description">{{ node.field_image_13.description|truncate(250) }}</p>
+                        <p class="image-hashtags">
+                            {% for ht in node.field_image_13.hashtags|split(',') %}
+                            <span>{{ ht }}</span>
+                            {% endfor %}
+                        </p>
+                    </div>
+                    <div class="image-popup" id="imagePopup13">
+                        <div class="ar-3-by-2">
+                            <img src="{{ node.field_image_13.uri }}" class="w-100" />
+                        </div>
+                        <div class="container">
+                            <div class="nes-image-info">
+                                <p class="image-title">{{ node.field_image_13.title|truncate(70) }}</p>
+                                <p class="image-attribution">{{ node.field_image_13.attribution }}</p>
+                                <p class="image-description">{{ node.field_image_13.description|truncate(250) }}</p>
+                                <p class="image-hashtags">
+                                    {% for ht in node.field_image_13.hashtags|split(',') %}
+                                    <span>{{ ht }}</span>
+                                    {% endfor %}
+                                </p>
+                            </div>
+                            <div class="image-popup-buttons">
+                                <button type="button" class="btn btn-orange open-login-popup" data-popup="#imagePopup13">Login to Download</button>
+                                <button type="button" class="close-image-popup close-popup" data-popup="#imagePopup13"><i class="fas fa-times fa-2x"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                {% endif %}
+
+                {% if node.field_image_14.uri %}
+                <div class="col-lg-1 d-none d-lg-block"></div>
+                    <div class="col-lg-8 col-md-8">
+                        <div class="nes-body-image">
+                            <div class="ar-3-by-2 login-form">
+                                <div class="nes-info-hover d-none d-md-block" data-image="{{ node.ffield_image_14.id }}"><div class="nes-info-hover-inner"></div><i class="fas fa-arrow-down fa-lg"></i></div>
+                                <div class="unclickform" oncontextmenu="return false"></div>
+                                <div class="nes-info mobile-only" data-popup="#imagePopup14"><div class="nes-info-inner"></div><span>info</span></div>
+                                <img src="{{ node.field_image_14.uri }}" class="w-100" />
+                                <form class="lam-hover-login lam-logged-out">
+                                    <div class="img-d-none">
+                                        <h3>Login to download</h3>
+                                        <div class="form-group">
+                                        <input type="email" placeholder="Email" class="form-control" name="email" required="required">
+                                        </div>
+                                        <div class="form-group">
+                                        <input type="password" placeholder="Password" class="form-control" name="password" required="required">
+                                        </div>
+                                        <div class="row d-flex align-items-center">
+                                            <div class="col-4">
+                                            <button class="blbtn lam-hover-login-button">LOGIN</button>
+                                            </div>
+                                            <div class="col text-right">
+                                            <div class="form-check">
+                                                    <input id="rememberCheck14" class="form-check-input m-0" type="checkbox" name="rememberme" value="1">
+                                                    <label class="form-check-label" for="rememberCheck14">Keep me logged in for 60 days</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <p class="new-user-register">New user?&nbsp;&nbsp;<a href="#" class="open-registration-popup" target="_blank">Register now</a></p>
+                                    </div>
+                                    <input type="hidden" name="form_id" value="lookatmedam_login">
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-4 nes-image-info">
+                        <p class="image-title">{{ node.field_image_14.title|truncate(70) }}</p>
+                        <p class="image-attribution">{{ node.field_image_14.attribution }}</p>
+                        <p class="image-description">{{ node.field_image_14.description|truncate(250) }}</p>
+                        <p class="image-hashtags">
+                            {% for ht in node.field_image_14.hashtags|split(',') %}
+                            <span>{{ ht }}</span>
+                            {% endfor %}
+                        </p>
+                    </div>
+                    <div class="image-popup" id="imagePopup14">
+                        <div class="ar-3-by-2">
+                            <img src="{{ node.field_image_14.uri }}" class="w-100" />
+                        </div>
+                        <div class="container">
+                            <div class="nes-image-info">
+                                <p class="image-title">{{ node.field_image_14.title|truncate(70) }}</p>
+                                <p class="image-attribution">{{ node.field_image_14.attribution }}</p>
+                                <p class="image-description">{{ node.field_image_14.description|truncate(250) }}</p>
+                                <p class="image-hashtags">
+                                    {% for ht in node.field_image_14.hashtags|split(',') %}
+                                    <span>{{ ht }}</span>
+                                    {% endfor %}
+                                </p>
+                            </div>
+                            <div class="image-popup-buttons">
+                                <button type="button" class="btn btn-orange open-login-popup" data-popup="#imagePopup14">Login to Download</button>
+                                <button type="button" class="close-image-popup close-popup" data-popup="#imagePopup14"><i class="fas fa-times fa-2x"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                {% endif %}
+
+                {#  SECTION 8  #}
+                {% if node.field_body_copy_8.value %}
+                <div class="col-lg-1 d-none d-lg-block"></div>
+                <div class="col-lg-8 col-md-8">
+                    <div class="nes-body-copy">
+                        {{ node.field_body_copy_8.value|raw }}
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-4 d-none d-md-block"></div>
+                {% endif %}
+
+                {% if node.field_video_8_embed_id.value %}
+                <div class="col-lg-1 d-none d-lg-block"></div>
+                    <div class="col-lg-8 col-md-8">
+                        <div class="nes-body-image">
+                            <video-js data-account="6057949457001" data-player="Cv8c1CdXe" data-embed="default" controls="" data-video-id="{{ node.field_video_8_embed_id.value }}" data-playlist-id="" data-application-id="" class="vjs-fluid"></video-js>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-4 nes-image-info">
+                        <p class="image-title">{{ node.field_video_8_title.value|truncate(70) }}</p>
+                        <p class="image-attribution">{{ node.field_video_8_attribution.value }}</p>
+                        <p class="image-description">{{ node.field_video_8_description.value|truncate(250) }}</p>
+                        <p class="image-hashtags">
+                            {% for ht in node.field_video_8_hashtags.value|split(',') %}
+                            <span>{{ ht }}</span>
+                            {% endfor %}
+                        </p>
+                    </div>
+                    <div class="image-popup" id="videoPopup8">
+                        <video-js data-account="6057949457001" data-player="Cv8c1CdXe" data-embed="default" controls="" data-video-id="{{ node.field_video_8_embed_id.value }}" data-playlist-id="" data-application-id="" class="vjs-fluid"></video-js>
+                        <div class="container">
+                            <div class="nes-image-info">
+                                <p class="image-title">{{ node.field_video_8_title.value|truncate(70) }}</p>
+                                <p class="image-attribution">{{ node.field_video_8_attribution.value }}</p>
+                                <p class="image-description">{{ node.field_video_8_description.value|truncate(250) }}</p>
+                                <p class="image-hashtags">
+                                    {% for ht in node.field_video_8_hashtags.value|split(',') %}
+                                    <span>{{ ht }}</span>
+                                    {% endfor %}
+                                </p>
+                            </div>
+                            <div class="image-popup-buttons">
+                                <button type="button" class="btn btn-orange open-login-popup" data-popup="#videoPopup8">Login to Download</button>
+                                <button type="button" class="close-image-popup close-popup" data-popup="#videoPopup8"><i class="fas fa-times fa-2x"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endif %}
+
+                {% if node.field_image_15.uri %}
+                <div class="col-lg-1 d-none d-lg-block"></div>
+                    <div class="col-lg-8 col-md-8">
+                        <div class="nes-body-image">
+                            <div class="ar-3-by-2 login-form">
+                                <div class="nes-info-hover d-none d-md-block" data-image="{{ node.field_image_15.id }}"><div class="nes-info-hover-inner"></div><i class="fas fa-arrow-down fa-lg"></i></div>
+                                <div class="unclickform" oncontextmenu="return false"></div>
+                                <div class="nes-info mobile-only" data-popup="#imagePopup15"><div class="nes-info-inner"></div><span>info</span></div>
+                                <img src="{{ node.field_image_15.uri }}" class="w-100" />
+                                <form class="lam-hover-login lam-logged-out">
+                                    <div class="img-d-none">
+                                        <h3>Login to download</h3>
+                                        <div class="form-group">
+                                        <input type="email" placeholder="Email" class="form-control" name="email" required="required">
+                                        </div>
+                                        <div class="form-group">
+                                        <input type="password" placeholder="Password" class="form-control" name="password" required="required">
+                                        </div>
+                                        <div class="row d-flex align-items-center">
+                                            <div class="col-4">
+                                            <button class="blbtn lam-hover-login-button">LOGIN</button>
+                                            </div>
+                                            <div class="col text-right">
+                                            <div class="form-check">
+                                                    <input id="rememberCheck15" class="form-check-input m-0" type="checkbox" name="rememberme" value="1">
+                                                    <label class="form-check-label" for="rememberCheck15">Keep me logged in for 60 days</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <p class="new-user-register">New user?&nbsp;&nbsp;<a href="#" class="open-registration-popup" target="_blank">Register now</a></p>
+                                    </div>
+                                    <input type="hidden" name="form_id" value="lookatmedam_login">
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-4 nes-image-info">
+                        <p class="image-title">{{ node.field_image_15.title|truncate(70) }}</p>
+                        <p class="image-attribution">{{ node.field_image_15.attribution }}</p>
+                        <p class="image-description">{{ node.field_image_15.description|truncate(250) }}</p>
+                        <p class="image-hashtags">
+                            {% for ht in node.field_image_15.hashtags|split(',') %}
+                            <span>{{ ht }}</span>
+                            {% endfor %}
+                        </p>
+                    </div>
+                    <div class="image-popup" id="imagePopup15">
+                        <div class="ar-3-by-2">
+                            <img src="{{ node.field_image_15.uri }}" class="w-100" />
+                        </div>
+                        <div class="container">
+                            <div class="nes-image-info">
+                                <p class="image-title">{{ node.field_image_15.title|truncate(70) }}</p>
+                                <p class="image-attribution">{{ node.field_image_15.attribution }}</p>
+                                <p class="image-description">{{ node.field_image_15.description|truncate(250) }}</p>
+                                <p class="image-hashtags">
+                                    {% for ht in node.field_image_15.hashtags|split(',') %}
+                                    <span>{{ ht }}</span>
+                                    {% endfor %}
+                                </p>
+                            </div>
+                            <div class="image-popup-buttons">
+                                <button type="button" class="btn btn-orange open-login-popup" data-popup="#imagePopup15">Login to Download</button>
+                                <button type="button" class="close-image-popup close-popup" data-popup="#imagePopup15"><i class="fas fa-times fa-2x"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                {% endif %}
+
+                {% if node.field_image_16.uri %}
+                <div class="col-lg-1 d-none d-lg-block"></div>
+                    <div class="col-lg-8 col-md-8">
+                        <div class="nes-body-image">
+                            <div class="ar-3-by-2 login-form">
+                                <div class="nes-info-hover d-none d-md-block" data-image="{{ node.field_image_16.id }}"><div class="nes-info-hover-inner"></div><i class="fas fa-arrow-down fa-lg"></i></div>
+                                <div class="unclickform" oncontextmenu="return false"></div>
+                                <div class="nes-info mobile-only" data-popup="#imagePopup16"><div class="nes-info-inner"></div><span>info</span></div>
+                                <img src="{{ node.field_image_16.uri }}" class="w-100" />
+                                <form class="lam-hover-login lam-logged-out">
+                                    <div class="img-d-none">
+                                        <h3>Login to download</h3>
+                                        <div class="form-group">
+                                        <input type="email" placeholder="Email" class="form-control" name="email" required="required">
+                                        </div>
+                                        <div class="form-group">
+                                        <input type="password" placeholder="Password" class="form-control" name="password" required="required">
+                                        </div>
+                                        <div class="row d-flex align-items-center">
+                                            <div class="col-4">
+                                            <button class="blbtn lam-hover-login-button">LOGIN</button>
+                                            </div>
+                                            <div class="col text-right">
+                                            <div class="form-check">
+                                                    <input id="rememberCheck16" class="form-check-input m-0" type="checkbox" name="rememberme" value="1">
+                                                    <label class="form-check-label" for="rememberCheck16">Keep me logged in for 60 days</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <p class="new-user-register">New user?&nbsp;&nbsp;<a href="#" class="open-registration-popup" target="_blank">Register now</a></p>
+                                    </div>
+                                    <input type="hidden" name="form_id" value="lookatmedam_login">
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-4 nes-image-info">
+                        <p class="image-title">{{ node.field_image_16.title|truncate(70) }}</p>
+                        <p class="image-attribution">{{ node.field_image_16.attribution }}</p>
+                        <p class="image-description">{{ node.field_image_16.description|truncate(250) }}</p>
+                        <p class="image-hashtags">
+                            {% for ht in node.field_image_16.hashtags|split(',') %}
+                            <span>{{ ht }}</span>
+                            {% endfor %}
+                        </p>
+                    </div>
+                    <div class="image-popup" id="imagePopup16">
+                        <div class="ar-3-by-2">
+                            <img src="{{ node.field_image_16.uri }}" class="w-100" />
+                        </div>
+                        <div class="container">
+                            <div class="nes-image-info">
+                                <p class="image-title">{{ node.field_image_16.title|truncate(70) }}</p>
+                                <p class="image-attribution">{{ node.field_image_16.attribution }}</p>
+                                <p class="image-description">{{ node.field_image_16.description|truncate(250) }}</p>
+                                <p class="image-hashtags">
+                                    {% for ht in node.field_image_16.hashtags|split(',') %}
+                                    <span>{{ ht }}</span>
+                                    {% endfor %}
+                                </p>
+                            </div>
+                            <div class="image-popup-buttons">
+                                <button type="button" class="btn btn-orange open-login-popup" data-popup="#imagePopup16">Login to Download</button>
+                                <button type="button" class="close-image-popup close-popup" data-popup="#imagePopup16"><i class="fas fa-times fa-2x"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                {% endif %}
+
+                {#  SECTION 9  #}
+                {% if node.field_body_copy_9.value %}
+                <div class="col-lg-1 d-none d-lg-block"></div>
+                <div class="col-lg-8 col-md-8">
+                    <div class="nes-body-copy">
+                        {{ node.field_body_copy_9.value|raw }}
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-4 d-none d-md-block"></div>
+                {% endif %}
+
+                {% if node.field_video_9_embed_id.value %}
+                <div class="col-lg-1 d-none d-lg-block"></div>
+                    <div class="col-lg-8 col-md-8">
+                        <div class="nes-body-image">
+                            <video-js data-account="6057949457001" data-player="Cv8c1CdXe" data-embed="default" controls="" data-video-id="{{ node.field_video_9_embed_id.value }}" data-playlist-id="" data-application-id="" class="vjs-fluid"></video-js>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-4 nes-image-info">
+                        <p class="image-title">{{ node.field_video_9_title.value|truncate(70) }}</p>
+                        <p class="image-attribution">{{ node.field_video_9_attribution.value }}</p>
+                        <p class="image-description">{{ node.field_video_9_description.value|truncate(250) }}</p>
+                        <p class="image-hashtags">
+                            {% for ht in node.field_video_9_hashtags.value|split(',') %}
+                            <span>{{ ht }}</span>
+                            {% endfor %}
+                        </p>
+                    </div>
+                    <div class="image-popup" id="videoPopup9">
+                        <video-js data-account="6057949457001" data-player="Cv8c1CdXe" data-embed="default" controls="" data-video-id="{{ node.field_video_9_embed_id.value }}" data-playlist-id="" data-application-id="" class="vjs-fluid"></video-js>
+                        <div class="container">
+                            <div class="nes-image-info">
+                                <p class="image-title">{{ node.field_video_9_title.value|truncate(70) }}</p>
+                                <p class="image-attribution">{{ node.field_video_9_attribution.value }}</p>
+                                <p class="image-description">{{ node.field_video_9_description.value|truncate(250) }}</p>
+                                <p class="image-hashtags">
+                                    {% for ht in node.field_video_9_hashtags.value|split(',') %}
+                                    <span>{{ ht }}</span>
+                                    {% endfor %}
+                                </p>
+                            </div>
+                            <div class="image-popup-buttons">
+                                <button type="button" class="btn btn-orange open-login-popup" data-popup="#videoPopup9">Login to Download</button>
+                                <button type="button" class="close-image-popup close-popup" data-popup="#videoPopup9"><i class="fas fa-times fa-2x"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endif %}
+
+                {% if node.field_image_17.uri %}
+                <div class="col-lg-1 d-none d-lg-block"></div>
+                    <div class="col-lg-8 col-md-8">
+                        <div class="nes-body-image">
+                            <div class="ar-3-by-2 login-form">
+                                <div class="nes-info-hover d-none d-md-block" data-image="{{ node.field_image_17.id }}"><div class="nes-info-hover-inner"></div><i class="fas fa-arrow-down fa-lg"></i></div>
+                                <div class="unclickform" oncontextmenu="return false"></div>
+                                <div class="nes-info mobile-only" data-popup="#imagePopup17"><div class="nes-info-inner"></div><span>info</span></div>
+                                <img src="{{ node.field_image_17.uri }}" class="w-100" />
+                                <form class="lam-hover-login lam-logged-out">
+                                    <div class="img-d-none">
+                                        <h3>Login to download</h3>
+                                        <div class="form-group">
+                                        <input type="email" placeholder="Email" class="form-control" name="email" required="required">
+                                        </div>
+                                        <div class="form-group">
+                                        <input type="password" placeholder="Password" class="form-control" name="password" required="required">
+                                        </div>
+                                        <div class="row d-flex align-items-center">
+                                            <div class="col-4">
+                                            <button class="blbtn lam-hover-login-button">LOGIN</button>
+                                            </div>
+                                            <div class="col text-right">
+                                            <div class="form-check">
+                                                    <input id="rememberCheck17" class="form-check-input m-0" type="checkbox" name="rememberme" value="1">
+                                                    <label class="form-check-label" for="rememberCheck17">Keep me logged in for 60 days</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <p class="new-user-register">New user?&nbsp;&nbsp;<a href="#" class="open-registration-popup" target="_blank">Register now</a></p>
+                                    </div>
+                                    <input type="hidden" name="form_id" value="lookatmedam_login">
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-4 nes-image-info">
+                        <p class="image-title">{{ node.field_image_17.title|truncate(70) }}</p>
+                        <p class="image-attribution">{{ node.field_image_17.attribution }}</p>
+                        <p class="image-description">{{ node.field_image_17.description|truncate(250) }}</p>
+                        <p class="image-hashtags">
+                            {% for ht in node.field_image_17.hashtags|split(',') %}
+                            <span>{{ ht }}</span>
+                            {% endfor %}
+                        </p>
+                    </div>
+                    <div class="image-popup" id="imagePopup17">
+                        <div class="ar-3-by-2">
+                            <img src="{{ node.field_image_17.uri }}" class="w-100" />
+                        </div>
+                        <div class="container">
+                            <div class="nes-image-info">
+                                <p class="image-title">{{ node.field_image_17.title|truncate(70) }}</p>
+                                <p class="image-attribution">{{ node.field_image_17.attribution }}</p>
+                                <p class="image-description">{{ node.field_image_17.description|truncate(250) }}</p>
+                                <p class="image-hashtags">
+                                    {% for ht in node.field_image_17.hashtags|split(',') %}
+                                    <span>{{ ht }}</span>
+                                    {% endfor %}
+                                </p>
+                            </div>
+                            <div class="image-popup-buttons">
+                                <button type="button" class="btn btn-orange open-login-popup" data-popup="#imagePopup17">Login to Download</button>
+                                <button type="button" class="close-image-popup close-popup" data-popup="#imagePopup17"><i class="fas fa-times fa-2x"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                {% endif %}
+
+                {% if node.field_image_18.uri %}
+                <div class="col-lg-1 d-none d-lg-block"></div>
+                    <div class="col-lg-8 col-md-8">
+                        <div class="nes-body-image">
+                            <div class="ar-3-by-2 login-form">
+                                <div class="nes-info-hover d-none d-md-block" data-image="{{ node.field_image_18.id }}"><div class="nes-info-hover-inner"></div><i class="fas fa-arrow-down fa-lg"></i></div>
+                                <div class="unclickform" oncontextmenu="return false"></div>
+                                <div class="nes-info mobile-only" data-popup="#imagePopup18"><div class="nes-info-inner"></div><span>info</span></div>
+                                <img src="{{ node.field_image_18.uri }}" class="w-100" />
+                                <form class="lam-hover-login lam-logged-out">
+                                    <div class="img-d-none">
+                                        <h3>Login to download</h3>
+                                        <div class="form-group">
+                                        <input type="email" placeholder="Email" class="form-control" name="email" required="required">
+                                        </div>
+                                        <div class="form-group">
+                                        <input type="password" placeholder="Password" class="form-control" name="password" required="required">
+                                        </div>
+                                        <div class="row d-flex align-items-center">
+                                            <div class="col-4">
+                                            <button class="blbtn lam-hover-login-button">LOGIN</button>
+                                            </div>
+                                            <div class="col text-right">
+                                            <div class="form-check">
+                                                    <input id="rememberCheck18" class="form-check-input m-0" type="checkbox" name="rememberme" value="1">
+                                                    <label class="form-check-label" for="rememberCheck18">Keep me logged in for 60 days</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <p class="new-user-register">New user?&nbsp;&nbsp;<a href="#" class="open-registration-popup" target="_blank">Register now</a></p>
+                                    </div>
+                                    <input type="hidden" name="form_id" value="lookatmedam_login">
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-4 nes-image-info">
+                        <p class="image-title">{{ node.field_image_18.title|truncate(70) }}</p>
+                        <p class="image-attribution">{{ node.field_image_18.attribution }}</p>
+                        <p class="image-description">{{ node.field_image_18.description|truncate(250) }}</p>
+                        <p class="image-hashtags">
+                            {% for ht in node.field_image_18.hashtags|split(',') %}
+                            <span>{{ ht }}</span>
+                            {% endfor %}
+                        </p>
+                    </div>
+                    <div class="image-popup" id="imagePopup18">
+                        <div class="ar-3-by-2">
+                            <img src="{{ node.field_image_18.uri }}" class="w-100" />
+                        </div>
+                        <div class="container">
+                            <div class="nes-image-info">
+                                <p class="image-title">{{ node.field_image_18.title|truncate(70) }}</p>
+                                <p class="image-attribution">{{ node.field_image_18.attribution }}</p>
+                                <p class="image-description">{{ node.field_image_18.description|truncate(250) }}</p>
+                                <p class="image-hashtags">
+                                    {% for ht in node.field_image_18.hashtags|split(',') %}
+                                    <span>{{ ht }}</span>
+                                    {% endfor %}
+                                </p>
+                            </div>
+                            <div class="image-popup-buttons">
+                                <button type="button" class="btn btn-orange open-login-popup" data-popup="#imagePopup18">Login to Download</button>
+                                <button type="button" class="close-image-popup close-popup" data-popup="#imagePopup18"><i class="fas fa-times fa-2x"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                {% endif %}
+
+                {#  SECTION 10  #}
+                {% if node.field_body_copy_10.value %}
+                <div class="col-lg-1 d-none d-lg-block"></div>
+                <div class="col-lg-8 col-md-8">
+                    <div class="nes-body-copy">
+                        {{ node.field_body_copy_10.value|raw }}
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-4 d-none d-md-block"></div>
+                {% endif %}
+
+                {% if node.field_video_10_embed_id.value %}
+                <div class="col-lg-1 d-none d-lg-block"></div>
+                    <div class="col-lg-8 col-md-8">
+                        <div class="nes-body-image">
+                            <video-js data-account="6057949457001" data-player="Cv8c1CdXe" data-embed="default" controls="" data-video-id="{{ node.field_video_10_embed_id.value }}" data-playlist-id="" data-application-id="" class="vjs-fluid"></video-js>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-4 nes-image-info">
+                        <p class="image-title">{{ node.field_video_10_title.value|truncate(70) }}</p>
+                        <p class="image-attribution">{{ node.field_video_10_attribution.value }}</p>
+                        <p class="image-description">{{ node.field_video_10_description.value|truncate(250) }}</p>
+                        <p class="image-hashtags">
+                            {% for ht in node.field_video_10_hashtags.value|split(',') %}
+                            <span>{{ ht }}</span>
+                            {% endfor %}
+                        </p>
+                    </div>
+                    <div class="image-popup" id="videoPopup10">
+                        <video-js data-account="6057949457001" data-player="Cv8c1CdXe" data-embed="default" controls="" data-video-id="{{ node.field_video_10_embed_id.value }}" data-playlist-id="" data-application-id="" class="vjs-fluid"></video-js>
+                        <div class="container">
+                            <div class="nes-image-info">
+                                <p class="image-title">{{ node.field_video_10_title.value|truncate(70) }}</p>
+                                <p class="image-attribution">{{ node.field_video_10_attribution.value }}</p>
+                                <p class="image-description">{{ node.field_video_10_description.value|truncate(250) }}</p>
+                                <p class="image-hashtags">
+                                    {% for ht in node.field_video_10_hashtags.value|split(',') %}
+                                    <span>{{ ht }}</span>
+                                    {% endfor %}
+                                </p>
+                            </div>
+                            <div class="image-popup-buttons">
+                                <button type="button" class="btn btn-orange open-login-popup" data-popup="#videoPopup10">Login to Download</button>
+                                <button type="button" class="close-image-popup close-popup" data-popup="#videoPopup10"><i class="fas fa-times fa-2x"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endif %}
+
+                {% if node.field_image_19.uri %}
+                <div class="col-lg-1 d-none d-lg-block"></div>
+                    <div class="col-lg-8 col-md-8">
+                        <div class="nes-body-image">
+                            <div class="ar-3-by-2 login-form">
+                                <div class="nes-info-hover d-none d-md-block" data-image="{{ node.field_image_19.id }}"><div class="nes-info-hover-inner"></div><i class="fas fa-arrow-down fa-lg"></i></div>
+                                <div class="unclickform" oncontextmenu="return false"></div>
+                                <div class="nes-info mobile-only" data-popup="#imagePopup19"><div class="nes-info-inner"></div><span>info</span></div>
+                                <img src="{{ node.field_image_19.uri }}" class="w-100" />
+                                <form class="lam-hover-login lam-logged-out">
+                                    <div class="img-d-none">
+                                        <h3>Login to download</h3>
+                                        <div class="form-group">
+                                        <input type="email" placeholder="Email" class="form-control" name="email" required="required">
+                                        </div>
+                                        <div class="form-group">
+                                        <input type="password" placeholder="Password" class="form-control" name="password" required="required">
+                                        </div>
+                                        <div class="row d-flex align-items-center">
+                                            <div class="col-4">
+                                            <button class="blbtn lam-hover-login-button">LOGIN</button>
+                                            </div>
+                                            <div class="col text-right">
+                                            <div class="form-check">
+                                                    <input id="rememberCheck19" class="form-check-input m-0" type="checkbox" name="rememberme" value="1">
+                                                    <label class="form-check-label" for="rememberCheck19">Keep me logged in for 60 days</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <p class="new-user-register">New user?&nbsp;&nbsp;<a href="#" class="open-registration-popup" target="_blank">Register now</a></p>
+                                    </div>
+                                    <input type="hidden" name="form_id" value="lookatmedam_login">
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-4 nes-image-info">
+                        <p class="image-title">{{ node.field_image_19.title|truncate(70) }}</p>
+                        <p class="image-attribution">{{ node.field_image_19.attribution }}</p>
+                        <p class="image-description">{{ node.field_image_19.description|truncate(250) }}</p>
+                        <p class="image-hashtags">
+                            {% for ht in node.field_image_19.hashtags|split(',') %}
+                            <span>{{ ht }}</span>
+                            {% endfor %}
+                        </p>
+                    </div>
+                    <div class="image-popup" id="imagePopup19">
+                        <div class="ar-3-by-2">
+                            <img src="{{ node.field_image_19.uri }}" class="w-100" />
+                        </div>
+                        <div class="container">
+                            <div class="nes-image-info">
+                                <p class="image-title">{{ node.field_image_19.title|truncate(70) }}</p>
+                                <p class="image-attribution">{{ node.field_image_19.attribution }}</p>
+                                <p class="image-description">{{ node.field_image_19.description|truncate(250) }}</p>
+                                <p class="image-hashtags">
+                                    {% for ht in node.field_image_19.hashtags|split(',') %}
+                                    <span>{{ ht }}</span>
+                                    {% endfor %}
+                                </p>
+                            </div>
+                            <div class="image-popup-buttons">
+                                <button type="button" class="btn btn-orange open-login-popup" data-popup="#imagePopup19">Login to Download</button>
+                                <button type="button" class="close-image-popup close-popup" data-popup="#imagePopup19"><i class="fas fa-times fa-2x"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                {% endif %}
+
+                {% if node.field_image_20.uri %}
+                <div class="col-lg-1 d-none d-lg-block"></div>
+                    <div class="col-lg-8 col-md-8">
+                        <div class="nes-body-image">
+                            <div class="ar-3-by-2 login-form">
+                                <div class="nes-info-hover d-none d-md-block" data-image="{{ node.field_image_20.id }}"><div class="nes-info-hover-inner"></div><i class="fas fa-arrow-down fa-lg"></i></div>
+                                <div class="unclickform" oncontextmenu="return false"></div>
+                                <div class="nes-info mobile-only" data-popup="#imagePopup20"><div class="nes-info-inner"></div><span>info</span></div>
+                                <img src="{{ node.field_image_20.uri }}" class="w-100" />
+                                <form class="lam-hover-login lam-logged-out">
+                                    <div class="img-d-none">
+                                        <h3>Login to download</h3>
+                                        <div class="form-group">
+                                        <input type="email" placeholder="Email" class="form-control" name="email" required="required">
+                                        </div>
+                                        <div class="form-group">
+                                        <input type="password" placeholder="Password" class="form-control" name="password" required="required">
+                                        </div>
+                                        <div class="row d-flex align-items-center">
+                                            <div class="col-4">
+                                            <button class="blbtn lam-hover-login-button">LOGIN</button>
+                                            </div>
+                                            <div class="col text-right">
+                                            <div class="form-check">
+                                                    <input id="rememberCheck20" class="form-check-input m-0" type="checkbox" name="rememberme" value="1">
+                                                    <label class="form-check-label" for="rememberCheck20">Keep me logged in for 60 days</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <p class="new-user-register">New user?&nbsp;&nbsp;<a href="#" class="open-registration-popup" target="_blank">Register now</a></p>
+                                    </div>
+                                    <input type="hidden" name="form_id" value="lookatmedam_login">
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-4 nes-image-info">
+                        <p class="image-title">{{ node.field_image_20.title|truncate(70) }}</p>
+                        <p class="image-attribution">{{ node.field_image_20.attribution }}</p>
+                        <p class="image-description">{{ node.field_image_20.description|truncate(250) }}</p>
+                        <p class="image-hashtags">
+                            {% for ht in node.field_image_20.hashtags|split(',') %}
+                            <span>{{ ht }}</span>
+                            {% endfor %}
+                        </p>
+                    </div>
+                    <div class="image-popup" id="imagePopup20">
+                        <div class="ar-3-by-2">
+                            <img src="{{ node.field_image_20.uri }}" class="w-100" />
+                        </div>
+                        <div class="container">
+                            <div class="nes-image-info">
+                                <p class="image-title">{{ node.field_image_20.title|truncate(70) }}</p>
+                                <p class="image-attribution">{{ node.field_image_20.attribution }}</p>
+                                <p class="image-description">{{ node.field_image_20.description|truncate(250) }}</p>
+                                <p class="image-hashtags">
+                                    {% for ht in node.field_image_20.hashtags|split(',') %}
+                                    <span>{{ ht }}</span>
+                                    {% endfor %}
+                                </p>
+                            </div>
+                            <div class="image-popup-buttons">
+                                <button type="button" class="btn btn-orange open-login-popup" data-popup="#imagePopup20">Login to Download</button>
+                                <button type="button" class="close-image-popup close-popup" data-popup="#imagePopup20"><i class="fas fa-times fa-2x"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                {% endif %}
+                
+                <div class="col-lg-1 d-none d-lg-block"></div>
+                <div class="col-md-8">
+                    <ul class="secondary-tags">
+                        {% for item in node.field_secondary_tags %}
+                        <li><a href="{{ path('entity.taxonomy_term.canonical', {'taxonomy_term': item.entity.tid.value}) }}">{{ item.entity.name.value }}</a></li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="site-socials">
+        <a href="https://www.linkedin.com/sharing/share-offsite/?url={{ url('<current>') }}" target="_blank"><i class="fab fa-linkedin fa-2x"></i></a>
+        <a href="https://twitter.com/intent/tweet?url={{ url('<current>') }}&text={{ node.title.0.value }}" target="_blank"><i class="fab fa-twitter fa-2x"></i></a>
+        <a href="https://www.facebook.com/sharer/sharer.php?u={{ url('<current>') }}" target="_blank"><i class="fab fa-facebook fa-2x"></i></a>
+    </div>
+</article>
+<script>document.querySelector('.nav-link-news').classList.add('active');</script>
+<script src="https://players.brightcove.net/6057949457001/Cv8c1CdXe_default/index.min.js"></script>

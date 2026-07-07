@@ -1,0 +1,21 @@
+{% set title = {'#type': 'processed_text', '#text': row._entity.field_dummy.0.value, '#format': 'full_html' } %}
+{% set image = fields.field_banner_image.content|striptags|trim %}
+{% set imagealt = fields.field_banner_image_1.content|striptags|trim %}
+{% set intro = fields.field_intro.content|striptags|trim %}
+{% set url = fields.view_node.content|striptags|trim %}
+<h2 class="slider-title text-align-right mb-0"><strong>{{ title }}</strong></h2>
+<div class="slider-inner d-flex text-align-right">
+    <div class="slider-image">
+        <a href="{{ url }}">
+            <div class="ar-slider">
+            <div class="unclickform" oncontextmenu="return false"></div>
+                    <img class="rellax" data-rellax-speed="-4" src="{{ image }}" alt="{{ imagealt }}"  />
+            </div>
+        </a>
+    </div>
+    <h2 class="slider-title text-align-right mb-0 mobile-only"><strong>{{ title }}</strong></h2>
+    <div class="slider-content">
+        <p class="slider-intro">{{ intro|truncate(90) }}</p>
+        <a href="{{ url }}" class="slider-readmore btn btn-black m-0">Read More</a>
+    </div>
+</div>

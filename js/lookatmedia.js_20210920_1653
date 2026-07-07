@@ -1,0 +1,413 @@
+ const openModalBtn = document.querySelectorAll(".open-modal");
+const closeModal = document.querySelector(".close-modal");
+const modal = document.querySelector(".modal");
+const modalContainer = document.querySelector(".modal-container");
+
+openModalBtn.forEach((openModal) => {
+  openModal.addEventListener("click", () => {
+    modal.classList.remove("hide");
+    modalContainer.classList.remove("hide");
+  });
+});
+
+closeModal.addEventListener("click", () => {
+  setTimeout(() => {
+    modal.classList.add("hide");
+  },800);
+  modalContainer.classList.add("hide");
+});
+
+modal.addEventListener("click", () => {
+  setTimeout(() => {
+    modal.classList.add("hide");
+  },800);
+  modalContainer.classList.add("hide");
+});
+
+jQuery(document).ready(function($) {
+
+    
+
+    $('.nav-link-images--video').attr('target', '_blank');
+
+    // $('.nes-main a').attr('target', '_blank');
+
+    if($('#pageerror').length){  // returns true if element is present
+      // show or hide another div
+      $('.contact-section').hide();
+    }
+
+    if($('#success').length){  // returns true if element is present
+      // show or hide another div
+      $('.contact-section').hide();
+    }
+
+    var rellax = new Rellax('.rellax');
+
+    $('.toggle-dropdown').click(function() {
+        var windowSize = $(window).width();
+        if(windowSize <= 991) {
+            if($(this).hasClass('dd-open')) {
+                $(this).removeClass('dd-open');
+                $(this).siblings('.dropdown-menu').slideUp(200);
+            } else {
+                $(this).addClass('dd-open');
+                $(this).siblings('.dropdown-menu').slideDown(200);
+            }
+        }
+    });
+
+    $(window).resize(function() {
+        var windowSize = $(window).width();
+        if(windowSize >= 992) {
+            $('.toggle-dropdown').removeClass('dd-open');
+            $('.dropdown-menu').removeAttr('style');
+        }
+    });
+
+    $('.nav-link-search').click(function(e) {
+        e.preventDefault();
+        $('body > .overlay').fadeToggle();
+        $('#block-lookatmedia-search').slideToggle();
+        if($(this).hasClass('search-active')) {
+            $(this).removeClass('search-active');
+            $(this).find('i').removeClass('fa-times').addClass('fa-search');
+        } else {
+            $(this).addClass('search-active');
+            $(this).find('i').removeClass('fa-search').addClass('fa-times');
+        }
+    });
+
+    var clone = $('.featured-news').find('.featured-news-row').clone();
+    $('.featured-news').find('.featured-news-row').remove();
+    $('.featured-news').append(clone);
+    $('.featured-news').find('.featured-news-row:last-child').after($('.featured-news').find('.featured-news-row').clone());
+
+    console.log($('#toolbar-administration').length);
+
+    if(!$('#toolbar-administration').length)
+        infiniteMarquee(2500);
+
+    function infiniteMarquee(offset = 0) {
+        var width = $('.featured-news').find('.featured-news-row:first-child').outerWidth();
+        var speed = Math.round(width * 10) + offset;
+        $('.featured-news').animate({ 'margin-left': - width }, speed, 'linear', function() {
+            items = $(this).find('.featured-news-row');
+            first = items.filter(':first');
+            last = items.filter(':last');
+            last.after(first.clone(true));
+            first.remove();
+            $(this).css({ 'margin-left': 0 });
+            infiniteMarquee(2500);
+        });
+    }
+
+    $('.show-home-search-form').click(function() {
+        var windowWidth = $(window).width();
+        if(windowWidth > 768) {
+            $('.home-search-animation,.home-search-form').fadeOut();
+            $('.home-search-form').delay(500).fadeIn();
+        }
+    });
+    $('.hide-home-search-form').click(function() {
+        $('.home-search-form,.home-search-animation').fadeOut();
+        $('.home-search-animation').delay(500).fadeIn();
+    });
+
+    $('select').each(function() {
+        var name = capitalize($(this).attr('name'));
+        $(this).children('option[value="All"]').text(name + ' - All');
+    });
+
+    $('.nes-info').click(function() {
+        var popup = $(this).data('popup');
+        $(popup).fadeIn(500);
+    });
+    $('.close-image-popup').click(function() {
+        var popup = $(this).data('popup');
+        $(popup).fadeOut(500);
+    });
+    $('.open-login-popup,.nes-info-hover,.nav-link--lam-user-login').click(function() {
+        $('.login-popup').fadeIn(500);
+        var popup = $(this).data('popup');
+        var image = $(this).data('image');
+        $(popup).delay(250).fadeOut(500);
+
+        jQuery('.attribution-popup #attr-i-understand').removeAttr('onclick').attr('onclick', 'download("'+image+'")');
+        jQuery('.attribution-popup-mobile #attr-i-understand-mobile').removeAttr('onclick').attr('onclick', 'download("'+image+'")');
+
+        jQuery('.attribution-popup').addClass('showmobilepopup');
+        jQuery('.showmobilepopup').fadeIn(500);
+        $('.open-attribution-popup').attr('data-damid', image);
+    });
+
+     $('.attribution-download-image').click(function() {
+         var image = $('.attribution-popup-mobile').data('image');
+       
+
+         download(image);
+        
+    });
+    
+    $('.close-login-popup').click(function() {
+        $('.login-popup').fadeOut(500);
+    });
+    $('.close-register-popup').click(function() {
+        $('.register-popup').fadeOut(500);
+    });
+    $('.close-attribution-popup').click(function() {
+        $('.register-popup').fadeOut(500);
+         $('.login-popup').fadeOut(500);
+          $('.attribution-popup').fadeOut(500);
+
+    });
+
+    $('.search-toggler').click(function() {
+        $('.search-popup').fadeIn(500);
+    });
+    $('.search-animate > .circle').click(function() {
+        var windowWidth = $(window).width();
+        if(windowWidth <= 768) {
+            $('.search-popup').fadeIn(500);
+        }
+    });
+    $('.close-search-popup').click(function() {
+        $('.search-popup').fadeOut(500);
+    });
+
+    $(document).scroll(function () {
+        var $nav = $(".navbar-brand");
+        $nav.toggleClass('scrolled', $(this).scrollTop() > $nav.height());
+    });
+
+});
+
+function closeCusModal()
+{
+    // jQuery('.alert-cuswrapper').hide();
+    jQuery('.alert-cuswrapper').fadeTo(500,0).slideUp(500, function(){
+        $(this).hide();
+    });
+}
+
+const capitalize = (s) => {
+    if (typeof s !== 'string') return ''
+    return s.charAt(0).toUpperCase() + s.slice(1)
+}
+
+// jQuery('.open-attribution-popup').click(function(e) {
+// 		e.preventDefault();
+// 		var damid = jQuery(this).data('damid');
+// 		jQuery('.attribution-popup #attr-i-understand').removeAttr('onclick').attr('onclick', 'download("'+damid+'")');
+// 		jQuery('.attribution-popup').addClass('showmobilepopup');
+// 		jQuery('.showmobilepopup').fadeIn(500);
+// });
+
+// jQuery('.navbar-toggler').click(function(){
+//     // alert('test');
+
+//          if(jQuery('.navbar-toggler').length) {
+
+//                  // alert('test');
+//         jQuery('.fixed-top').css({"overflow":"auto",""});
+       
+//     } 
+// });
+
+
+setTimeout(function() {
+	if(jQuery('.nav-link-log-out').length) {
+		jQuery('.attribution-popup').removeClass('d-none');
+        jQuery('.attribution-popup-mobile').removeClass('d-none');
+        jQuery('.lam-logged-in').removeClass('d-none');
+		jQuery('#login-popup').remove();
+	} else
+		jQuery('.lam-logged-out').removeClass('d-none');
+
+
+   
+
+
+	// jQuery('.open-registration-popup').click(function(){
+	//     alert("dsdas");
+	// });
+	jQuery('.return-register-popup').click(function() {
+	 	 // alert("dsdas");
+        jQuery('.login-popup').removeClass('d-none');
+        jQuery('.register-popup').addClass('d-none');
+        
+    });
+
+	 jQuery('.open-registration-popup').click(function() {
+	 	 // alert("dsdas");
+        jQuery('.register-popup').fadeIn(500);
+        jQuery('.login-popup').addClass('d-none');
+        
+    });
+
+     if(jQuery('.path-news').length){
+        jQuery('#block-minihomesearchanimation').addClass('desktop-search');
+     }
+
+     if(jQuery('.page-taxonomy-term-16').length){
+        jQuery('#block-minihomesearchanimation').removeClass('d-none');
+     }
+
+     // if(jQuery('.path-home').length){
+     //    jQuery('#block-minihomesearchanimation').addClass('home-search');
+     // }
+
+
+     // if(jQuery('.path-frontpage').length){
+     //     jQuery('#block-lookatmesearchanimation').addClass('home-search');
+     // }
+
+}, 500);
+
+jQuery('.node--type-dnsw .pager-show-more a').click(function() {
+	setTimeout(function() {
+		if(jQuery('.nav-link-log-out').length)
+			jQuery('.attribution-popup').removeClass('d-none');
+		else
+			jQuery('.lam-logged-out').removeClass('d-none');
+	}, 5000);
+});
+
+
+function download(asset_id) {
+    jQuery.get('/lam/user/order', {asset_id: asset_id}, function(response) {
+        if (response.status == 'ok' && response.url != '') {
+            var is_safari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+            
+            if(is_safari)
+                location.href = response.url;
+            else
+                window.open(response.url);
+        } else if (response.status == 'login') {
+            location.href = '/lam/user/login';
+             
+        } else {
+            alert(response.error_message);
+            
+        }
+    }); 
+}
+
+jQuery('.js-password-field').on('blur', function(){
+     jQuery('.customPassAlert').remove();
+    if(this.value.length < 10){ 
+        // checks the password value length
+        // $( "element_validate" ).append( "<p>Test</p>" );
+        jQuery('<div class="alert alert-danger customPassAlert">Password should be at least 10 characters long</div>').insertAfter('.js-password-field');
+
+        setTimeout(function(){
+            jQuery('.customPassAlert').remove();
+        }, 4000);
+
+        jQuery(this).focus();
+        // focuses the current field.
+       return; // stops the execution.
+    }
+});
+
+jQuery('.add-email,.form-email,input[name=email]').on('blur', function(){
+     jQuery('.customPassAlert').remove();
+     var email = jQuery(this);
+    if(!is_company_email(email.val())) {
+
+           // email.parent('.greentree-white-box').addClass('input-error-text');
+
+           // show_error('Please enter your company email');
+
+        jQuery('<div class="alert alert-danger customPassAlert">Please enter your company email</div>').insertAfter('.add-email,.form-email,input[name=email]');
+
+
+        setTimeout(function(){
+            jQuery('.customPassAlert').remove();
+        }, 4000);
+
+        jQuery(this).focus();
+
+           return;
+
+        }
+
+});
+
+ function is_company_email(email) {
+
+        var invalid = ['gmail', 'ymail', 'yahoo', 'hotmail', 'live', 'icloud'];
+
+        var index = email.indexOf('@');
+
+        var domain1 = email.substring(index, email.length - 1);
+
+        var domain = domain1.toLowerCase();
+
+        var is_comp = true;
+
+        jQuery(invalid).each(function(index, value) {
+
+           if(domain.indexOf(value) != -1) {
+
+              is_comp = false;
+
+              return false;
+
+           }
+
+        });
+
+        if(is_comp)
+
+           return true;
+
+        else
+
+           return false;
+
+     }
+
+jQuery(document).ready(function($) {
+
+    jQuery(".lam-popup-login-button").on("click", function(){
+
+    	// alert('test');
+        var form = jQuery(this).closest(".lam-popup-login");
+        var email = form.find("input[name=email]").val();
+        var password = form.find("input[name=password]").val();
+        var url = form.find("input[name=form_id]").val();
+
+        // if(email == '')
+        // {
+        //     alert('Email field is required');
+        // }
+
+
+        jQuery.ajax({
+            type: "POST",
+            url: '/lam/user/api/login',
+            data: form.serialize(),
+            dataType: "json"
+        }).done(function(res) {
+            if (res.status != "ok") {
+                alert(res.error_message);
+                return false;
+            }
+            console.log(res);
+            location.href = res.url;
+            // console.log("start PageLoginToLookatmeDAMSite function");
+            // var result = loginToLookatmeDAMSite(url, email, password);
+            // location.reload();
+            return false;
+
+        }).fail(function() {
+            console.log("error");
+        });
+        return false;
+    });
+
+    
+
+
+});

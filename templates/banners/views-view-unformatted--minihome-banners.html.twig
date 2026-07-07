@@ -1,0 +1,29 @@
+<div class="container">
+  {% if title %}
+    <h3>{{ title }}</h3>
+  {% endif %}
+  <div id="minihomeCarousel" class="carousel slide carousel-fade" data-bs-ride="carousel" data-bs-interval="4000">
+    <div class="carousel-indicators">
+    {% set loop_index = 0 %}
+    {% for row in rows %}
+      <button type="button" data-bs-target="#minihomeCarousel" data-bs-slide-to="{{ loop_index }}" {% if loop_index == 0 %}class="active" aria-current="true"{% endif %} aria-label="Slide {{ loop_index }}"></button>
+      {% set loop_index = loop_index + 1 %}
+    {% endfor %}
+    </div>
+    <div class="carousel-inner">
+    {% set loop_index = 0 %}
+    {% for row in rows %}
+      {%
+        set row_classes = [
+          default_row_class ? 'views-row',
+          loop_index == 0 ? 'active'
+        ]
+      %}
+      <div{{ row.attributes.addClass(row_classes) }} data-row="{{ row.index }}">
+        {{- row.content -}}
+      </div>
+      {% set loop_index = loop_index + 1 %}
+    {% endfor %}
+    </div>
+  </div>
+</div>

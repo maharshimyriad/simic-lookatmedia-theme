@@ -1,0 +1,26 @@
+name: Lookatmedia
+type: theme
+description: 'Theme for the Lookatme Media Centre'
+core_version_requirement: ^8 || ^9 || ^10
+base theme: false
+
+libraries:
+  - lookatmedia/bootstrap
+  - lookatmedia/fonts
+  - lookatmedia/styling
+
+  
+libraries-override:
+  core/jquery: lookatmedia/jquery-custom
+
+regions:
+  top: 'Top'
+  notifications: 'Notifications'
+  header_left: 'Header Left'
+  header_right: 'Header Right'
+  banner: 'Banner'
+  search: 'Home Search'
+  content: 'Content'
+  below: 'Bottom'
+  footer: 'Footer'
+  extra: 'Extra'

@@ -1,0 +1,35 @@
+<div class="container">
+  {% if title %}
+    <h3>{{ title }}</h3>
+  {% endif %}
+  <div id="moreArticlesCarousel" class="carousel slide carousel-fade" data-bs-ride="carousel" data-bs-interval="4000">
+    <div class="carousel-indicators">
+    {% set loop_index = 1 %}
+    {% set slide_count = 0 %}
+    {% set length = rows|length %}
+    {% for row in rows %}
+      {% if loop_index % 3 == 0 %}
+        <button type="button" data-bs-target="#moreArticlesCarousel" data-bs-slide-to="{{ slide_count }}" {% if slide_count == 0 %}class="active" aria-current="true"{% endif %} aria-label="Slide {{ slide_count }}"></button>
+        {% set slide_count = slide_count + 1 %}
+      {% elseif loop_index == length %}
+        <button type="button" data-bs-target="#moreArticlesCarousel" data-bs-slide-to="{{ slide_count }}" {% if slide_count == 0 %}class="active" aria-current="true"{% endif %} aria-label="Slide {{ slide_count }}"></button>
+        {% set slide_count = slide_count + 1 %}
+      {% endif %}
+      {% set loop_index = loop_index + 1 %}
+    {% endfor %}
+    </div>
+    <div class="carousel-inner">
+    {% set loop_index = 0 %}
+    {% for row in rows %}
+      {%
+        set row_classes = [
+          default_row_class ? 'views-row',
+          loop_index == 0 ? 'active'
+        ]
+      %}
+      {{- row.content -}}
+      {% set loop_index = loop_index + 1 %}
+    {% endfor %}
+    </div>
+  </div>
+</div>
