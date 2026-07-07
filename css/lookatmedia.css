@@ -1,11 +1,12 @@
 /* Font Imports */
-@import url('https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Geist:ital,wght@0,100..900;1,100..900&family=Instrument+Serif:ital@0;1&display=swap');
+
 
 /* Font Variables */
 :root {
-    --font-family-1: 'Geist', sans-serif;
-    --font-family-2: 'Instrument Sans', sans-serif;
+    --font-family-1: "Geist", sans-serif;
+    --font-family-2: "Instrument Serif", serif;
 }
 
 /****************************************************************************************************
