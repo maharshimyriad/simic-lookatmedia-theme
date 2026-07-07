@@ -1745,6 +1745,10 @@ CSS for all the mini-home pages, e.g. story ideas, news, events, etc.
 
 }
 
+.minihome-tags li a{
+    text-decoration: underline !important;
+}
+
 .minihome-tags ul li {
 
     font-size: 12px;
