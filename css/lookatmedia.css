@@ -750,6 +750,8 @@ CSS for the front page.
 
     font-weight:400;
 
+    color:var(--primary-color-2)
+
 }
 
 .frontpage-slider .slider-image {
@@ -1593,7 +1595,7 @@ CSS for all the mini-home pages, e.g. story ideas, news, events, etc.
 
     background-color: transparent;
 
-    border: 1px solid #000000 !important;
+    border: 1px solid var(--primary-color-2) !important;
 
     border-top: inherit;
 
@@ -1607,7 +1609,7 @@ CSS for all the mini-home pages, e.g. story ideas, news, events, etc.
 
 .carousel-indicators .active {
 
-    background-color: #000000;
+    background-color: var(--primary-color-2);
 
 }
 
@@ -2869,6 +2871,8 @@ CSS for the resources pages.
     background-color: #ffffff;
 
     padding: 0 1.25rem;
+
+    color:var(--primary-color-2);
 
 }
 
