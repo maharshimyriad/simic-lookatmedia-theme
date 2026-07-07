@@ -318,7 +318,7 @@ CSS for overriding certain common bootstrap CSS or creating new CSS in bootstrap
 
 .bg-black {
 
-    background-color: #000000 !important;
+    background-color: var(--primary-color-2) !important;
 
 }
 
@@ -355,7 +355,7 @@ CSS for overriding certain common bootstrap CSS or creating new CSS in bootstrap
 
     color: #000000;
 
-    background-color: #ffffff;
+    background-color: var(--background-color-1);
 
 }
 
@@ -3105,6 +3105,8 @@ CSS for contact section that is above the footer.
 
     font-weight: 400;
 
+    color:var(--background-color-1)
+
 }
 
 
@@ -4852,4 +4854,12 @@ body.is-node-preview main{margin-top:20px;}
 body.is-node-preview .ui-dialog{
   max-width:70vw !important;
   width:auto !important;
+}
+
+
+.section-buttons .btn-black{
+    background-color:transparent;
+    border-color:var(--background-color-1) !important;
+    color:var(--background-color-1) !important;
+
 }
