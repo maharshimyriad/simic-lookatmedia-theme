@@ -1110,7 +1110,7 @@ CSS for the front page.
 
     padding: 3.5em 0;
 
-    background-color: #f0f0f0;
+    background-color: var(--background-color-1);
 
 }
 
@@ -1525,8 +1525,6 @@ CSS for all the mini-home pages, e.g. story ideas, news, events, etc.
 
     font-size: 2rem;
 
-    font-weight: 700;
-
 }
 
 .minihome-banner-row-inner p {
@@ -1629,7 +1627,7 @@ CSS for all the mini-home pages, e.g. story ideas, news, events, etc.
 
     letter-spacing: .125em;
 
-    font-weight: 700;
+    font-weight: 500;
 
     font-family: var(--font-family-1);
 
