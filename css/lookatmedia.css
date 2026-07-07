@@ -23,6 +23,8 @@ Some common css applicable to the whole website.
 
 }
 
+
+
 body {
 
     color: #000000;
@@ -726,7 +728,7 @@ CSS for the front page.
     background-color: #ffffff;
     
     padding: 0 0 .85rem 1.25rem;
-    
+
     font-family: var(--font-family-2);
 
 }
