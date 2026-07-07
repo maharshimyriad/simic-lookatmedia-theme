@@ -717,6 +717,8 @@ CSS for the front page.
 
     letter-spacing: -.02em;
 
+    font-family: var(--font-family-2);
+
 }
 
 .frontpage-slider .slider-title span {
