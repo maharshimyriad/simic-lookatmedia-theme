@@ -573,13 +573,24 @@ document.addEventListener('DOMContentLoaded', function () {
 
 function updateHeaderHeight() {
     const header = document.querySelector('header');
-
-    
-    document.documentElement.style.setProperty(
-        '--header-height',
-        `${header.offsetHeight}px`
-    );
+    if (header) {
+        document.documentElement.style.setProperty(
+            '--header-height',
+            `${header.offsetHeight}px`
+        );
+    }
 }
 
-updateHeaderHeight();
-window.addEventListener('resize', updateHeaderHeight);
+// Update on load
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', updateHeaderHeight);
+} else {
+    updateHeaderHeight();
+}
+
+// Debounce resize to prevent excessive updates
+let resizeTimeout;
+window.addEventListener('resize', function() {
+    clearTimeout(resizeTimeout);
+    resizeTimeout = setTimeout(updateHeaderHeight, 150);
+});
