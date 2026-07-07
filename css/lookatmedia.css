@@ -7,6 +7,23 @@
 :root {
     --font-family-1: 'Geist', sans-serif;
     --font-family-2: 'Instrument Serif', serif;
+    --primary-color-1: #2e6bd6;
+    --primary-color-2: #0b1d34;
+    --background-color-1:#f5f0e6;
+}
+
+h1,h2,h3,h4,h5,h6,
+h1 span, h1 strong, h1 p,
+h2 span, h2 strong, h2 p,
+h3 span, h3 strong, h3 p,
+h4 span, h4 strong, h4 p,
+h5 span, h5 strong, h5 p,
+h6 span, h6 strong, h6 p {
+
+    font-family: var(--font-family-2);
+
+    font-weight: 400;
+
 }
 
 /****************************************************************************************************
@@ -349,7 +366,7 @@ CSS for overriding certain common bootstrap CSS or creating new CSS in bootstrap
 
     color: #ffffff;
 
-    background-color: #000000;
+    background-color: var(--primary-color-1);
 
 }
 
@@ -731,6 +748,8 @@ CSS for the front page.
 
     font-family: var(--font-family-2);
 
+    font-weight:400;
+
 }
 
 .frontpage-slider .slider-image {
@@ -879,7 +898,9 @@ CSS for the front page.
 
     font-size: 3vw;
 
-    font-weight: 700;
+    font-weight: 400;
+
+    font-family: var(--font-family-2);
 
 }
 
