@@ -588,7 +588,6 @@ if (document.readyState === 'loading') {
     updateHeaderHeight();
 }
 
-// Debounce resize to prevent excessive updates
 let resizeTimeout;
 window.addEventListener('resize', function() {
     clearTimeout(resizeTimeout);

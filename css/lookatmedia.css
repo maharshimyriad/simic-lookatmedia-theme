@@ -439,6 +439,8 @@ header {
 
     width: 100%;
 
+    max-width: 175px;
+
 }
 
 .navbar .navbar-nav .nav-link {
