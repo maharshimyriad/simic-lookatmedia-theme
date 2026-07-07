@@ -593,3 +593,12 @@ window.addEventListener('resize', function() {
     clearTimeout(resizeTimeout);
     resizeTimeout = setTimeout(updateHeaderHeight, 150);
 });
+
+
+document.addEventListener('DOMContentLoaded', function () {
+    const first = document.body.firstChild;
+
+    if (first && first.nodeType === Node.TEXT_NODE && first.textContent.trim() === '<>') {
+        first.remove();
+    }
+});
