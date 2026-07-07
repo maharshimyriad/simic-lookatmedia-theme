@@ -9,16 +9,39 @@
     --font-family-2: 'Instrument Serif', serif;
     --primary-color-1: #2e6bd6;
     --primary-color-2: #0b1d34;
-    --background-color-1:#f5f0e6;
+    --background-color-1: #f5f0e6;
 }
 
-h1,h2,h3,h4,h5,h6,
-h1 span, h1 strong, h1 p, h1 a,
-h2 span, h2 strong, h2 p, h2 a,
-h3 span, h3 strong, h3 p, h3 a,
-h4 span, h4 strong, h4 p, h4 a,
-h5 span, h5 strong, h5 p, h5 a,
-h6 span, h6 strong, h6 p, h6 a {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+h1 span,
+h1 strong,
+h1 p,
+h1 a,
+h2 span,
+h2 strong,
+h2 p,
+h2 a,
+h3 span,
+h3 strong,
+h3 p,
+h3 a,
+h4 span,
+h4 strong,
+h4 p,
+h4 a,
+h5 span,
+h5 strong,
+h5 p,
+h5 a,
+h6 span,
+h6 strong,
+h6 p,
+h6 a {
 
     font-family: var(--font-family-2);
 
@@ -739,21 +762,20 @@ CSS for the front page.
 
     letter-spacing: -.02em;
 
-    
+
 }
 
 .frontpage-slider .slider-title span {
-    
+
     background-color: #ffffff;
-    
+
     padding: 0 0 .85rem 1.25rem;
 
     font-family: var(--font-family-2);
 
-    font-weight:400;
+    font-weight: 400;
 
-    color:var(--primary-color-2)
-
+    color: var(--primary-color-2)
 }
 
 .frontpage-slider .slider-image {
@@ -956,7 +978,7 @@ CSS for the front page.
 
     border-radius: 50px;
 
-    border:1px solid var(--primary-color-2) !important;
+    border: 1px solid var(--primary-color-2) !important;
 
     padding: 0 30px;
 
@@ -1188,7 +1210,7 @@ CSS for the front page.
 
 }
 
-.search-icon i{
+.search-icon i {
     color: #ffffff;
 }
 
@@ -1745,7 +1767,7 @@ CSS for all the mini-home pages, e.g. story ideas, news, events, etc.
 
 }
 
-.minihome-tags li a{
+.minihome-tags li a {
     text-decoration: underline !important;
 }
 
@@ -2882,7 +2904,7 @@ CSS for the resources pages.
 
     padding: 0 1.25rem;
 
-    color:var(--primary-color-2);
+    color: var(--primary-color-2);
 
 }
 
@@ -3119,8 +3141,10 @@ CSS for contact section that is above the footer.
 
     font-weight: 400;
 
-    color:var(--background-color-1)
+}
 
+.contact-section h2 strong {
+    color: var(--background-color-1)
 }
 
 
@@ -3634,8 +3658,8 @@ CSS for the different popups.
 
 }
 
-.image-popup .nes-image-info{
-color:black;
+.image-popup .nes-image-info {
+    color: black;
 }
 
 .image-popup .video-js {
@@ -4842,38 +4866,42 @@ button.attribution-download-image {
 
 
 
-.media-release-content{
-	margin-top:0 !important;
-	padding-top:0 !important;
+.media-release-content {
+    margin-top: 0 !important;
+    padding-top: 0 !important;
 }
 
-.minihome-row p:empty{
-	display:none;
+.minihome-row p:empty {
+    display: none;
 }
 
 
-body.is-node-preview main{
-	margin-top:20px;
+body.is-node-preview main {
+    margin-top: 20px;
 }
 
 body.is-node-preview .ui-dialog {
-  max-width: 70vw !important;
-  width: auto !important;
+    max-width: 70vw !important;
+    width: auto !important;
 }
 
-.minihome-row p:empty{display:none;}
+.minihome-row p:empty {
+    display: none;
+}
 
-body.is-node-preview main{margin-top:20px;}
+body.is-node-preview main {
+    margin-top: 20px;
+}
 
-body.is-node-preview .ui-dialog{
-  max-width:70vw !important;
-  width:auto !important;
+body.is-node-preview .ui-dialog {
+    max-width: 70vw !important;
+    width: auto !important;
 }
 
 
-.section-buttons .btn-black{
-    background-color:transparent;
-    border-color:var(--background-color-1) !important;
-    color:var(--background-color-1) !important;
+.section-buttons .btn-black {
+    background-color: transparent;
+    border-color: var(--background-color-1) !important;
+    color: var(--background-color-1) !important;
 
 }
