@@ -1727,6 +1727,10 @@
 
 	}
 
+	.nes-banner-top .published span{
+		color:white;
+	}
+
 	.nes-banner-top .priority-tag a {
 
 		color: #000000;
@@ -1755,7 +1759,7 @@
 
 	.nes-news .nes-banner-inner {
 
-		background-color: #000000;
+		background-color: var(--primary-color-2);
 
 		color: #ffffff;
 
@@ -1765,10 +1769,13 @@
 
 		color: #ffffff;
 
+		font-weight: 400;
+
 	}
 
 	.nes-news .nes-mobile-actions button,
-	.nes-news .nes-mobile-actions a {
+	.nes-news .nes-mobile-actions a,
+	.nes-news .nes-mobile-actions button * {
 
 		color: #ffffff;
 
@@ -1796,7 +1803,7 @@
 
 		height: 1px;
 
-		background-color: #ff5211;
+		background-color: var(--primary-color-1);
 
 		margin: 0 auto;
 
