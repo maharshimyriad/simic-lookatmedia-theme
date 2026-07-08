@@ -568,37 +568,3 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 
 })(jQuery, Drupal, drupalSettings);
-
-
-
-function updateHeaderHeight() {
-    const header = document.querySelector('header');
-    if (header) {
-        document.documentElement.style.setProperty(
-            '--header-height',
-            `${header.offsetHeight}px`
-        );
-    }
-}
-
-// Update on load
-if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', updateHeaderHeight);
-} else {
-    updateHeaderHeight();
-}
-
-let resizeTimeout;
-window.addEventListener('resize', function() {
-    clearTimeout(resizeTimeout);
-    resizeTimeout = setTimeout(updateHeaderHeight, 150);
-});
-
-
-document.addEventListener('DOMContentLoaded', function () {
-    const first = document.body.firstChild;
-
-    if (first && first.nodeType === Node.TEXT_NODE && first.textContent.trim() === '<>') {
-        first.remove();
-    }
-});

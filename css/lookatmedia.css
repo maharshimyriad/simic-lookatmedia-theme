@@ -10,7 +10,6 @@
     --primary-color-1: #2e6bd6;
     --primary-color-2: #0b1d34;
     --background-color-1: #f5f0e6;
-    --header-height: 100px;
 }
 
 h1,
@@ -106,7 +105,7 @@ a:active {
 
 main {
 
-    margin-top: var(--header-height);
+    margin-top: 86px;
 
 }
 
