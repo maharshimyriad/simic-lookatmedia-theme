@@ -913,7 +913,7 @@ CSS for the front page.
 
     text-decoration: none;
 
-    font-weight: 600;
+    font-weight: 400;
 
     text-transform: uppercase;
 
@@ -1756,7 +1756,7 @@ CSS for all the mini-home pages, e.g. story ideas, news, events, etc.
 
     text-decoration: none !important;
 
-    font-weight: 600;
+    font-weight: 700;
 
 }
 
@@ -1994,7 +1994,7 @@ CSS for all the article pages mentioned above.
 
     font-size: 14px;
 
-    font-weight: 600;
+    font-weight: 700;
 
     text-decoration: none !important;
 
@@ -2051,7 +2051,7 @@ CSS for all the article pages mentioned above.
 .nes-top-right>form a span,
 .nes-top-right>.share-menu-wrapper>button span {
 
-    font-weight: 600;
+    font-weight: 700;
 
     font-size: 14px;
 
@@ -2086,7 +2086,7 @@ CSS for all the article pages mentioned above.
 
     font-size: .75rem;
 
-    font-weight: 600;
+    font-weight: 700;
 
     display: flex;
 
@@ -2286,7 +2286,7 @@ CSS for all the article pages mentioned above.
     background: var(--date-bg);
     color: #fff;
     text-align: right;
-    font-weight: 600;
+    font-weight: 700;
     line-height: 14.4px;
     font-size: 15px;
     cursor: pointer;
@@ -2651,7 +2651,7 @@ CSS for all the article pages mentioned above.
 
     margin: 0 0 20px 0;
 
-    font-weight: 600;
+    font-weight: 700;
 
 }
 
@@ -3180,7 +3180,7 @@ CSS for the login/registration/forgot password pages.
 
 .js-form-item label {
     font-size: 1.125em;
-    font-weight: 600;
+    font-weight: 700;
     padding-left: 15px;
 }
 
@@ -3264,7 +3264,7 @@ CSS for the login/registration/forgot password pages.
 
     font-size: 1.25rem;
 
-    font-weight: 600;
+    font-weight: 700;
 
     line-height: 1.5;
 
@@ -4359,7 +4359,7 @@ button.attribution-download-image {
 
 .js-form-required {
     font-size: 1.125em;
-    font-weight: 600;
+    font-weight: 700;
     padding-left: 15px;
 }
 
@@ -4594,7 +4594,7 @@ button.attribution-download-image {
 }
 
 .success-content strong {
-    font-weight: 600;
+    font-weight: 700;
 }
 
 .carousel-item {
