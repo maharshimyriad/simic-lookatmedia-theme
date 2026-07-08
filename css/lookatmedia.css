@@ -248,6 +248,7 @@ main {
     top: 468px;
     right: -42px;
     z-index: 1024;
+    display: none;
 }
 
 /*end modal css */
@@ -848,9 +849,9 @@ CSS for the front page.
 }
 
 .frontpage-slider .slider-readmore {
-
     padding: .75em 2em;
-
+    width: fit-content;
+    margin: 0 auto !important;
 }
 
 .frontpage-slider .carousel-indicators {
@@ -1271,7 +1272,7 @@ CSS for the front page.
 
 .search-animate h2 {
 
-    font-weight: 700;
+    font-weight: 400;
 
     opacity: 0;
 
@@ -2023,8 +2024,8 @@ CSS for all the article pages mentioned above.
 
 }
 
-.nes-top-right button *{
-    color:white;
+.nes-top-right button * {
+    color: white;
 }
 
 .nes-top-right>button:last-child {
@@ -2274,7 +2275,7 @@ CSS for all the article pages mentioned above.
 
 }
 
-.nes-latestnews span{
+.nes-latestnews span {
 
     color: var(--primary-color-1);
 
