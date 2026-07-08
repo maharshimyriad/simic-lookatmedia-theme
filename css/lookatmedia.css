@@ -473,7 +473,8 @@ header {
 }
 
 .navbar .navbar-nav .nav-link:active,
-.navbar .navbar-nav .nav-link.active {
+.navbar .navbar-nav .nav-link.active,
+.navbar .navbar-nav .nav-link.is-active {
 
     border-color: var(--primary-color-2);
 
@@ -1979,6 +1980,10 @@ CSS for all the article pages mentioned above.
 
     font-size: 14px;
 
+}
+
+.nes-top-left .published span{
+    color:white;
 }
 
 .nes-top-left .priority-tag {
