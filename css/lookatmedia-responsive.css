@@ -806,11 +806,11 @@
 		color: var(--date-bg);
 	}
 
-	.minihome-banner-row .minihome-date .mini-home-left{
+	.minihome-banner-row .minihome-date .mini-home-left {
 		color: #fff;
 	}
 
-	.minihome-banner-row  .minihome-date .mini-home-left i {
+	.minihome-banner-row .minihome-date .mini-home-left i {
 		color: #fff;
 	}
 
@@ -1081,6 +1081,10 @@
 
 		background-color: var(--background-color-1);
 
+	}
+
+	.navbar {
+		box-shadow: 0px 12px 33px rgba(0, 0, 0, 0.25);
 	}
 
 	.minihome-search-results .minihome-row {
@@ -1727,8 +1731,8 @@
 
 	}
 
-	.nes-banner-top .published span{
-		color:var(--primary-color-2);
+	.nes-banner-top .published span {
+		color: var(--primary-color-2);
 	}
 
 	.nes-banner-top .priority-tag a {
