@@ -1466,7 +1466,7 @@ CSS for all the mini-home pages, e.g. story ideas, news, events, etc.
 .minihome-banner,
 .minihome-content {
 
-    background-color: #f0f0f0;
+    background-color: var(--background-color-1);
 
 }
 
