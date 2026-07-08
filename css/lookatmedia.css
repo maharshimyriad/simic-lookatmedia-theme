@@ -2418,7 +2418,7 @@ CSS for all the article pages mentioned above.
 
 .nes-image-info .image-title {
 
-    font-weight: 600;
+    font-weight: 400;
     text-transform: uppercase;
 
 }
@@ -2509,6 +2509,8 @@ CSS for all the article pages mentioned above.
 .nes-body-copy h6 {
 
     font-weight: bold;
+
+    font-family: var(--font-family-1);
 
 }
 
