@@ -784,6 +784,8 @@
 	.mini-home-right a:hover {
 		color: var(--date-bg) !important;
 		line-height: 1em;
+		font-weight: 400;
+
 	}
 
 	.minihome-banner-row .mini-home-right a,
