@@ -4753,24 +4753,25 @@ button.attribution-download-image {
 
 /* css added by khushboo valmik on 2/22/2024 */
 #views-exposed-form-resources-page-blocks-block-1 .form-submit {
-    font-weight: 400;
-    /* line-height: 2.5; */
-    color: #ffffff;
-    text-align: center;
-    text-decoration: none;
-    text-transform: uppercase;
-    vertical-align: middle;
-    cursor: pointer;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    user-select: none;
-    background-color: var(--primary-color-2);
-    border: none;
-    font-size: 1rem;
-    border-radius: 100px;
-    transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;
-    letter-spacing: 0.125em;
-    /*padding: 0.6rem 1rem !important;*/
+	font-weight: 400;
+	/* line-height: 2.5; */
+	color: #ffffff;
+	text-align: center;
+	text-decoration: none;
+	text-transform: uppercase;
+	vertical-align: middle;
+	cursor: pointer;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	user-select: none;
+	background-color: var(--primary-color-2);
+	border: none;
+	font-size: 1rem;
+	border-radius: 100px;
+	transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+	letter-spacing: 0.125em;
+	padding: 0.6rem 1rem !important;
+	margin-right: 5px;
 }
 
 #views-exposed-form-resources-page-blocks-block-1 .form-text {
