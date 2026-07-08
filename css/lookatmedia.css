@@ -498,9 +498,10 @@ header {
 
 }
 
-.navbar .navbar-toggler i,.navbar .search-toggler i{
+.navbar .navbar-toggler i,
+.navbar .search-toggler i {
 
-    color:#999;
+    color: #999;
 
 }
 
