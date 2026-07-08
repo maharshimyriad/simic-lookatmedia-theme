@@ -2180,7 +2180,7 @@ CSS for all the article pages mentioned above.
 
     height: 0;
 
-    border-bottom: 75px solid #ff5211;
+    border-bottom: 75px solid var(--primary-color-1);
 
     border-left: 75px solid transparent;
 
