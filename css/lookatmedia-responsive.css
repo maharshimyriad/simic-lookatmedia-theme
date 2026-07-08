@@ -1883,11 +1883,9 @@
 
 	.nes-author {
 
-		color: #000000;
+		color: var(--primary-color-2);
 
 		font-size: 5vw;
-
-		font-weight: 700;
 
 		margin-top: .125rem;
 
