@@ -10,6 +10,7 @@
     --primary-color-1: #2e6bd6;
     --primary-color-2: #0b1d34;
     --background-color-1: #f5f0e6;
+    --date-bg: #B08A3E;
 }
 
 h1,
@@ -295,7 +296,7 @@ main {
 
     user-select: none;
 
-    background-color: var(--primary-color-2);
+    background-color: var(--primary-color-1);
 
     border: none;
 
@@ -454,7 +455,7 @@ header {
 
     letter-spacing: .125em;
 
-    font-weight: 400;
+    font-weight: 500;
 
     text-transform: uppercase;
 
@@ -494,7 +495,12 @@ header {
 
     font-size: 1.75rem;
 
-    color: #999999;
+
+}
+
+.navbar .navbar-toggler i,.navbar .search-toggler i{
+
+    color:#999;
 
 }
 
@@ -1865,7 +1871,7 @@ CSS for all the mini-home pages, e.g. story ideas, news, events, etc.
 
     padding: .75rem 1.5rem;
 
-    background-color: #ff5211;
+    background-color: var(--date-bg);
 
     color: #ffffff;
 
@@ -1884,6 +1890,7 @@ CSS for all the mini-home pages, e.g. story ideas, news, events, etc.
 
 .minihome-date .mini-home-left {
     float: left;
+    color: #fff;
 }
 
 .minihome-date .mini-home-right {
@@ -1902,7 +1909,7 @@ CSS for all the mini-home pages, e.g. story ideas, news, events, etc.
 
     margin-top: .1em;
 
-
+    color: #ffffff;
 }
 
 
