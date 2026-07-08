@@ -1728,7 +1728,7 @@
 	}
 
 	.nes-banner-top .published span{
-		color:white;
+		color:var(--primary-color-2);
 	}
 
 	.nes-banner-top .priority-tag a {
