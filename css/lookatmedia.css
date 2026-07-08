@@ -2271,7 +2271,7 @@ CSS for all the article pages mentioned above.
 }
 
 .nes-eventdates-save {
-    background: #ff5212;
+    background: var(--date-bg);
     color: #fff;
     text-align: right;
     font-weight: 600;
@@ -2287,25 +2287,14 @@ CSS for all the article pages mentioned above.
 }
 
 .nes-eventdates {
-
-    /*padding: 1rem 1.5rem;*/
-
-    background-color: #ff5211;
-
     color: #ffffff;
-
     font-size: 1.75vw;
-
-    font-weight: bold;
-
+    font-weight: 400;
     text-transform: uppercase;
-
     display: flex;
-
     align-items: center;
-
     letter-spacing: .04em;
-
+    font-family: var(--font-family-1);
 }
 
 .nes-eventdates i {
@@ -2313,6 +2302,8 @@ CSS for all the article pages mentioned above.
     font-size: 2.25vw;
 
     margin-right: .35em;
+
+    color: #ffffff;
 
 }
 
@@ -2322,7 +2313,7 @@ CSS for all the article pages mentioned above.
 
     font-size: 5vw;
 
-    line-height: 6vw;
+    line-height: 6.6vw;
 
     margin-bottom: .7rem;
 
@@ -2473,7 +2464,7 @@ CSS for all the article pages mentioned above.
 .nes-body-copy span {
 
     color: var(--primary-color-2);
-    /*font-size: 18px;*/
+    font-family: var(--font-family-1);
 
 }
 
@@ -2584,7 +2575,7 @@ CSS for all the article pages mentioned above.
 
     text-decoration: none;
 
-    font-weight: 700;
+    font-weight: 400;
 
     font-size: .9em;
 
