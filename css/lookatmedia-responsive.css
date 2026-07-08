@@ -1733,7 +1733,7 @@
 
 	.nes-banner-top .priority-tag a {
 
-		color: #000000;
+		color: var(--primary-color-2);
 
 	}
 
