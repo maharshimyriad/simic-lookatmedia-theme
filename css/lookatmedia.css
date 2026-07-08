@@ -2270,6 +2270,14 @@ CSS for all the article pages mentioned above.
 
 }
 
+.nes-latestnews span{
+
+    color: var(--primary-color-1);
+
+    font-family: var(--font-family-1);
+
+}
+
 .nes-eventdates-save {
     background: var(--date-bg);
     color: #fff;
@@ -2354,6 +2362,8 @@ CSS for all the article pages mentioned above.
 
     margin: 0 .75vw;
 
+    font-weight: 400;
+
 }
 
 .nes-author {
@@ -2362,9 +2372,11 @@ CSS for all the article pages mentioned above.
 
     font-size: 2vw;
 
-    font-weight: 600;
+    font-weight: 400;
 
     margin-top: 2.25vw;
+
+    font-family: var(--font-family-1);
 
 }
 
