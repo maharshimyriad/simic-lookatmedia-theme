@@ -2529,7 +2529,7 @@ CSS for all the article pages mentioned above.
 
     padding: 5rem 0;
 
-    background-color: #f0f0f0;
+    background-color: var(--background-color-1);
 
 }
 
