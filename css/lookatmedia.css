@@ -2321,7 +2321,7 @@ CSS for all the article pages mentioned above.
 
     font-size: 5vw;
 
-    line-height: 6.6vw;
+    line-height: 6.5vw;
 
     margin-bottom: .7rem;
 
@@ -2363,6 +2363,8 @@ CSS for all the article pages mentioned above.
     margin: 0 .75vw;
 
     font-weight: 400;
+
+    color: #fff;
 
 }
 
