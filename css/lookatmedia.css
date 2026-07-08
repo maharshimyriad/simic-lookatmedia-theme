@@ -455,7 +455,7 @@ header {
 
     letter-spacing: .125em;
 
-    font-weight: 500;
+    font-weight: 400;
 
     text-transform: uppercase;
 
@@ -1666,7 +1666,7 @@ CSS for all the mini-home pages, e.g. story ideas, news, events, etc.
 
     letter-spacing: .125em;
 
-    font-weight: 500;
+    font-weight: 400;
 
     font-family: var(--font-family-1);
 
@@ -3232,7 +3232,7 @@ CSS for the login/registration/forgot password pages.
 
     content: "Login";
 
-    font-weight: 500;
+    font-weight: 400;
 
     color: var(--primary-color-2);
 
