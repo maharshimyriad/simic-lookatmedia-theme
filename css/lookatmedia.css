@@ -2378,6 +2378,10 @@ CSS for all the article pages mentioned above.
 
 }
 
+.node-type-news .nes-hashtags span{
+    color: #ffffff;
+}
+
 .nes-author {
 
     color: #ffffff;
@@ -2424,7 +2428,7 @@ CSS for all the article pages mentioned above.
 
 .nes-image-info .image-title {
 
-    font-weight: 400;
+    font-weight: 700;
     text-transform: uppercase;
 
 }
@@ -3541,7 +3545,7 @@ CSS for website socials widget.
 
 .site-socials {
 
-    display: flex;
+    display: none;
 
     flex-direction: column;
 
@@ -4013,7 +4017,7 @@ button.attribution-download-image {
 
     font-size: 18px;
 
-    color: #000;
+    color: var(--primary-color-2);
 
     text-transform: uppercase;
 
