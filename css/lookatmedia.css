@@ -2023,6 +2023,10 @@ CSS for all the article pages mentioned above.
 
 }
 
+.nes-top-right button *{
+    color:white;
+}
+
 .nes-top-right>button:last-child {
 
     margin-right: 0;
