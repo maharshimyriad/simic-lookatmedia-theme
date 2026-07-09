@@ -1445,7 +1445,7 @@ CSS for all the mini-home pages, e.g. story ideas, news, events, etc.
 
 .minihome-search-results .minihome-content {
 
-    padding-top: 3.5em;
+    padding: 3.5em 0;
 
 }
 
