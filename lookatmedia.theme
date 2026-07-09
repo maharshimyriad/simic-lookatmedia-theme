@@ -140,24 +140,40 @@ function lookatmedia_preprocess_search_result(&$variables) {
   ];
 
   $node = NULL;
+  if (!empty($variables['result']['node'])) {
+    $node = $variables['result']['node'];
+  }
+  elseif (!empty($variables['result']['entity'])) {
+    $node = $variables['result']['entity'];
+  }
+
+  if (is_numeric($node)) {
+    $node = \Drupal::entityTypeManager()->getStorage('node')->load($node);
+  }
+
   if (!empty($variables['url']) && $variables['url'] instanceof Url && $variables['url']->isRouted()) {
     $route_parameters = $variables['url']->getRouteParameters();
-    if (!empty($route_parameters['node'])) {
+    if (!$node && !empty($route_parameters['node'])) {
       $node_id = is_object($route_parameters['node']) ? $route_parameters['node']->id() : $route_parameters['node'];
       $node = \Drupal::entityTypeManager()->getStorage('node')->load($node_id);
     }
   }
 
-  if (!$node) {
-    $variables['search_card']['excerpt'] = !empty($variables['snippet']) ? $variables['snippet'] : '';
+  if (!$node || !method_exists($node, 'hasField')) {
+    $variables['search_card']['excerpt'] = lookatmedia_search_card_text(!empty($variables['snippet']) ? $variables['snippet'] : '');
     return;
   }
 
   if ($node->hasField('field_banner_image') && !$node->get('field_banner_image')->isEmpty()) {
-    $image_url = lookatmedia_search_card_image_url($node->get('field_banner_image')->entity);
+    $banner_image = $node->get('field_banner_image');
+    $banner_value = $banner_image->first()->getValue();
+    $image_url = lookatmedia_search_card_image_url($banner_image->entity);
+    if (!$image_url && !empty($banner_value['uri'])) {
+      $image_url = \Drupal::service('file_url_generator')->generateString($banner_value['uri']);
+    }
     if ($image_url) {
       $variables['search_card']['image'] = $image_url;
-      $variables['search_card']['image_alt'] = lookatmedia_search_card_text($node->get('field_banner_image')->first()->alt ?: $node->label());
+      $variables['search_card']['image_alt'] = lookatmedia_search_card_text($banner_value['alt'] ?? $banner_value['title'] ?? $node->label());
     }
   }
 
