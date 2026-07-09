@@ -6,6 +6,7 @@
                 <h1 class="global-search-title minihome-search-title">{{ search_keys }}</h1>
             {% endif %}
         </div>
+        <div>{{ page.header_right }}</div>
         {% if not search_keys %}
             <form{{ attributes }}>
                 {{ children }}
