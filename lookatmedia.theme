@@ -97,9 +97,18 @@ function lookatmedia_preprocess_field(&$variables) {
  */
 function lookatmedia_preprocess_form(&$variables) {
   $variables['total_results'] = 0;
+  $variables['search_keys'] = '';
 
   if (empty($variables['element']['#form_id']) || $variables['element']['#form_id'] !== 'search_form') {
     return;
+  }
+
+  $route_keys = \Drupal::routeMatch()->getParameter('keys');
+  if (!empty($route_keys)) {
+    $variables['search_keys'] = $route_keys;
+  }
+  elseif (!empty($variables['element']['basic']['keys']['#default_value'])) {
+    $variables['search_keys'] = $variables['element']['basic']['keys']['#default_value'];
   }
 
   // Prefer Drupal's pager object, which carries the full result count.
@@ -186,5 +195,4 @@ function lookatmedia_preprocess_page(array &$variables) {
     'dbgalleryUrl' => $dbgallery_url,
   ];
 }
-
 

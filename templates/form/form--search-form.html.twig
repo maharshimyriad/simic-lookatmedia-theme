@@ -1,9 +1,16 @@
 <div class="global-search">
     <div class="container">
-        <h3 class="global-search-title">Search results</h3>
-        <form{{ attributes }}>
-            {{ children }}
-        </form>
+        <div class="minihome-search-details">
+            <h4 class="minihome-search-before">Search results for</h4>
+            {% if search_keys %}
+                <h1 class="global-search-title minihome-search-title">{{ search_keys }}</h1>
+            {% endif %}
+        </div>
+        {% if not search_keys %}
+            <form{{ attributes }}>
+                {{ children }}
+            </form>
+        {% endif %}
         <h5 class="global-search-total">{{total_results}} results found</h5>
     </div>
 </div>

@@ -543,7 +543,10 @@
 @media only screen and (max-width: 1024px) {
 
 
-
+	#edit-submit-search-pages,
+	#edit-submit-search-pages--2 {
+		width: 100% !important;
+	}
 
 
 	/****************************************************************************************************
@@ -1138,15 +1141,15 @@
 	}
 
 	.section-buttons.mt-5 {
-
-		margin-top: 1rem !important;
-
+		margin-top: 0 !important;
 		display: flex;
-
 		flex-direction: column;
-
 		align-items: center;
+		padding-top: 0 !important;
+	}
 
+	.contact-setion .section-inner{
+		padding:0 !important;
 	}
 
 	.path-frontpage .minihome-banner-row:first-child {
@@ -1179,7 +1182,7 @@
 
 	.split-header {
 
-		padding: 1em 0;
+		padding: 2em 0 0;
 
 	}
 
@@ -1389,7 +1392,9 @@
 
 	.minihome-content {
 
-		background-color: #ffffff
+		background-color: #ffffff;
+
+		padding:0;
 	}
 
 	.minihome-content .minihome-row {
@@ -1647,7 +1652,7 @@
 
 	.nes-main {
 
-		padding: 2.75em 0;
+		padding: 0.5em 0;
 
 	}
 
@@ -1733,6 +1738,10 @@
 
 	.nes-banner-top .published span {
 		color: var(--primary-color-2);
+	}
+
+	.node-type-news .nes-banner-top .published span{
+		color: #ffffff;
 	}
 
 	.nes-banner-top .priority-tag a {
@@ -1918,7 +1927,7 @@
 
 		right: -0.25rem;
 
-		background-color: #000000;
+		background-color: var(--primary-color-2);
 
 		border-radius: .25rem;
 
@@ -1935,6 +1944,8 @@
 		font-size: 2rem;
 
 		margin-bottom: 0;
+
+		color: #fff;
 
 	}
 
@@ -2466,6 +2477,10 @@
 		overflow: auto;
     height: -webkit-fill-available;
 	}*/
+
+	.home-search-form form .form-actions{
+		width: 100%;
+	}
 }
 
 @media only screen and (max-width: 320px) {
@@ -2500,5 +2515,16 @@
 @media only screen and (max-width: 520px) {
 	#custom_popup .img-d-none {
 		width: 100%;
+	}
+}
+
+
+@media (min-width: 768px) and (max-width: 1024px) {
+	.frontpage-slider .slider-readmore {
+		padding: .75em 1em;
+	}
+
+	.home-search-form form .form-actions {
+		margin-right: 12px;
 	}
 }

@@ -1,9 +1,13 @@
-<h3{{ title_attributes.addClass('result-title') }}>
-  <a href="{{ url }}">{{ title }}</a>
-</h3>
-{# {% if snippet %}
-  <p{{ content_attributes }}>{{ snippet }}</p>
-{% endif %}
-{% if info %}
-  <p>{{ info }}</p>
-{% endif %} #}
+<div class="minihome-row global-search-card">
+  <div class="minihome-row-content">
+    <h3{{ title_attributes.addClass('result-title') }}>
+      <a href="{{ url }}">{{ title }}</a>
+    </h3>
+    {% if snippet %}
+      <p{{ content_attributes }}>{{ snippet }}</p>
+    {% endif %}
+    {% if info %}
+      <p class="minihome-ptag-time">{{ info }}</p>
+    {% endif %}
+  </div>
+</div>

@@ -1,10 +1,10 @@
-<div class="container">
-  <div class="global-search-results">
+<div class="minihome-content global-search-results">
+  <div class="container">
     {% if items or empty %}
       {%- if items -%}
-        <{{ list_type }}{{ attributes.addClass('results-list') }}>
+        <{{ list_type }}{{ attributes.addClass('results-list', 'row', 'minihome-rows') }}>
           {%- for item in items -%}
-            <li{{ item.attributes.addClass('result-row') }}>{{ item.value }}</li>
+            <li{{ item.attributes.addClass('result-row', 'col-12', 'col-md-6', 'col-lg-4') }}>{{ item.value }}</li>
           {%- endfor -%}
         </{{ list_type }}>
       {%- else -%}
