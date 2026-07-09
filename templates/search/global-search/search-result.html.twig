@@ -1,13 +1,36 @@
 <div class="minihome-row global-search-card">
+  {% if search_card.image %}
+    <a href="{{ url }}">
+      <div class="ar-3-by-2">
+        <img src="{{ search_card.image }}" alt="{{ search_card.image_alt }}" />
+      </div>
+    </a>
+  {% endif %}
   <div class="minihome-row-content">
     <h3{{ title_attributes.addClass('result-title') }}>
       <a href="{{ url }}">{{ title }}</a>
     </h3>
-    {% if snippet %}
-      <p{{ content_attributes }}>{{ snippet }}</p>
+    {% if search_card.type or search_card.created %}
+      <ul class="minihome-ptag-time">
+        {% if search_card.type %}
+          <li>{{ search_card.type }}</li>
+        {% endif %}
+        {% if search_card.created %}
+          <li>{{ search_card.created }}</li>
+        {% endif %}
+      </ul>
     {% endif %}
-    {% if info %}
-      <p class="minihome-ptag-time">{{ info }}</p>
+    {% if search_card.excerpt %}
+      <p{{ content_attributes }}>{{ search_card.excerpt|striptags|trim|length > 110 ? search_card.excerpt|striptags|trim|slice(0, 110) ~ '...' : search_card.excerpt|striptags|trim }}</p>
+    {% endif %}
+    {% if search_card.tags %}
+      <div class="minihome-tags">
+        <ul>
+          {% for tag in search_card.tags|slice(0, 3) %}
+            <li><a href="{{ tag.url }}">{{ tag.title }}</a></li>
+          {% endfor %}
+        </ul>
+      </div>
     {% endif %}
   </div>
 </div>

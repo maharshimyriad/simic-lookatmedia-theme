@@ -9,6 +9,7 @@ use Drupal\Component\Utility\Html;
 use Drupal\paragraphs\Entity\Paragraph;
 use Drupal\lam_user_integration\SessionManager;
 use Drupal\lam_connector\APIClient;
+use Drupal\Core\Url;
 
 /**
  * Implements template_preprocess_html().
@@ -126,6 +127,96 @@ function lookatmedia_preprocess_form(&$variables) {
 }
 
 /**
+ * Implements template_preprocess_search_result().
+ */
+function lookatmedia_preprocess_search_result(&$variables) {
+  $variables['search_card'] = [
+    'image' => '',
+    'image_alt' => '',
+    'type' => '',
+    'created' => '',
+    'excerpt' => '',
+    'tags' => [],
+  ];
+
+  $node = NULL;
+  if (!empty($variables['url']) && $variables['url'] instanceof Url && $variables['url']->isRouted()) {
+    $route_parameters = $variables['url']->getRouteParameters();
+    if (!empty($route_parameters['node'])) {
+      $node_id = is_object($route_parameters['node']) ? $route_parameters['node']->id() : $route_parameters['node'];
+      $node = \Drupal::entityTypeManager()->getStorage('node')->load($node_id);
+    }
+  }
+
+  if (!$node) {
+    $variables['search_card']['excerpt'] = !empty($variables['snippet']) ? $variables['snippet'] : '';
+    return;
+  }
+
+  if ($node->hasField('field_banner_image') && !$node->get('field_banner_image')->isEmpty()) {
+    $image = $node->get('field_banner_image')->entity;
+    if ($image) {
+      $variables['search_card']['image'] = \Drupal::service('file_url_generator')->generateString($image->getFileUri());
+      $variables['search_card']['image_alt'] = $node->get('field_banner_image')->first()->alt ?: $node->label();
+    }
+  }
+
+  $variables['search_card']['type'] = $node->type->entity ? $node->type->entity->label() : $node->bundle();
+  $variables['search_card']['created'] = strtoupper(\Drupal::service('date.formatter')->formatInterval(\Drupal::time()->getRequestTime() - $node->getCreatedTime(), 1) . ' ago');
+
+  $excerpt = '';
+  if ($node->hasField('field_intro') && !$node->get('field_intro')->isEmpty()) {
+    $excerpt = $node->get('field_intro')->value;
+  }
+  elseif ($node->hasField('body') && !$node->get('body')->isEmpty()) {
+    $excerpt = $node->get('body')->value;
+  }
+  else {
+    for ($i = 1; $i <= 10; $i++) {
+      $field_name = 'field_body_copy_' . $i;
+      if ($node->hasField($field_name) && !$node->get($field_name)->isEmpty()) {
+        $excerpt = $node->get($field_name)->value;
+        break;
+      }
+    }
+  }
+  $variables['search_card']['excerpt'] = trim(strip_tags($excerpt ?: (!empty($variables['snippet']) ? $variables['snippet'] : '')));
+
+  foreach (['field_tags', 'field_media_tags', 'field_content_tags', 'field_category', 'field_categories'] as $field_name) {
+    if ($node->hasField($field_name) && !$node->get($field_name)->isEmpty() && method_exists($node->get($field_name), 'referencedEntities')) {
+      foreach ($node->get($field_name)->referencedEntities() as $term) {
+        $variables['search_card']['tags'][] = [
+          'title' => $term->label(),
+          'url' => $term->toUrl()->toString(),
+        ];
+      }
+      break;
+    }
+  }
+
+  if (empty($variables['search_card']['tags'])) {
+    foreach ($node->getFieldDefinitions() as $field_name => $definition) {
+      if ($definition->getSetting('target_type') !== 'taxonomy_term' || $node->get($field_name)->isEmpty() || !method_exists($node->get($field_name), 'referencedEntities')) {
+        continue;
+      }
+      foreach ($node->get($field_name)->referencedEntities() as $term) {
+        $variables['search_card']['tags'][] = [
+          'title' => $term->label(),
+          'url' => $term->toUrl()->toString(),
+        ];
+      }
+      if (!empty($variables['search_card']['tags'])) {
+        break;
+      }
+    }
+  }
+
+  if (!empty($variables['search_card']['tags'])) {
+    $variables['search_card']['type'] = $variables['search_card']['tags'][0]['title'];
+  }
+}
+
+/**
  * Implements hook_theme_suggestions_form_alter().
  */
 function lookatmedia_theme_suggestions_form_alter(array &$suggestions, array $variables) {
@@ -195,4 +286,3 @@ function lookatmedia_preprocess_page(array &$variables) {
     'dbgalleryUrl' => $dbgallery_url,
   ];
 }
-
