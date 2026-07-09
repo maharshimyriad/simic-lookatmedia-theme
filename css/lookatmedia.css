@@ -3414,13 +3414,13 @@ CSS for the global search results page.
 
 .global-search .global-search-title {
 
-    color: #bbbbbb;
+    color: var(--primary-color-2);
 
-    font-size: 3em;
+    font-size: 30px;
 
     line-height: normal;
 
-    margin: 0;
+    margin: 12px 0;
 
     font-weight: 700;
 
