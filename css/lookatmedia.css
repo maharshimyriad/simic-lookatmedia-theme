@@ -4977,3 +4977,10 @@ body.is-node-preview .ui-dialog {
 .media-release-content p{
     margin-bottom: 1rem;
 }
+
+
+.path-search nav.conatiner{
+    max-width:none;
+    width:100%;
+    background:var(--background-color-1);
+}
