@@ -1433,6 +1433,8 @@ CSS for all the mini-home pages, e.g. story ideas, news, events, etc.
 
     text-overflow: ellipsis;
 
+    margin:12px 0;
+
 }
 
 .minihome-search-total {
@@ -3545,7 +3547,7 @@ CSS for website socials widget.
 
 .site-socials {
 
-    display: none;
+    display: flex;
 
     flex-direction: column;
 
@@ -3587,6 +3589,10 @@ CSS for website socials widget.
 
     margin-top: .4em;
 
+}
+
+.site-socials a i{
+    color: #ffffff;
 }
 
 
@@ -4337,7 +4343,7 @@ button.attribution-download-image {
 
 .nes-body-intro {
 
-    font-size: 1.5em;
+    font-size: 1.125em;
     font-weight: 300;
     margin-bottom: 2.5rem;
 
