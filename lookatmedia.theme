@@ -154,14 +154,15 @@ function lookatmedia_preprocess_search_result(&$variables) {
   }
 
   if ($node->hasField('field_banner_image') && !$node->get('field_banner_image')->isEmpty()) {
-    $image = $node->get('field_banner_image')->entity;
-    if ($image) {
-      $variables['search_card']['image'] = \Drupal::service('file_url_generator')->generateString($image->getFileUri());
-      $variables['search_card']['image_alt'] = $node->get('field_banner_image')->first()->alt ?: $node->label();
+    $image_url = lookatmedia_search_card_image_url($node->get('field_banner_image')->entity);
+    if ($image_url) {
+      $variables['search_card']['image'] = $image_url;
+      $variables['search_card']['image_alt'] = lookatmedia_search_card_text($node->get('field_banner_image')->first()->alt ?: $node->label());
     }
   }
 
-  $variables['search_card']['type'] = $node->type->entity ? $node->type->entity->label() : $node->bundle();
+  $node_type = \Drupal::entityTypeManager()->getStorage('node_type')->load($node->bundle());
+  $variables['search_card']['type'] = $node_type ? $node_type->label() : $node->bundle();
   $variables['search_card']['created'] = strtoupper(\Drupal::service('date.formatter')->formatInterval(\Drupal::time()->getRequestTime() - $node->getCreatedTime(), 1) . ' ago');
 
   $excerpt = '';
@@ -180,13 +181,13 @@ function lookatmedia_preprocess_search_result(&$variables) {
       }
     }
   }
-  $variables['search_card']['excerpt'] = trim(strip_tags($excerpt ?: (!empty($variables['snippet']) ? $variables['snippet'] : '')));
+  $variables['search_card']['excerpt'] = lookatmedia_search_card_text($excerpt ?: (!empty($variables['snippet']) ? $variables['snippet'] : ''));
 
   foreach (['field_tags', 'field_media_tags', 'field_content_tags', 'field_category', 'field_categories'] as $field_name) {
     if ($node->hasField($field_name) && !$node->get($field_name)->isEmpty() && method_exists($node->get($field_name), 'referencedEntities')) {
       foreach ($node->get($field_name)->referencedEntities() as $term) {
         $variables['search_card']['tags'][] = [
-          'title' => $term->label(),
+          'title' => lookatmedia_search_card_text($term->label()),
           'url' => $term->toUrl()->toString(),
         ];
       }
@@ -201,7 +202,7 @@ function lookatmedia_preprocess_search_result(&$variables) {
       }
       foreach ($node->get($field_name)->referencedEntities() as $term) {
         $variables['search_card']['tags'][] = [
-          'title' => $term->label(),
+          'title' => lookatmedia_search_card_text($term->label()),
           'url' => $term->toUrl()->toString(),
         ];
       }
@@ -214,6 +215,49 @@ function lookatmedia_preprocess_search_result(&$variables) {
   if (!empty($variables['search_card']['tags'])) {
     $variables['search_card']['type'] = $variables['search_card']['tags'][0]['title'];
   }
+
+  $variables['search_card']['type'] = lookatmedia_search_card_text($variables['search_card']['type']);
+  $variables['search_card']['created'] = lookatmedia_search_card_text($variables['search_card']['created']);
+}
+
+/**
+ * Gets a usable image URL from file or media entities.
+ */
+function lookatmedia_search_card_image_url($entity) {
+  if (!$entity) {
+    return '';
+  }
+
+  if ($entity->getEntityTypeId() === 'file') {
+    return \Drupal::service('file_url_generator')->generateString($entity->getFileUri());
+  }
+
+  foreach ($entity->getFieldDefinitions() as $field_name => $definition) {
+    if ($definition->getType() !== 'image' || $entity->get($field_name)->isEmpty()) {
+      continue;
+    }
+    $file = $entity->get($field_name)->entity;
+    if ($file) {
+      return \Drupal::service('file_url_generator')->generateString($file->getFileUri());
+    }
+  }
+
+  return '';
+}
+
+/**
+ * Normalizes search card values before Twig prints them.
+ */
+function lookatmedia_search_card_text($value) {
+  if (is_array($value)) {
+    $value = implode(' ', array_filter(array_map('lookatmedia_search_card_text', $value)));
+  }
+
+  if (is_object($value)) {
+    $value = method_exists($value, '__toString') ? (string) $value : '';
+  }
+
+  return trim(strip_tags((string) $value));
 }
 
 /**
