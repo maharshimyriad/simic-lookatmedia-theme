@@ -4979,8 +4979,10 @@ body.is-node-preview .ui-dialog {
 }
 
 
-.path-search nav.conatiner{
+.path-search nav.container{
     max-width:none;
     width:100%;
     background:var(--background-color-1);
+    display:flex;
+    justify-content:center;
 }
