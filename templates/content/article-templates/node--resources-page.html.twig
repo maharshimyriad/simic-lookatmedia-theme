@@ -1,6 +1,8 @@
 <article{{ attributes.addClass('rp-article') }}>
     <div class="rp-banner">
-        <img src="{{ file_url(node.field_banner_image.uri) }}" class="w-100 rellax" data-rellax-speed="-16" />
+        <div class="rp-banner-image rellax" data-rellax-speed="-16" data-rellax-percentage="0.5">
+            <img src="{{ file_url(node.field_banner_image.uri) }}" alt="{{ node.field_banner_image.title }}" />
+        </div>
         <div class="rp-banner-inner">
             <h1 class="rp-banner-title"><strong>{{ node_title|raw }}</strong></h1>
         </div>
