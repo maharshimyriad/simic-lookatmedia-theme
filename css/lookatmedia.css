@@ -2922,12 +2922,6 @@ CSS for the resources pages.
 
     justify-content: flex-end;
 
-    position: relative;
-
-    overflow: hidden;
-
-    z-index: 0;
-
 }
 
 .rp-banner-inner {
@@ -2936,43 +2930,14 @@ CSS for the resources pages.
 
     padding-right: 7vw;
 
-    position: relative;
-
-    z-index: 1;
-
 
 }
 
-.rp-banner-image {
-
-    position: absolute;
-
-    inset: 0;
-
-    width: 100%;
-
-    height: 100%;
-
-    z-index: 0;
-
-    overflow: hidden;
-
-    pointer-events: none;
-
-}
-
-.rp-banner-image img {
-
-    width: 100%;
-
-    height: 100%;
-
-    display: block;
-
-    object-fit: cover;
-
-    object-position: center center;
-
+.rp-banner img {
+    
+	position:absolute;
+	z-index:-100;
+	top:-10%;
 }
 
 .rp-banner-title {
