@@ -1,10 +1,10 @@
 <div class="minihome-row global-search-card">
   {% if search_card.image %}
-    <a href="{{ url }}">
       <div class="ar-3-by-2">
+      <a href="{{ url }}">
         <img src="{{ search_card.image }}" alt="{{ search_card.image_alt }}" />
+	</a>
       </div>
-    </a>
   {% endif %}
   <div class="minihome-row-content">
     <h3{{ title_attributes.addClass('result-title') }}>
@@ -13,7 +13,9 @@
     {% if search_card.type or search_card.created %}
       <ul class="minihome-ptag-time">
         {% if search_card.type %}
-          <li>{{ search_card.type }}</li>
+	<li>
+	<a href="{{ search_card.type_url }}">{{ search_card.type }}</a>
+	</li>
         {% endif %}
         {% if search_card.created %}
           <li>{{ search_card.created }}</li>
@@ -33,4 +35,16 @@
       </div>
     {% endif %}
   </div>
+      {% if search_card.type or search_card.created %}
+      <ul class="minihome-ptag-time mobile-only">
+        {% if search_card.type %}
+          <li><a href="{{ search_card.type_url }}">{{ search_card.type }}</a></li>
+        {% endif %}
+        {% if search_card.created %}
+	<li>
+	{{ search_card.created }}
+	</li>
+        {% endif %}
+      </ul>
+    {% endif %}
 </div>

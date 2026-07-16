@@ -229,7 +229,8 @@ function lookatmedia_preprocess_search_result(&$variables) {
   }
 
   if (!empty($variables['search_card']['tags'])) {
-    $variables['search_card']['type'] = $variables['search_card']['tags'][0]['title'];
+	  $variables['search_card']['type'] = $variables['search_card']['tags'][0]['title'];
+	  $variables['search_card']['type_url'] = $variables['search_card']['tags'][0]['url'];
   }
 
   $variables['search_card']['type'] = lookatmedia_search_card_text($variables['search_card']['type']);

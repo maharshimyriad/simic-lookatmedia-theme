@@ -743,6 +743,11 @@
 
 @media only screen and (max-width: 768px) {
 
+
+	.minihome-content.global-search-results{
+		background-color: var(--background-color-1);
+	}
+
 	.minihome-search-before,
 	.global-search .global-search-title {
 		font-size: 28px;
@@ -1080,12 +1085,13 @@
 
 	}
 
-	.minihome-search-results .minihome-content {
-
-		background-color: var(--background-color-1);
-
-	}
-
+.minihome-search-results .minihome-content {
+    background-color: var(--background-color-1);
+    display: flex;
+    align-items: center;
+    padding: 35px 0;
+    margin-top: 30px;
+}
 	.navbar {
 		box-shadow: 0px 12px 33px rgba(0, 0, 0, 0.25);
 	}
@@ -1182,7 +1188,7 @@
 
 	.split-header {
 
-		padding: 2em 0 0;
+		padding: 2em 0 ;
 
 	}
 
@@ -1409,6 +1415,10 @@
 
 	}
 
+	.minihome-content .minihome-row.global-search-card{
+		background:transparent;
+	}
+
 	.minihome-content .ar-3-by-2 {
 
 		width: 50%;
@@ -1453,6 +1463,10 @@
 
 		padding-left: 12.5px;
 
+	}
+
+	.minihome-content .minihome-row.global-search-card .minihome-row-content {
+		background:transparent;
 	}
 
 	.minihome-content .minihome-ptag-time {
@@ -1576,6 +1590,7 @@
 		width: 100%;
 
 		margin-top: 30px;
+
 
 	}
 

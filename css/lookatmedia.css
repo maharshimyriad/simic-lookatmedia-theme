@@ -261,7 +261,7 @@ main {
 
 .pager-show-more {
 
-    margin-bottom: 0;
+    margin-bottom: 50px;
 
     padding-left: 0;
 
@@ -2317,6 +2317,11 @@ CSS for all the article pages mentioned above.
     font-family: var(--font-family-1);
 }
 
+
+.nes-banner .nes-eventdates{
+	font-weight:700;
+}
+
 .nes-eventdates i {
 
     font-size: 2.25vw;
@@ -2350,7 +2355,7 @@ CSS for all the article pages mentioned above.
 .nes-news .nes-banner-title span,
 .nes-news .nes-hashtags {
 
-    color: #ffffff;
+    color: #f3eee4;
 
     background-color: var(--primary-color-2);
 
@@ -2526,10 +2531,30 @@ CSS for all the article pages mentioned above.
 
 }
 
+
+.nes-body-copy h1,
+.nes-body-copy h1 span,
+.nes-body-copy h2,
+.nes-body-copy h2 span,
+.nes-body-copy h3,
+.nes-body-copy h3 span,
+.nes-body-copy h4,
+.nes-body-copy h4 span,
+.nes-body-copy h5,
+.nes-body-copy h5 span,
+.nes-body-copy h6,
+.nes-body-copy h6 span {
+    font-weight: 700;
+}
+
 .nes-body-image {
 
     margin-bottom: 2rem;
 
+}
+
+.media-release-content .nes-body-copy a{
+	font-size:1.125rem;
 }
 
 .secondary-tags {
@@ -2905,16 +2930,14 @@ CSS for the resources pages.
 
     padding-right: 7vw;
 
+
 }
 
 .rp-banner img {
-
-    position: absolute;
-
-    z-index: -100;
-
-    top: -32%;
-
+    
+	position:absolute;
+	z-index:-100;
+	top:-10%;
 }
 
 .rp-banner-title {
@@ -3065,6 +3088,8 @@ CSS for the resources pages.
     width: 9%;
 
     text-align: right;
+
+    margin-left:35px;
 
 }
 
@@ -4808,8 +4833,11 @@ button.attribution-download-image {
     border-radius: 100px;
     transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;
     letter-spacing: 0.125em;
-    padding: 0.6rem 1rem !important;
     border:1px solid white;
+}
+
+#views-exposed-form-resources-page-blocks-block-1 button[id^="edit-submit-resources-page-blocks--"] {
+    padding: 0.6rem 1rem !important;
 }
 
 #views-exposed-form-resources-page-blocks-block-1 .form-text {
@@ -4976,6 +5004,7 @@ body.is-node-preview .ui-dialog {
 .media-release-content div,
 .media-release-content p{
     margin-bottom: 1rem;
+    font-weight:400
 }
 
 

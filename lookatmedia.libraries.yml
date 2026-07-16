@@ -25,7 +25,7 @@ styling:
       css/lookatmedia.css: {}
       css/lookatmedia-responsive.css: {}
   js:
-    //cdnjs.cloudflare.com/ajax/libs/rellax/1.0.0/rellax.min.js: {}
+    //cdnjs.cloudflare.com/ajax/libs/rellax/1.12.1/rellax.min.js: {}
     js/lookatmedia.js: {}
     js/hover_login.js: {}
     js/hcaptcha.js: {}
