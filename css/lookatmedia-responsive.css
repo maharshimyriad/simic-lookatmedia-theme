@@ -556,15 +556,6 @@
 	CSS for all the mini-home pages, e.g. story ideas, news, events, etc.
 
 	****************************************************************************************************/
-
-
-
-	.rp-banner img {
-		position: absolute;
-		z-index: -100;
-		top: 0%;
-	}
-
 	.minihome-banner-row-inner {
 
 		width: 60%;
