@@ -1059,7 +1059,7 @@ CSS for the front page.
 
 }
 
-.home-search-form select option {
+select option {
     color: var(--background-color-1) !important;
 }
 
@@ -2941,9 +2941,9 @@ CSS for the resources pages.
     position: absolute;
     z-index: -100;
     inset: 0;
-    height: 150%;
+    height: 200%;
     object-fit: cover;
-    top: -15%;
+    top: -40%;
 }
 
 .rp-banner-title {
