@@ -75,7 +75,7 @@
             </div>
             <div class="nes-top-right">
                 <form action="{{ url('<front>') }}generatePdf.php" method="post">
-                    <input type="hidden" name="date" value="{{ node.field_date.value|date('j M') }} - {{ node.field_date.end_value|date('j M') }}" />
+                    <input type="hidden" name="date" value="{{ node.field_date.value ? node.field_date.value|date('j M') : '' }} - {{ node.field_date.end_value ? node.field_date.end_value|date('j M') : '' }}" />
                     <input type="hidden" name="title" value="{{ node.title.0.value|trim }}" />
                     {#<input type="hidden" name="body" value="{{ node.field_body_copy_1.value|convert_encoding('UTF-8', 'HTML-ENTITIES|ENT_QUOTES') }} {{ node.field_body_copy_2.value|convert_encoding('UTF-8', 'HTML-ENTITIES|ENT_QUOTES') }} {{ node.field_body_copy_3.value|convert_encoding('UTF-8', 'HTML-ENTITIES|ENT_QUOTES') }} {{ node.field_body_copy_4.value|convert_encoding('UTF-8', 'HTML-ENTITIES|ENT_QUOTES') }} {{ node.field_body_copy_5.value|convert_encoding('UTF-8', 'HTML-ENTITIES|ENT_QUOTES') }} {{ node.field_body_copy_6.value|convert_encoding('UTF-8', 'HTML-ENTITIES|ENT_QUOTES') }} {{ node.field_body_copy_7.value|convert_encoding('UTF-8', 'HTML-ENTITIES|ENT_QUOTES') }} {{ node.field_body_copy_8.value|convert_encoding('UTF-8', 'HTML-ENTITIES|ENT_QUOTES') }} {{ node.field_body_copy_9.value|convert_encoding('UTF-8', 'HTML-ENTITIES|ENT_QUOTES') }} {{ node.field_body_copy_10.value|convert_encoding('UTF-8', 'HTML-ENTITIES|ENT_QUOTES') }}" />#}
                     <input type="hidden" name="body" value="{{ node.field_body_copy_1.value|escape }} {{ node.field_body_copy_2.value|escape}} {{ node.field_body_copy_3.value|escape}} {{ node.field_body_copy_4.value|escape}} {{ node.field_body_copy_5.value|escape}} 
@@ -134,15 +134,15 @@
             </div>
         </div>
         <div class="nes-banner-inner rellax" data-rellax-speed="10">
-            {% set start = node.field_date.value|date('j M') %}
-            {% set end = node.field_date.end_value|date('j M') %}
+            {% set start = node.field_date.value ? node.field_date.value|date('j M') : '' %}
+            {% set end = node.field_date.end_value ? node.field_date.end_value|date('j M') : '' %}
             {% if start == end %}
             {% set date = start %}
             {% else %}
             {% set date = start ~ ' - ' ~ end %}
             {% endif %}
-            {% set start = node.field_date.value|date('Y-m-d') %}
-            {% set end = node.field_date.end_value|date('Y-m-d') %}
+            {% set start = node.field_date.value ? node.field_date.value|date('Y-m-d') : '' %}
+            {% set end = node.field_date.end_value ? node.field_date.end_value|date('Y-m-d') : '' %}
             {% if start == end %}
             {% set savedate = start ~ ' /' ~ start %}
             {% else %}
