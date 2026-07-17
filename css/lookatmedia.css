@@ -1059,6 +1059,10 @@ CSS for the front page.
 
 }
 
+.home-search-form select option{
+    color:var(--background-color-1) !important;
+}
+
 .home-search-form form button {
 
     height: 50px;
@@ -1838,6 +1842,10 @@ CSS for all the mini-home pages, e.g. story ideas, news, events, etc.
 
     min-height: 60px;
 
+}
+
+.page-view-search-pages .minihome-row h3 a{
+    -webkit-line-clamp: unset !important;
 }
 
 .minihome-row p {
